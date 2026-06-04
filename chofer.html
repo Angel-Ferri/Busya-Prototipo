@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busya - Panel de Choferes</title>
+    <link rel="stylesheet" href="estilos/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="app-header">
+            <button class="back-btn" onclick="window.location.href='index.html'">⬅ Inicio</button>
+            <h1>🛠️ Panel de Control</h1>
+            <p>Sistema Interno para Choferes de Solbus</p>
+        </header>
+
+        <main class="content-container">
+            <section id="seccion-login" class="login-box">
+                <h2>Verificación de Personal</h2>
+                <p class="instruccion">Ingresa tu clave de legajo para acceder a las herramientas de frecuencia:</p>
+                <input type="password" id="clave-legajo" placeholder="Ingresa tu PIN/Legajo">
+                <button class="action-btn" onclick="verificarIdentidad()">Ingresar al Sistema</button>
+            </section>
+
+            <section id="seccion-panel-trabajo" class="hidden">
+                <div class="selector-linea-chofer">
+                    <label for="select-linea">Línea que manejas hoy:</label>
+                    <select id="select-linea" onchange="cambiarLineaDeTrabajo()">
+                        <option value="">-- Selecciona una línea --</option>
+                        <option value="lineaa.json">Línea A</option>
+                        <option value="lineae.json">Línea E</option>
+                        <option value="lineaeste.json">Línea Zona Este</option>
+                        <option value="lineaoeste.json">Línea Zona Oeste</option>
+                    </select>
+                </div>
+
+                <div id="control-recorridos-box" class="chofer-card hidden">
+                    <h3>Recorridos Completados</h3>
+                    <p class="info-desc">Presiona (+) cada vez que completes una vuelta en tu jornada.</p>
+                    <div class="counter-control-large">
+                        <button onclick="modificarContadorChofer(-1)">-</button>
+                        <span id="contador-vueltas-chofer">0</span>
+                        <button onclick="modificarContadorChofer(1)">+</button>
+                    </div>
+                </div>
+
+                <div id="selector-paradas-box" class="chofer-card hidden">
+                    <h3>Selecciona una Parada</h3>
+                    <p class="info-desc">Elige la parada para calcular su frecuencia específica de paso:</p>
+                    <div id="paradas-lista-chofer" class="paradas-lista"></div>
+                </div>
+
+                <div id="frecuencias-box" class="chofer-card hidden">
+                    <h3 id="titulo-parada-frecuencia">Frecuencia Individual</h3>
+                    <div class="frecuencia-display-grande">
+                        <span id="frecuencia-calculada-valor">--</span>
+                        <p id="frecuencia-calculada-detalle">Selecciona una parada para ver el promedio en minutos</p>
+                    </div>
+                    
+                    <hr style="border: 0; border-top: 1px solid #ccc; margin: 15px 0;">
+                    <button class="action-btn" id="btn-marcar-paso" style="background-color: #28a745;" onclick="registrarPasoRealActual()">
+                        📍 ¡Estoy en esta parada AHORA!
+                    </button>
+                </div>
+
+                <div id="horario-simulado-box" class="chofer-card hidden" style="background-color: #f0f7ff; border-left: 5px solid #007bff;">
+                    <h3 style="color: #007bff; margin-top: 0;">🔮 Horario Simulado Próximo</h3>
+                    <p class="info-desc">Predicción inteligente basada en el tráfico de la última hora de esta parada.</p>
+                    <div class="frecuencia-display-grande">
+                        <span id="horario-simulado-valor" style="color: #0056b3;">--:--</span>
+                        <p id="horario-simulado-detalle">Cargando estimación...</p>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="script/chofer.js"></script>
+</body>
+</html>

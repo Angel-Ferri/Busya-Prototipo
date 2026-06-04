@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busya - Inicio</title>
+    <link rel="stylesheet" href="estilos/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">🚌 Busya</div>
+            <p class="subtitle">¿Qué colectivo vas a tomar hoy?</p>
+        </header>
+
+        <main class="selection-container">
+            <h2>Selecciona una línea:</h2>
+            <div class="menu-lineas">
+                <button class="linea-card" onclick="seleccionarLinea('lineaa.json')">
+                    <div class="linea-badge badge-a">A</div>
+                    <div class="linea-info"><h3>Línea A</h3><p>Facultad ↔ Ate 2</p></div>
+                    <span class="arrow">➔</span>
+                </button>
+                <button class="linea-card" onclick="seleccionarLinea('lineae.json')">
+                    <div class="linea-badge badge-e">E</div>
+                    <div class="linea-info"><h3>Línea E</h3><p>M. Ernst y Cazorla ↔ B° La Ribera</p></div>
+                    <span class="arrow">➔</span>
+                </button>
+                <button class="linea-card" onclick="seleccionarLinea('lineaeste.json')">
+                    <div class="linea-badge badge-este">Este</div>
+                    <div class="linea-info"><h3>Línea Zona Este</h3><p>Pellegrini ↔ Htal. Eva Perón</p></div>
+                    <span class="arrow">➔</span>
+                </button>
+                <button class="linea-card" onclick="seleccionarLinea('lineaoeste.json')">
+                    <div class="linea-badge badge-oeste">Oeste</div>
+                    <div class="linea-info"><h3>Línea Zona Oeste</h3><p>Terminal ↔ Policlínico (Circular)</p></div>
+                    <span class="arrow">➔</span>
+                </button>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <a href="chofer.html" class="driver-access-link">⚙️ Acceso exclusivo Choferes</a>
+        </footer>
+    </div>
+
+    <script src="script/app.js"></script>
+</body>
+</html>

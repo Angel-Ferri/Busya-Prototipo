@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busya - Paradas y Horarios</title>
+    <link rel="stylesheet" href="estilos/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-top">
+                <button class="back-btn" onclick="volverAlInicio()">⬅ Volver</button>
+            </div>
+            
+            <h1 id="linea-titulo">Cargando línea...</h1>
+            <p id="linea-empresa-dias">Solbus</p>
+
+            <div id="panel-chofer" class="panel-chofer hidden">
+                <h3>🛠️ Panel de Control (Línea Activa)</h3>
+                
+                <div class="chofer-row">
+                    <label>Mis Recorridos Hoy:</label>
+                    <div class="counter-control">
+                        <button onclick="modificarContador(-1)">-</button>
+                        <span id="contador-vueltas">0</span>
+                        <button onclick="modificarContador(1)">+</button>
+                    </div>
+                </div>
+
+                <div class="chofer-row-info">
+                    <p>⏱️ <strong>Frecuencia Promedio:</strong> <span id="frecuencia-calculada">Selecciona una parada</span></p>
+                </div>
+            </div>
+        </header>
+
+        <main class="content-container">
+            <section class="paradas-section">
+                <h2>Selecciona tu parada:</h2>
+                <div id="paradas-lista" class="paradas-lista">
+                    </div>
+            </section>
+
+            <section id="horarios-section" class="horarios-section hidden">
+                <h2 id="parada-seleccionada-titulo">Horarios para:</h2>
+                <div id="horarios-lista" class="horarios-cronologicos">
+                    </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script/paradas.js"></script>
+</body>
+</html>
