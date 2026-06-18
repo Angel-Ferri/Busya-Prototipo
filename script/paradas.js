@@ -75,10 +75,19 @@ function cargarParadas(paradas) {
 }
 
 // Muestra horarios y calcula la frecuencia del servicio en esa parada
+// Variable global al inicio del archivo js para controlar el temporizador de los 5 segundos
+let temporizadorCartel = null;
+
+// [Mantén el resto de tus funciones de arriba igual: DOMContentLoaded, modificarContador, etc.]
+
+// Muestra horarios y calcula la frecuencia del servicio en esa parada
 function mostrarHorariosDeParada(nombreParada) {
     const seccionHorarios = document.getElementById("horarios-section");
     const tituloParada = document.getElementById("parada-seleccionada-titulo");
     const contenedorHorarios = document.getElementById("horarios-lista");
+
+    // Limpiar cualquier cartel pendiente o visible si cambia de parada
+    cerrarCartel();
 
     seccionHorarios.classList.remove("hidden");
     tituloParada.textContent = `Horarios para: ${nombreParada}`;
@@ -107,10 +116,9 @@ function mostrarHorariosDeParada(nombreParada) {
         const minActual = horaAMinutos(listaHorariosFiltrados[i]);
         const minSiguiente = horaAMinutos(listaHorariosFiltrados[i + 1]);
         
-        // Manejar cambio de día si el colectivo pasa después de medianoche
         let diferencia = minSiguiente - minActual;
         if (diferencia < 0) {
-            diferencia += 1440; // Añadir los minutos de un día completo
+            diferencia += 1440; 
         }
 
         sumaDiferencias += diferencia;
@@ -118,10 +126,7 @@ function mostrarHorariosDeParada(nombreParada) {
     }
 
     const frecuenciaPromedio = conteoIntervalos > 0 ? Math.round(sumaDiferencias / conteoIntervalos) : 0;
-    
-    // Inyectar el resultado en el panel superior de choferes
-    document.getElementById("frecuencia-calculada").textContent = frecuenciaPromedio > 0 ? `Cada ${frecuenciaPromedio} min aprox.` : "Única salida";
-    // --------------------------------------
+    document.getElementById("frecuencia-calculada").textContent = frequencyText = frecuenciaPromedio > 0 ? `Cada ${frecuenciaPromedio} min aprox.` : "Única salida";
 
     // --- ENCONTRAR PRÓXIMO COLECTIVO ---
     const ahora = new Date();
@@ -131,14 +136,18 @@ function mostrarHorariosDeParada(nombreParada) {
 
     listaHorariosFiltrados.forEach((hora, indice) => {
         const minutosColectivo = horaAMinutos(hora);
-        const diferencia = minutosColectivo - minutosActuales;
-        if (diferencia >= 0 && diferencia < menorDiferencia) {
+        let diferencia = minutosColectivo - minutosActuales;
+        
+        // Si ya pasó hoy pero es el único que queda o pasa después de medianoche
+        if (diferencia < 0) {
+            diferencia += 1440; 
+        }
+
+        if (diferencia < menorDiferencia) {
             menorDiferencia = diferencia;
             indiceMasCercano = indice;
         }
     });
-
-    if (indiceMasCercano === -1) indiceMasCercano = 0;
 
     // Renderizado en la grilla
     listaHorariosFiltrados.forEach((hora, indice) => {
@@ -148,6 +157,50 @@ function mostrarHorariosDeParada(nombreParada) {
         if (indice === indiceMasCercano) divHora.classList.add("proximo");
         contenedorHorarios.appendChild(divHora);
     });
+
+    // --- PROGRAMAR EL CARTEL EN 5 SEGUNDOS ---
+    if (indiceMasCercano !== -1) {
+        // Guardamos los minutos que faltan para pasárselos a la recomendación
+        programarCartelSugerencia(menorDiferencia);
+    }
+}
+
+// Nueva función para lanzar el proceso a los 5 segundos
+function programarCartelSugerencia(minutosRestantes) {
+    // Si el usuario da clic a otra parada antes de los 5 segundos, cancelamos el timer anterior
+    if (temporizadorCartel) {
+        clearTimeout(temporizadorCartel);
+    }
+
+    temporizadorCartel = setTimeout(() => {
+        const cartel = document.getElementById("cartel-recomendacion");
+        const mensajeText = document.getElementById("mensaje-recomendacion");
+
+        // Evaluamos las condiciones que pediste
+        if (minutosRestantes <= 10) {
+            mensajeText.innerHTML = `El colectivo está a solo <strong>${minutosRestantes} min</strong>. Te recomendamos esperar el próximo servicio para ir seguro.`;
+        } else {
+            mensajeText.innerHTML = `El próximo colectivo pasa en <strong>${minutosRestantes} min</strong>. Te sugerimos salir 15 minutos antes a esperarlo.`;
+        }
+
+        // Mostrar cartel quitando la clase hidden
+        cartel.classList.remove("hidden");
+    }, 5000); // 5000 milisegundos = 5 segundos
+}
+
+// Nueva función para cerrar el cartel de forma manual
+function cerrarCartel() {
+    const cartel = document.getElementById("cartel-recomendacion");
+    if (cartel) {
+        cartel.classList.add("hidden");
+    }
+    if (temporizadorCartel) {
+        clearTimeout(temporizadorCartel);
+    }
+}
+
+function volverAlInicio() {
+    window.location.href = 'index.html';
 }
 
 function volverAlInicio() {

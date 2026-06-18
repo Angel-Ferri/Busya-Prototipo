@@ -63,6 +63,84 @@ h2 {
     gap: 15px;
 }
 
+/* ==========================================================================
+   BOTÓN ESPECIAL DE ACCESO AL MAPA (INDEX.HTML)
+   ========================================================================== */
+
+.mapa-link-container {
+    text-decoration: none;
+    display: block;
+    margin-bottom: 16px; /* Para mantener la separación con las otras tarjetas */
+}
+
+.mapa-card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Fondo azul mapa distintivo */
+    border: 2px solid #4176d4;
+    border-radius: 14px;
+    padding: 14px 16px;
+    cursor: pointer;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(30, 60, 114, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mapa-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(30, 60, 114, 0.25);
+}
+
+/* Badge o etiqueta del botón de mapa */
+.mapa-badge {
+    background-color: #00aa00; /* Color verde "Acá" para vincularlo conceptualmente al mapa de calor */
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 8px;
+    letter-spacing: 0.5px;
+    margin-right: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Textos internos */
+.mapa-info {
+    flex-grow: 1;
+}
+
+.mapa-info h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    color: #ffffff; /* Texto blanco para resaltar sobre el fondo oscuro */
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.mapa-info p {
+    margin: 2px 0 0 0;
+    font-size: 0.8rem;
+    color: #e2e8f0; /* Blanco suavizado */
+    font-weight: 400;
+}
+
+/* Flecha de indicación de la tarjeta */
+.mapa-arrow {
+    font-size: 1.1rem;
+    color: #ffffff;
+    opacity: 0.8;
+    transition: transform 0.2s;
+    margin-left: 10px;
+}
+
+.mapa-card:hover .mapa-arrow {
+    transform: translateX(4px); /* Desplazamiento interactivo al pasar el mouse */
+    opacity: 1;
+}
+
 /* Botones / Tarjetas de líneas */
 .linea-card {
     display: flex;
@@ -458,4 +536,319 @@ h2 { font-size: 1.1rem; margin-bottom: 12px; color: #555; }
     font-size: 0.8rem;
     color: #64748b;
     line-height: 1.3;
+}
+
+/* ==========================================================================
+   NUEVO: CARTEL DE RECOMENDACIÓN INTELIGENTE (Añadir al final del archivo)
+   ========================================================================== */
+
+/* Contenedor flotante fijado en la parte inferior de la pantalla simulada */
+.cartel-sugerencia {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1e3c72; /* Azul que combina con tu app-header */
+    color: white;
+    padding: 16px 20px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    width: 90%;
+    max-width: 400px; /* Se adapta perfectamente al ancho de tu app-container */
+    animation: slideUp 0.3s ease-out; /* Animación suave al aparecer */
+}
+
+.cartel-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.cartel-icono {
+    font-size: 1.8rem;
+}
+
+#mensaje-recomendacion {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+#mensaje-recomendacion strong {
+    color: #2ecc71; /* Resalta los minutos en verde brillante */
+}
+
+.cerrar-cartel-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 6px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.cerrar-cartel-btn:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Animación de entrada */
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, 20px);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+
+/* ==========================================================================
+   NUEVO: SECCIÓN EXCLUSIVA PARA MAPA.HTML
+   ========================================================================== */
+
+#map-principal {
+    width: 100%;
+    height: 320px; /* Un poco más alto para darle prioridad visual en esta sección */
+    border-radius: 15px;
+    border: 2px solid #cbd5e1;
+    z-index: 1;
+}
+
+.mapa-completo-section {
+    margin-bottom: 20px;
+}
+
+.mapa-info-adicional {
+    background: #fafafa;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.mapa-info-adicional h3 {
+    font-size: 1rem;
+    color: #1e3c72;
+    margin-bottom: 10px;
+}
+
+.lista-estados-paradas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.estado-parada-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #f1f5f9;
+    font-size: 0.85rem;
+}
+
+.parada-lbl-nombre {
+    font-weight: 600;
+    color: #334155;
+}
+
+.parada-lbl-tiempo {
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+/* ==========================================================================
+   NUEVO: SECCIÓN EXCLUSIVA PARA MAPA DE CALOR (MAPA.HTML)
+   ========================================================================== */
+
+#map-principal {
+    width: 100%;
+    height: 320px;
+    border-radius: 15px;
+    border: 2px solid #cbd5e1;
+    z-index: 1;
+}
+
+.mapa-completo-section {
+    margin-bottom: 20px;
+}
+
+.mapa-info-adicional {
+    background: #fafafa;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.mapa-info-adicional h3 {
+    font-size: 1rem;
+    color: #1e3c72;
+    margin-bottom: 12px;
+}
+
+.lista-estados-paradas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.estado-parada-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #f1f5f9;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.estado-parada-item:hover {
+    background: #f8fafc;
+}
+
+.parada-lbl-nombre {
+    font-weight: 600;
+    color: #334155;
+}
+
+.parada-lbl-tiempo {
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+}
+
+/* Selector de líneas dentro del mapa */
+.selector-linea-mapa {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+}
+
+.selector-linea-mapa label {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.selector-linea-mapa select {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: white;
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   ESTILOS DE LA LEYENDA DEL MAPA DE CALOR
+   ========================================================================== */
+
+.mapa-leyenda {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #ffffff;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.leyenda-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #475569;
+}
+
+/* El círculo o punto de color */
+.leyenda-item .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 4px rgba(0,0,0,0.15);
+}
+
+/* Colores de la escala térmica */
+.leyenda-item .dot.v-int {
+    background-color: #00aa00; /* Acá */
+}
+
+.leyenda-item .dot.v-cl {
+    background-color: #7cfc00; /* Por llegar */
+}
+
+.leyenda-item .dot.am {
+    background-color: #ffcc00; /* Cerca */
+}
+
+.leyenda-item .dot.na {
+    background-color: #ff6600; /* Falta */
+}
+
+.leyenda-item .dot.ro {
+    background-color: #ff0000; /* Lejos */
+}
+
+/* ==========================================================================
+   BOTÓN CIRCULAR NARANJA DE CRÍTICAS (FEEDBACK)
+   ========================================================================== */
+
+.boton-critica-circular {
+    position: fixed;
+    bottom: 20px;       /* Distancia desde abajo de la pantalla */
+    right: 20px;        /* Distancia desde la derecha de la pantalla */
+    width: 56px;        /* Tamaño del círculo */
+    height: 56px;
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); /* Naranja vibrante */
+    border: 2px solid #ffffff; /* Borde blanco para que resalte sobre cualquier fondo */
+    border-radius: 50%; /* Lo hace un círculo perfecto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;  /* Tamaño del emoji 📝 */
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(234, 88, 12, 0.35);
+    z-index: 999;       /* Se asegura de quedar siempre por encima del mapa o las listas */
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+/* Efecto al pasar el mouse o tocar en el celular */
+.boton-critica-circular:hover {
+    transform: scale(1.1); /* Se agranda un poquito de forma interactiva */
+    box-shadow: 0 6px 14px rgba(234, 88, 12, 0.45);
+}
+
+/* Efecto al hacer clic */
+.boton-critica-circular:active {
+    transform: scale(0.95);
 }

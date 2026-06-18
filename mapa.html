@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busya - Mapa en Tiempo Real</title>
+    <link rel="stylesheet" href="estilos/style.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-top">
+                <button class="back-btn" onclick="volverAlInicio()">⬅ Volver</button>
+            </div>
+            <h1 id="mapa-titulo">Mapa en Tiempo Real</h1>
+            
+            <div class="selector-linea-mapa">
+                <label for="select-linea-json">Ver recorrido de:</label>
+                <select id="select-linea-json" onchange="cambiarLineaMap(this.value)">
+                    <option value="" disabled selected>-- Selecciona una línea --</option>
+                    <option value="lineaa.json">Línea A (Facultad ↔ Ate 2)</option>
+                    <option value="lineae.json">Línea E (M. Ernst ↔ La Ribera)</option>
+                    <option value="lineaeste.json">Línea Zona Este</option>
+                    <option value="lineaoeste.json">Línea Zona Oeste</option>
+                </select>
+            </div>
+        </header>
+
+        <main class="content-container">
+            <section class="mapa-completo-section">
+                <div id="map-principal"></div>
+                
+                <div class="mapa-leyenda">
+                    <span class="leyenda-item"><span class="dot v-int"></span> Acá</span>
+                    <span class="leyenda-item"><span class="dot v-cl"></span> Por llegar</span>
+                    <span class="leyenda-item"><span class="dot am"></span> Cerca</span>
+                    <span class="leyenda-item"><span class="dot na"></span> Falta</span>
+                    <span class="leyenda-item"><span class="dot ro"></span> Lejos</span>
+                </div>
+            </section>
+
+            <section class="mapa-info-adicional">
+                <h3>📋 Cercanía por Calle / Parada</h3>
+                <div id="lista-estados-paradas" class="lista-estados-paradas">
+                    <p style="color: #64748b; font-size: 0.9rem; text-align: center; padding: 10px;">
+                        Selecciona una línea arriba para cargar los puntos de calor.
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <a href="https://forms.gle/hDyzfmBvpZBaJvy77" target="_blank" class="boton-critica-circular" title="Dejanos tu crítica">
+        📝
+    </a>
+
+    <script src="script/mapa.js"></script>
+</body>
+</html>

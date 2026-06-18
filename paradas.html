@@ -34,14 +34,12 @@
                 </div>
             </div>
         </header>
-
         <main class="content-container">
             <section class="paradas-section">
                 <h2>Selecciona tu parada:</h2>
                 <div id="paradas-lista" class="paradas-lista">
                     </div>
             </section>
-
             <section id="horarios-section" class="horarios-section hidden">
                 <h2 id="parada-seleccionada-titulo">Horarios para:</h2>
                 <div id="horarios-lista" class="horarios-cronologicos">
@@ -49,6 +47,17 @@
             </section>
         </main>
     </div>
+
+    <div id="cartel-recomendacion" class="cartel-sugerencia hidden">
+        <div class="cartel-contenido">
+            <span class="cartel-icono">💡</span>
+            <p id="mensaje-recomendacion"></p>
+            <button onclick="cerrarCartel()" class="cerrar-cartel-btn">Entendido</button>
+        </div>
+    </div>
+    <a href="https://forms.gle/hDyzfmBvpZBaJvy77" target="_blank" class="boton-critica-circular" title="Dejanos tu crítica">
+        📝
+    </a>
 
     <script src="script/paradas.js"></script>
 </body>
