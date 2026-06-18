@@ -74,6 +74,24 @@ h2 {
     border-radius: 12px;
 }
 
+.contenedor-mensaje {
+    text-align: center;
+    margin-top: 20px;
+}
+.contenedor-mensaje a {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #1e3c72;
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.selector-seccion-hidden {
+    display: none !important;
+}
+
 /* ==========================================================================
    BOTÓN ESPECIAL DE ACCESO AL MAPA (INDEX.HTML)
    ========================================================================== */

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - BUSYA</title>
+    <link rel="stylesheet" href="estilos/style.css">
+</head>
+<body>
+    <div class="app-container">
+    <header class="app-header">
+        <button class="back-btn" onclick="window.location.href='index.html'">⬅ Inicio</button>
+        <div class="logo">🚌 Busya</div>
+            <p class="subtitle">Bienvenido al Panel de Control</p>
+        </header>
+
+    <main>
+        <section id="seccion-login" class="login-box">
+                <h2>Verificación de Personal</h2>
+                <p class="instruccion">Ingresa tu clave de legajo para acceder al panel de control:</p>
+                <input type="password" id="clave-legajo" placeholder="Ingresa tu PIN/Legajo">
+                <button class="action-btn" onclick="verificarIdentidad()">Ingresar al Sistema</button>
+            </section>
+
+        <section id="seccion-panel-trabajo" class="hidden" style="padding: 20px;">
+            <br>
+            <h2>Selecciona la línea a administrar:</h2>
+            <select id="selector-lineas">
+                <option value="">-- Selecciona una Línea --</option>
+                <option value="lineaa">LÍNEA A</option>
+                <option value="lineae">LÍNEA E</option>
+                <option value="lineaeste">LÍNEA ZONA ESTE</option>
+                <option value="lineaoeste">LÍNEA ZONA OESTE</option>
+            </select>
+            <div style="margin-top:12px; color:#555; font-weight:600;">Modo Muestra — los cambios NO se guardarán</div>
+            <br>
+            <div id="contenedor-editor"></div>
+            <div class="contenedor-mensaje">
+                <a href="#selector-lineas">Volver a Arriba</a>
+            </div>
+        </section>
+    </main>
+</div>
+    <script src="script/panel.demo.js"></script>
+    <script src="script/app.js"></script>
+</body>
+</html>
