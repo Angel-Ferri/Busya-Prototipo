@@ -20,9 +20,9 @@
                 <p class="instruccion">Ingresa tu clave de legajo para acceder al panel de control:</p>
                 <input type="password" id="clave-legajo" placeholder="Ingresa tu PIN/Legajo">
                 <button class="action-btn" onclick="verificarIdentidad()">Ingresar al Sistema</button>
-                <div class="contenedor-mensaje">
+                <nav class="contenedor-mensaje" role="navigation" aria-label="Acceso choferes">
                 <a href="chofer.html">ACCESO SOLO PARA CHOFERES</a>
-            </div>
+            </nav>
             </section>
 
         <section id="seccion-panel-trabajo" class="hidden" style="padding: 20px;">
@@ -38,9 +38,9 @@
             <div style="margin-top:12px; color:#555; font-weight:600;">Modo Muestra — los cambios NO se guardarán</div>
             <br>
             <div id="contenedor-editor"></div>
-            <div class="contenedor-mensaje">
+            <nav class="contenedor-mensaje" role="navigation" aria-label="Navegación interna">
                 <a href="#selector-lineas">Volver a Arriba</a>
-            </div>
+            </nav>
         </section>
     </main>
 </div>
