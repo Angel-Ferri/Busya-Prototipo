@@ -63,6 +63,17 @@ h2 {
     gap: 15px;
 }
 
+.rampa {
+    display: inline-block;
+    margin-top: 6px;
+    background-color: #b91010;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
 /* ==========================================================================
    BOTÓN ESPECIAL DE ACCESO AL MAPA (INDEX.HTML)
    ========================================================================== */
