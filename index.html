@@ -54,6 +54,18 @@
             <a href="panel.html" class="driver-access-link">⚙️ Panel de Control</a>
         </footer>
     </div>
+    <!-- Ventana Emergente (Modal) -->
+        <div id="modal-estudiante" class="modal-estudiante-overlay hidden" onclick="cerrarModalEstudiante(event)">
+            <div class="modal-estudiante-content">
+                <button class="modal-estudiante-cerrar" onclick="document.getElementById('modal-estudiante').classList.add('hidden')">×</button>
+                <div class="modal-estudiante-icono">🎓</div>
+                <h3 id="modal-estudiante-titulo">Pase Estudiantil</h3>
+                <p id="modal-estudiante-mensaje">Cargando estado...</p>
+                <div class="modal-estudiante-nota">
+                    * Sujeto a cambios o disposiciones excepcionales de la Municipalidad o la Empresa.
+                </div>
+            </div>
+        </div>    
     <a href="https://forms.gle/hDyzfmBvpZBaJvy77" target="_blank" class="boton-critica-circular" title="Dejanos tu crítica">
         📝
     </a>
