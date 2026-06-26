@@ -1,12 +1,9 @@
-// Seguridad: Hash SHA-256 de la contraseña "1234"
 const HASH_ACCESO_CHOFER = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"; 
 
 let datosLineaActiva = null;
 let archivoActual = "";
 let paradaSeleccionadaActual = "";
 
-// Base de datos simulada en memoria para registrar las pasadas reales de los choferes
-// Estructura: { "Nombre de Parada": [minutos_del_dia_1, minutos_del_dia_2] }
 let historialMarcajesReales = {};
 
 // --- FUNCIONES DE CONTROL DE ACCESO ---
