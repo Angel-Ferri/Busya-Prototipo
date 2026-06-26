@@ -1,5 +1,46 @@
 let datosLinea = null;
 let nombreLineaId = ""; // Guardará el identificador para contar vueltas individualmente
+let temporizadorCartel = null; // Controlador global para el temporizador de los 5 segundos
+
+// --- FUNCIÓN PARA DETECTAR FERIADOS (Nacionales, San Luis y Villa Mercedes) ---
+function esFeriado(fecha) {
+    const ano = fecha.getFullYear();
+    const mes = fecha.getMonth() + 1; // Enero es 0
+    const dia = fecha.getDate();
+    const fechaClave = `${dia}/${mes}`;
+
+    // Listado de feriados fijos (Nacionales, Provinciales y Locales)
+    const feriadosFijos = [
+        "1/1",   // Año Nuevo
+        "24/3",  // Día de la Memoria
+        "2/4",   // Malvinas
+        "1/5",   // Día del Trabajador
+        "25/5",  // Revolución de Mayo
+        "20/6",  // Paso a la Inmortalidad del Belgrano
+        "9/7",   // Día de la Independencia
+        "17/8",  // San Luis - Paso a la Inmortalidad de San Martín
+        "25/8",  // San Luis - Día de San Luis Rey (Provincial)
+        "24/9",  // Villa Mercedes - Día de la Virgen de la Merced (Patronal Local)
+        "12/10", // Día de la Diversidad Cultural
+        "20/11", // Día de la Soberanía Nacional
+        "1/12",  // Villa Mercedes - Aniversario de la Ciudad (Feriado Local)
+        "8/12",  // Inmaculada Concepción
+        "25/12"  // Navidad
+    ];
+
+    if (feriadosFijos.includes(fechaClave)) return true;
+
+    // Feriados Variables / Trasladables y puentes del año en curso
+    const feriadosVariables = {
+        2026: ["2/3", "3/3", "23/3", "2/4", "3/4", "7/12"] 
+    };
+
+    if (feriadosVariables[ano] && feriadosVariables[ano].includes(fechaClave)) {
+        return true;
+    }
+
+    return false;
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     const jsonLocal = localStorage.getItem('lineaSeleccionada');
@@ -13,11 +54,45 @@ document.addEventListener("DOMContentLoaded", () => {
     const dataCompleta = JSON.parse(jsonLocal);
     datosLinea = dataCompleta.lineas[0];
     
-    // Identificador único para el LocalStorage de recorridos (Ej: "Línea A")
+    // --- DETECCIÓN DINÁMICA DEL DÍA ACTUAL, FERIADOS Y ESTUDIANTES ---
+    const ahora = new Date();
+    const diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+    
+    let hoyEnNumero = ahora.getDay(); 
+    let diaActualStr = diasSemana[hoyEnNumero]; 
+    let esDiaFeriado = esFeriado(ahora);
+    let esFinDeSemana = (hoyEnNumero === 0 || hoyEnNumero === 6);
+
+    // Por defecto, la tarjeta estudiantes funciona de lunes a viernes si no es feriado
+    let tarjetaEstudiantesActiva = !esFinDeSemana && !esDiaFeriado;
+
+    // SI ES FERIADO: Forzamos horarios de Domingo
+    if (esDiaFeriado) {
+        hoyEnNumero = 0; 
+        diaActualStr = "Feriado (Horarios de Domingo)";
+    }
+    // -----------------------------------------------------
+
+    // Identificador único para el LocalStorage de recorridos
     nombreLineaId = datosLinea.nombre;
 
     document.getElementById("linea-titulo").textContent = datosLinea.nombre;
-    document.getElementById("linea-empresa-dias").textContent = `${dataCompleta.empresa} • ${datosLinea.días}`;
+    
+    // Mostramos la info del día
+    document.getElementById("linea-empresa-dias").textContent = `${dataCompleta.empresa} • ${diaActualStr}`;
+
+    // --- INTERFAZ: AVISO DE TARJETA ESTUDIANTIL ---
+    // Si tienes un elemento en tu HTML para esto (ej: <span id="estado-estudiantes"></span>) lo puedes pintar así:
+    const elEstudiantes = document.getElementById("estado-estudiantes");
+    if (elEstudiantes) {
+        if (tarjetaEstudiantesActiva) {
+            elEstudiantes.textContent = "Tarjeta Estudiante: ACTIVA";
+            elEstudiantes.className = "estado-estudiante-ok"; // Clase CSS verde
+        } else {
+            elEstudiantes.textContent = "Tarjeta Estudiante: INACTIVA (Tarifa Plana)";
+            elEstudiantes.className = "estado-estudiante-no"; // Clase CSS roja/gris
+        }
+    }
 
     // Cargar los recorridos guardados del chofer desde LocalStorage
     recuperarContadorChofer();
@@ -25,21 +100,14 @@ document.addEventListener("DOMContentLoaded", () => {
     cargarParadas(datosLinea.paradas);
 });
 
-// // Muestra/Oculta el panel del chofer en la cabecera
-// function togglePanelChofer() {
-//     const panel = document.getElementById("panel-chofer");
-//     panel.classList.toggle("hidden");
-// }
-
 // Suma o resta los recorridos diarios del chofer
 function modificarContador(valor) {
     const elContador = document.getElementById("contador-vueltas");
     let actual = parseInt(elContador.textContent) || 0;
     actual += valor;
-    if (actual < 0) actual = 0; // No permitir vueltas negativas
+    if (actual < 0) actual = 0; 
     
     elContador.textContent = actual;
-    // Guardar el progreso para que no se borre al recargar
     localStorage.setItem(`vueltas_${nombreLineaId}`, actual);
 }
 
@@ -75,18 +143,11 @@ function cargarParadas(paradas) {
 }
 
 // Muestra horarios y calcula la frecuencia del servicio en esa parada
-// Variable global al inicio del archivo js para controlar el temporizador de los 5 segundos
-let temporizadorCartel = null;
-
-// [Mantén el resto de tus funciones de arriba igual: DOMContentLoaded, modificarContador, etc.]
-
-// Muestra horarios y calcula la frecuencia del servicio en esa parada
 function mostrarHorariosDeParada(nombreParada) {
     const seccionHorarios = document.getElementById("horarios-section");
     const tituloParada = document.getElementById("parada-seleccionada-titulo");
     const contenedorHorarios = document.getElementById("horarios-lista");
 
-    // Limpiar cualquier cartel pendiente o visible si cambia de parada
     cerrarCartel();
 
     seccionHorarios.classList.remove("hidden");
@@ -95,7 +156,6 @@ function mostrarHorariosDeParada(nombreParada) {
 
     const listaHorariosFiltrados = [];
 
-    // Limpieza de nulos
     datosLinea.horarios.forEach(bloqueHora => {
         if (bloqueHora[nombreParada] !== null && bloqueHora[nombreParada] !== undefined) {
             listaHorariosFiltrados.push(bloqueHora[nombreParada]);
@@ -108,7 +168,6 @@ function mostrarHorariosDeParada(nombreParada) {
         return;
     }
 
-    // --- CÁLCULO DINÁMICO DE FRECUENCIA ---
     let sumaDiferencias = 0;
     let conteoIntervalos = 0;
 
@@ -126,9 +185,8 @@ function mostrarHorariosDeParada(nombreParada) {
     }
 
     const frecuenciaPromedio = conteoIntervalos > 0 ? Math.round(sumaDiferencias / conteoIntervalos) : 0;
-    document.getElementById("frecuencia-calculada").textContent = frequencyText = frecuenciaPromedio > 0 ? `Cada ${frecuenciaPromedio} min aprox.` : "Única salida";
+    document.getElementById("frecuencia-calculada").textContent = frecuenciaPromedio > 0 ? `Cada ${frecuenciaPromedio} min aprox.` : "Única salida";
 
-    // --- ENCONTRAR PRÓXIMO COLECTIVO ---
     const ahora = new Date();
     const minutosActuales = (ahora.getHours() * 60) + ahora.getMinutes();
     let indiceMasCercano = -1;
@@ -138,7 +196,6 @@ function mostrarHorariosDeParada(nombreParada) {
         const minutosColectivo = horaAMinutos(hora);
         let diferencia = minutosColectivo - minutosActuales;
         
-        // Si ya pasó hoy pero es el único que queda o pasa después de medianoche
         if (diferencia < 0) {
             diferencia += 1440; 
         }
@@ -149,7 +206,6 @@ function mostrarHorariosDeParada(nombreParada) {
         }
     });
 
-    // Renderizado en la grilla
     listaHorariosFiltrados.forEach((hora, indice) => {
         const divHora = document.createElement("div");
         divHora.classList.add("horario-tag");
@@ -158,16 +214,12 @@ function mostrarHorariosDeParada(nombreParada) {
         contenedorHorarios.appendChild(divHora);
     });
 
-    // --- PROGRAMAR EL CARTEL EN 5 SEGUNDOS ---
     if (indiceMasCercano !== -1) {
-        // Guardamos los minutos que faltan para pasárselos a la recomendación
         programarCartelSugerencia(menorDiferencia);
     }
 }
 
-// Nueva función para lanzar el proceso a los 5 segundos
 function programarCartelSugerencia(minutosRestantes) {
-    // Si el usuario da clic a otra parada antes de los 5 segundos, cancelamos el timer anterior
     if (temporizadorCartel) {
         clearTimeout(temporizadorCartel);
     }
@@ -176,19 +228,16 @@ function programarCartelSugerencia(minutosRestantes) {
         const cartel = document.getElementById("cartel-recomendacion");
         const mensajeText = document.getElementById("mensaje-recomendacion");
 
-        // Evaluamos las condiciones que pediste
         if (minutosRestantes <= 10) {
             mensajeText.innerHTML = `El colectivo está a solo <strong>${minutosRestantes} min</strong>. Te recomendamos esperar el próximo servicio para ir seguro.`;
         } else {
             mensajeText.innerHTML = `El próximo colectivo pasa en <strong>${minutosRestantes} min</strong>. Te sugerimos salir 15 minutos antes a esperarlo.`;
         }
 
-        // Mostrar cartel quitando la clase hidden
         cartel.classList.remove("hidden");
-    }, 5000); // 5000 milisegundos = 5 segundos
+    }, 5000); 
 }
 
-// Nueva función para cerrar el cartel de forma manual
 function cerrarCartel() {
     const cartel = document.getElementById("cartel-recomendacion");
     if (cartel) {
@@ -203,6 +252,46 @@ function volverAlInicio() {
     window.location.href = 'index.html';
 }
 
-function volverAlInicio() {
-    window.location.href = 'index.html';
+// Variable global para almacenar el estado y usarlo en el modal
+let estadoEstudianteHoy = { activa: true, razon: "" };
+
+// Coloca este bloque al final de la lógica del DOMContentLoaded para calcular el estado del día
+// --- DENTRO DE DOCUMENT.ADDEVENTLISTENER("DOMContentLoaded", ...) AL FINAL:
+const ahoraEstudiante = new Date();
+let esFeriadoEstudiante = esFeriado(ahoraEstudiante);
+let esFindeEstudiante = (ahoraEstudiante.getDay() === 0 || ahoraEstudiante.getDay() === 6);
+
+if (esFeriadoEstudiante) {
+    estadoEstudianteHoy = { activa: false, razon: "hoy es día feriado" };
+} else if (esFindeEstudiante) {
+    estadoEstudianteHoy = { activa: false, razon: "es fin de semana" };
+} else {
+    estadoEstudianteHoy = { activa: true, razon: "es un día de semana hábil" };
+}
+// ----------------------------------------------------------------------------------
+
+
+// --- NUEVAS FUNCIONES PARA CONTROLAR EL MODAL ---
+
+function abrirModalEstudiante() {
+    const modal = document.getElementById("modal-estudiante");
+    const titulo = document.getElementById("modal-estudiante-titulo");
+    const mensaje = document.getElementById("modal-estudiante-mensaje");
+
+    if (estadoEstudianteHoy.activa) {
+        titulo.innerHTML = "Pase Estudiantil: <span style='color:#16a34a;'>ACTIVO</span>";
+        mensaje.innerHTML = `¡Buenas noticias! Como <strong>${estadoEstudianteHoy.razon}</strong>, el beneficio para estudiantes funciona con normalidad.`;
+    } else {
+        titulo.innerHTML = "Pase Estudiantil: <span style='color:#dc2626;'>INACTIVO</span>";
+        mensaje.innerHTML = `Atención: Como <strong>${estadoEstudianteHoy.razon}</strong>, la tarjeta estudiantil no corre y se te cobrará tarifa plana o normal.`;
+    }
+
+    modal.classList.remove("hidden");
+}
+
+// Cierra el modal si se hace clic fuera del recuadro blanco
+function cerrarModalEstudiante(event) {
+    if (event.target.id === "modal-estudiante") {
+        document.getElementById("modal-estudiante").classList.add("hidden");
+    }
 }

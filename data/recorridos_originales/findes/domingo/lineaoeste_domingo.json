@@ -1,0 +1,28 @@
+{
+  "empresa": "Solbus",
+  "lineas": [
+    {
+      "nombre": "Línea Zona Oeste",
+      "días": "Domingos",
+      "paradas": [
+        "Chacabuco y Güemes",
+        "Llerena y Sallorenzo",
+        "Balcarce y Ayacucho",
+        "Policlínico",
+        "Potosí y Belgrano",
+        "Chacabuco y Sallorenzo",
+        "25 de Mayo y B. Moyano",
+        "Llegada a Terminal",
+        "Salida de Terminal"
+      ],
+      "horarios": [
+        { "Chacabuco y Güemes": null, "Llerena y Sallorenzo": null, "Balcarce y Ayacucho": null, "Policlínico": null, "Potosí y Belgrano": null, "Chacabuco y Sallorenzo": null, "25 de Mayo y B. Moyano": null, "Llegada a Terminal": null, "Salida de Terminal": "09:05" },
+        { "Chacabuco y Güemes": "09:20", "Llerena y Sallorenzo": "09:29", "Balcarce y Ayacucho": "09:41", "Policlínico": "09:52", "Potosí y Belgrano": "10:02", "Chacabuco y Sallorenzo": "10:15", "25 de Mayo y B. Moyano": "10:20", "Llegada a Terminal": "10:22", "Salida de Terminal": "10:37" },
+        { "Chacabuco y Güemes": "10:52", "Llerena y Sallorenzo": "11:01", "Balcarce y Ayacucho": "11:13", "Policlínico": "11:24", "Potosí y Belgrano": "11:34", "Chacabuco y Sallorenzo": "11:47", "25 de Mayo y B. Moyano": "11:52", "Llegada a Terminal": "11:54", "Salida de Terminal": "12:09" },
+        { "Chacabuco y Güemes": "12:24", "Llerena y Sallorenzo": "12:33", "Balcarce y Ayacucho": "12:45", "Policlínico": "12:56", "Potosí y Belgrano": "13:06", "Chacabuco y Sallorenzo": "13:19", "25 de Mayo y B. Moyano": "13:24", "Llegada a Terminal": "13:26", "Salida de Terminal": "13:41" },
+        { "Chacabuco y Güemes": "13:56", "Llerena y Sallorenzo": "14:05", "Balcarce y Ayacucho": "14:17", "Policlínico": "14:28", "Potosí y Belgrano": "14:38", "Chacabuco y Sallorenzo": "14:51", "25 de Mayo y B. Moyano": "14:56", "Llegada a Terminal": "14:58", "Salida de Terminal": "15:13" },
+        { "Chacabuco y Güemes": "15:28", "Llerena y Sallorenzo": "15:37", "Balcarce y Ayacucho": "15:49", "Policlínico": "16:00", "Potosí y Belgrano": "16:10", "Chacabuco y Sallorenzo": "16:23", "25 de Mayo y B. Moyano": "16:28", "Llegada a Terminal": "16:30", "Salida de Terminal": null }
+      ]
+    }
+  ]
+}

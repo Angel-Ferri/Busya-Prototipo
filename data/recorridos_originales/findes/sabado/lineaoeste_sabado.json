@@ -1,0 +1,32 @@
+{
+  "empresa": "Solbus",
+  "lineas": [
+    {
+      "nombre": "Línea Zona Oeste",
+      "días": "Sábados",
+      "paradas": [
+        "Salida Terminal",
+        "Chacabuco y Güemes",
+        "Llerena y Sallorenzo",
+        "Balcarce y Ayacucho",
+        "Policlínico",
+        "Potosí y Belgrano",
+        "Lainez y Sallorenzo",
+        "3 de Febrero y 25 de Mayo",
+        "Llegada Terminal"
+      ],
+      "horarios": [
+        { "Salida Terminal": "05:15", "Chacabuco y Güemes": "05:30", "Llerena y Sallorenzo": "05:39", "Balcarce y Ayacucho": "05:51", "Policlínico": "06:02", "Potosí y Belgrano": "06:12", "Lainez y Sallorenzo": "06:25", "3 de Febrero y 25 de Mayo": "06:30", "Llegada Terminal": "06:32" },
+        { "Salida Terminal": "06:47", "Chacabuco y Güemes": "07:02", "Llerena y Sallorenzo": "07:11", "Balcarce y Ayacucho": "07:23", "Policlínico": "07:34", "Potosí y Belgrano": "07:44", "Lainez y Sallorenzo": "07:57", "3 de Febrero y 25 de Mayo": "08:02", "Llegada Terminal": "08:04" },
+        { "Salida Terminal": "08:19", "Chacabuco y Güemes": "08:34", "Llerena y Sallorenzo": "08:43", "Balcarce y Ayacucho": "08:55", "Policlínico": "09:06", "Potosí y Belgrano": "09:16", "Lainez y Sallorenzo": "09:29", "3 de Febrero y 25 de Mayo": "09:34", "Llegada Terminal": "09:36" },
+        { "Salida Terminal": "09:51", "Chacabuco y Güemes": "10:06", "Llerena y Sallorenzo": "10:15", "Balcarce y Ayacucho": "10:27", "Policlínico": "10:38", "Potosí y Belgrano": "10:48", "Lainez y Sallorenzo": "11:01", "3 de Febrero y 25 de Mayo": "11:06", "Llegada Terminal": "11:08" },
+        { "Salida Terminal": "11:23", "Chacabuco y Güemes": "11:38", "Llerena y Sallorenzo": "11:47", "Balcarce y Ayacucho": "11:59", "Policlínico": "12:10", "Potosí y Belgrano": "12:20", "Lainez y Sallorenzo": "12:33", "3 de Febrero y 25 de Mayo": "12:38", "Llegada Terminal": "12:40" },
+        { "Salida Terminal": "12:55", "Chacabuco y Güemes": "13:10", "Llerena y Sallorenzo": "13:19", "Balcarce y Ayacucho": "13:31", "Policlínico": "13:42", "Potosí y Belgrano": "13:52", "Lainez y Sallorenzo": "14:05", "3 de Febrero y 25 de Mayo": "14:10", "Llegada Terminal": "14:12" },
+        { "Salida Terminal": "14:27", "Chacabuco y Güemes": "14:42", "Llerena y Sallorenzo": "14:51", "Balcarce y Ayacucho": "15:03", "Policlínico": "15:14", "Potosí y Belgrano": "15:24", "Lainez y Sallorenzo": "15:37", "3 de Febrero y 25 de Mayo": "15:42", "Llegada Terminal": "15:44" },
+        { "Salida Terminal": "15:59", "Chacabuco y Güemes": "16:14", "Llerena y Sallorenzo": "16:23", "Balcarce y Ayacucho": "16:35", "Policlínico": "16:46", "Potosí y Belgrano": "16:56", "Lainez y Sallorenzo": "17:09", "3 de Febrero y 25 = de Mayo": "17:14", "Llegada Terminal": "17:16" },
+        { "Salida Terminal": "17:31", "Chacabuco y Güemes": "17:46", "Llerena y Sallorenzo": "17:55", "Balcarce y Ayacucho": "18:07", "Policlínico": "18:18", "Potosí y Belgrano": "18:28", "Lainez y Sallorenzo": "18:41", "3 de Febrero y 25 de Mayo": "18:46", "Llegada Terminal": "18:48" },
+        { "Salida Terminal": "19:03", "Chacabuco y Güemes": "19:18", "Llerena y Sallorenzo": "19:27", "Balcarce y Ayacucho": "19:39", "Policlínico": "19:50", "Potosí y Belgrano": "20:00", "Lainez y Sallorenzo": "20:13", "3 de Febrero y 25 de Mayo": "20:18", "Llegada Terminal": "20:20" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "empresa": "Solbus",
+  "lineas": [
+    {
+      "nombre": "Línea Zona Este",
+      "días": "Sábados",
+      "paradas": [
+        "Pellegrini y Nelson",
+        "Maipú y Avila",
+        "Tucumán y Tallaferro",
+        "Policlínico",
+        "Llegada Terminal",
+        "Salida de Terminal",
+        "Balcarce y Maipú",
+        "E. Agüero y L. Guillet",
+        "Gauna y Maipú",
+        "Htal. B° Eva Perón"
+      ],
+      "horarios": [
+        { "Pellegrini y Nelson": null, "Maipú y Avila": null, "Tucumán y Tallaferro": null, "Policlínico": null, "Llegada Terminal": null, "Salida de Terminal": null, "Balcarce y Maipú": null, "E. Agüero y L. Guillet": null, "Gauna y Maipú": null, "Htal. B° Eva Perón": "05:20" },
+        { "Pellegrini y Nelson": "05:23", "Maipú y Avila": "05:34", "Tucumán y Tallaferro": "05:45", "Policlínico": "05:58", "Llegada Terminal": "06:06", "Salida de Terminal": "06:21", "Balcarce y Maipú": "06:25", "E. Agüero y L. Guillet": "06:36", "Gauna y Maipú": "06:48", "Htal. B° Eva Perón": "07:04" },
+        { "Pellegrini y Nelson": null, "Maipú y Avila": null, "Tucumán y Tallaferro": null, "Policlínico": null, "Llegada Terminal": null, "Salida de Terminal": null, "Balcarce y Maipú": null, "E. Agüero y L. Guillet": null, "Gauna y Maipú": null, "Htal. B° Eva Perón": "07:56" },
+        { "Pellegrini y Nelson": "07:07", "Maipú y Avila": "07:18", "Tucumán y Tallaferro": "07:29", "Policlínico": "07:42", "Llegada Terminal": "07:50", "Salida de Terminal": "08:05", "Balcarce y Maipú": "08:09", "E. Agüero y L. Guillet": "08:20", "Gauna y Maipú": "08:32", "Htal. B° Eva Perón": "08:48" },
+        { "Pellegrini y Nelson": "07:59", "Maipú y Avila": "08:10", "Tucumán y Tallaferro": "08:21", "Policlínico": "08:34", "Llegada Terminal": "08:42", "Salida de Terminal": "08:57", "Balcarce y Maipú": "09:01", "E. Agüero y L. Guillet": "09:12", "Gauna y Maipú": "09:24", "Htal. B° Eva Perón": "09:40" },
+        { "Pellegrini y Nelson": "08:51", "Maipú y Avila": "09:02", "Tucumán y Tallaferro": "09:13", "Policlínico": "09:26", "Llegada Terminal": "09:34", "Salida de Terminal": "09:49", "Balcarce y Maipú": "09:53", "E. Agüero y L. Guillet": "10:04", "Gauna y Maipú": "10:16", "Htal. B° Eva Perón": "10:32" },
+        { "Pellegrini y Nelson": "09:43", "Maipú y Avila": "09:54", "Tucumán y Tallaferro": "10:05", "Policlínico": "10:18", "Llegada Terminal": "10:26", "Salida de Terminal": "10:41", "Balcarce y Maipú": "10:45", "E. Agüero y L. Guillet": "10:56", "Gauna y Maipú": "11:08", "Htal. B° Eva Perón": "11:24" },
+        { "Pellegrini y Nelson": "10:35", "Maipú y Avila": "10:46", "Tucumán y Tallaferro": "10:57", "Policlínico": "11:10", "Llegada Terminal": "11:18", "Salida de Terminal": "11:33", "Balcarce y Maipú": "11:37", "E. Agüero y L. Guillet": "11:48", "Gauna y Maipú": "12:00", "Htal. B° Eva Perón": "12:16" },
+        { "Pellegrini y Nelson": "11:27", "Maipú y Avila": "11:38", "Tucumán y Tallaferro": "11:49", "Policlínico": "12:02", "Llegada Terminal": "12:10", "Salida de Terminal": "12:25", "Balcarce y Maipú": "12:29", "E. Agüero y L. Guillet": "12:40", "Gauna y Maipú": "12:52", "Htal. B° Eva Perón": "13:08" },
+        { "Pellegrini y Nelson": "12:19", "Maipú y Avila": "12:30", "Tucumán y Tallaferro": "12:41", "Policlínico": "12:54", "Llegada Terminal": "13:02", "Salida de Terminal": "13:17", "Balcarce y Maipú": "13:21", "E. Agüero y L. Guillet": "13:32", "Gauna y Maipú": "13:44", "Htal. B° Eva Perón": "14:00" },
+        { "Pellegrini y Nelson": "13:11", "Maipú y Avila": "13:22", "Tucumán y Tallaferro": "13:33", "Policlínico": "13:46", "Llegada Terminal": "13:54", "Salida de Terminal": "14:09", "Balcarce y Maipú": "14:13", "E. Agüero y L. Guillet": "14:24", "Gauna y Maipú": "14:36", "Htal. B° Eva Perón": "14:52" },
+        { "Pellegrini y Nelson": "14:03", "Maipú y Avila": "14:14", "Tucumán y Tallaferro": "14:25", "Policlínico": "14:38", "Llegada Terminal": "14:46", "Salida de Terminal": "15:01", "Balcarce y Maipú": "15:05", "E. Agüero y L. Guillet": "15:16", "Gauna y Maipú": "15:28", "Htal. B° Eva Perón": "15:44" },
+        { "Pellegrini y Nelson": "14:55", "Maipú y Avila": "15:06", "Tucumán y Tallaferro": "15:17", "Policlínico": "15:30", "Llegada Terminal": "15:38", "Salida de Terminal": "15:53", "Balcarce y Maipú": "15:57", "E. Agüero y L. Guillet": "16:08", "Gauna y Maipú": "16:20", "Htal. B° Eva Perón": "16:36" },
+        { "Pellegrini y Nelson": "15:47", "Maipú y Avila": "15:58", "Tucumán y Tallaferro": "16:09", "Policlínico": "16:22", "Llegada Terminal": "16:30", "Salida de Terminal": "16:45", "Balcarce y Maipú": "16:49", "E. Agüero y L. Guillet": "17:00", "Gauna y Maipú": "17:12", "Htal. B° Eva Perón": "17:28" },
+        { "Pellegrini y Nelson": "16:39", "Maipú y Avila": "16:50", "Tucumán y Tallaferro": "17:01", "Policlínico": "17:14", "Llegada Terminal": "17:22", "Salida de Terminal": "17:37", "Balcarce y Maipú": "17:41", "E. Agüero y L. Guillet": "17:52", "Gauna y Maipú": "18:04", "Htal. B° Eva Perón": "18:20" },
+        { "Pellegrini y Nelson": "17:31", "Maipú y Avila": "17:42", "Tucumán y Tallaferro": "17:53", "Policlínico": "18:06", "Llegada Terminal": "18:14", "Salida de Terminal": "18:29", "Balcarce y Maipú": "18:33", "E. Agüero y L. Guillet": "18:44", "Gauna y Maipú": "18:56", "Htal. B° Eva Perón": "19:12" },
+        { "Pellegrini y Nelson": "18:23", "Maipú y Avila": "18:34", "Tucumán y Tallaferro": "18:45", "Policlínico": "18:58", "Llegada Terminal": "19:06", "Salida de Terminal": "19:21", "Balcarce y Maipú": "19:25", "E. Agüero y L. Guillet": "19:36", "Gauna y Maipú": "19:48", "Htal. B° Eva Perón": "20:04" },
+        { "Pellegrini y Nelson": "19:15", "Maipú y Avila": "19:26", "Tucumán y Tallaferro": "19:37", "Policlínico": "19:50", "Llegada Terminal": "19:58", "Salida de Terminal": "20:13", "Balcarce y Maipú": "20:17", "E. Agüero y L. Guillet": "20:28", "Gauna y Maipú": "20:40", "Htal. B° Eva Perón": "20:56" },
+        { "Pellegrini y Nelson": "20:07", "Maipú y Avila": "20:18", "Tucumán y Tallaferro": "20:29", "Policlínico": "20:42", "Llegada Terminal": "20:50", "Salida de Terminal": "21:05", "Balcarce y Maipú": "21:09", "E. Agüero y L. Guillet": "21:20", "Gauna y Maipú": "21:32", "Htal. B° Eva Perón": "21:48" },
+        { "Pellegrini y Nelson": "21:51", "Maipú y Avila": "22:02", "Tucumán y Tallaferro": "22:13", "Policlínico": "22:26", "Llegada Terminal": "22:34", "Salida de Terminal": null, "Balcarce y Maipú": null, "E. Agüero y L. Guillet": null, "Gauna y Maipú": null, "Htal. B° Eva Perón": null }
+      ]
+    }
+  ]
+}
