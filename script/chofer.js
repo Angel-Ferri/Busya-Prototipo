@@ -3,8 +3,14 @@ const HASH_ACCESO_CHOFER = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13
 let datosLineaActiva = null;
 let archivoActual = "";
 let paradaSeleccionadaActual = "";
+let tipoDiaActual = "semana"; // semana | sabado | domingo, lo define dias.js
 
 let historialMarcajesReales = {};
+
+// Clave de LocalStorage para el contador de vueltas del día
+function claveVueltas() {
+    return `vueltas_chofer_${archivoActual}_${tipoDiaActual}`;
+}
 
 // --- FUNCIONES DE CONTROL DE ACCESO ---
 async function generarHash(texto) {
@@ -39,22 +45,19 @@ function cambiarLineaDeTrabajo() {
         return;
     }
 
-    const rutaJson = `data/recorridos_originales/${archivoActual}`;
-
-    fetch(rutaJson)
-        .then(response => {
-            if (!response.ok) throw new Error("Error cargando base de datos.");
-            return response.json();
-        })
+    // Carga la planilla que rige hoy: semana, sábado o domingo
+    cargarHorariosDeHoy(archivoActual)
         .then(data => {
             datosLineaActiva = data.lineas[0];
-            
+            tipoDiaActual = data.servicioHoy.tipo;
+
             document.getElementById("control-recorridos-box").classList.remove("hidden");
             document.getElementById("selector-paradas-box").classList.remove("hidden");
             document.getElementById("frecuencias-box").classList.add("hidden");
             document.getElementById("horario-simulado-box").classList.add("hidden");
 
-            const vueltasGuardadas = localStorage.getItem(`vueltas_chofer_${archivoActual}`) || "0";
+            // Las vueltas se cuentan por línea Y por tipo de día
+            const vueltasGuardadas = localStorage.getItem(claveVueltas()) || "0";
             document.getElementById("contador-vueltas-chofer").textContent = vueltasGuardadas;
 
             cargarParadasChofer(datosLineaActiva.paradas);
@@ -74,7 +77,7 @@ function modificarContadorChofer(valor) {
     if (actual < 0) actual = 0;
 
     elContador.textContent = actual;
-    localStorage.setItem(`vueltas_chofer_${archivoActual}`, actual);
+    localStorage.setItem(claveVueltas(), actual);
 }
 
 // --- CONVERSORES DE TIEMPO ---

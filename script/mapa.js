@@ -3,6 +3,30 @@ let mapaPrincipal = null;
 let capaCalorMarcadores = null;
 let coordenadasGlobales = {}; // Se llenará con el JSON externo
 
+// Las planillas de sábado y domingo escriben algunas paradas distinto que las de
+// semana. Acá traducimos esas variantes al nombre que usa cordenadas.json.
+const ALIAS_PARADAS = {
+    "Entrada Ate II": "Entrada Ate 2",
+    "Nelson e Irigoyen": "Nelson e Yrigoyen",
+    "Gral. Paz y Maipú": "G. Paz y Maipú",
+    "Salida B° F.Sarmiento": "Salida F. Sarmiento",
+    "Maipú y Avila": "Maipú y Ávila",
+    "Lainez y Sallorenzo": "Laínez y Sallorenzo",
+    "Ayacucho y Balcarce": "Balcarce y Ayacucho"
+};
+
+// Busca la coordenada de una parada resolviendo el alias si hace falta
+function buscarCoordenada(nombreParada) {
+    const coordenada = coordenadasGlobales[nombreParada];
+    if (coordenada) return coordenada;
+
+    const alias = ALIAS_PARADAS[nombreParada];
+    if (alias && coordenadasGlobales[alias]) return coordenadasGlobales[alias];
+
+    console.warn(`Sin coordenada para la parada: ${nombreParada}`);
+    return null;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     inicializarMapaPrincipal();
     cargarArchivoCoordenadas();
@@ -47,16 +71,12 @@ function cargarArchivoCoordenadas() {
 function cambiarLineaMap(archivoJson) {
     if (!archivoJson) return;
 
-    const rutaRecorridos = `data/recorridos_originales/${archivoJson}`;
-
-    fetch(rutaRecorridos)
-        .then(response => {
-            if (!response.ok) throw new Error("No se pudo cargar el recorrido.");
-            return response.json();
-        })
+    // Carga la planilla de hoy: semana, sábado o domingo
+    cargarHorariosDeHoy(archivoJson)
         .then(dataCompleta => {
             datosLinea = dataCompleta.lineas[0];
-            document.getElementById("mapa-titulo").textContent = `Mapa: ${datosLinea.nombre}`;
+            document.getElementById("mapa-titulo").textContent =
+                `Mapa: ${datosLinea.nombre} • ${dataCompleta.servicioHoy.etiqueta}`;
             calcularYProyectarCalor();
         })
         .catch(error => {
@@ -120,7 +140,7 @@ function calcularYProyectarCalor() {
         });
 
         const termica = obtenerEscalaTermica(menorDiferencia);
-        const coordenadaReal = coordenadasGlobales[nombreParada];
+        const coordenadaReal = buscarCoordenada(nombreParada);
 
         if (coordenadaReal) {
             if (!primeraCoordenadaValida) primeraCoordenadaValida = coordenadaReal;

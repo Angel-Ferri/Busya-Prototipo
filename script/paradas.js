@@ -2,45 +2,7 @@ let datosLinea = null;
 let nombreLineaId = ""; // Guardará el identificador para contar vueltas individualmente
 let temporizadorCartel = null; // Controlador global para el temporizador de los 5 segundos
 
-// --- FUNCIÓN PARA DETECTAR FERIADOS (Nacionales, San Luis y Villa Mercedes) ---
-function esFeriado(fecha) {
-    const ano = fecha.getFullYear();
-    const mes = fecha.getMonth() + 1; // Enero es 0
-    const dia = fecha.getDate();
-    const fechaClave = `${dia}/${mes}`;
-
-    // Listado de feriados fijos (Nacionales, Provinciales y Locales)
-    const feriadosFijos = [
-        "1/1",   // Año Nuevo
-        "24/3",  // Día de la Memoria
-        "2/4",   // Malvinas
-        "1/5",   // Día del Trabajador
-        "25/5",  // Revolución de Mayo
-        "20/6",  // Paso a la Inmortalidad del Belgrano
-        "9/7",   // Día de la Independencia
-        "17/8",  // San Luis - Paso a la Inmortalidad de San Martín
-        "25/8",  // San Luis - Día de San Luis Rey (Provincial)
-        "24/9",  // Villa Mercedes - Día de la Virgen de la Merced (Patronal Local)
-        "12/10", // Día de la Diversidad Cultural
-        "20/11", // Día de la Soberanía Nacional
-        "1/12",  // Villa Mercedes - Aniversario de la Ciudad (Feriado Local)
-        "8/12",  // Inmaculada Concepción
-        "25/12"  // Navidad
-    ];
-
-    if (feriadosFijos.includes(fechaClave)) return true;
-
-    // Feriados Variables / Trasladables y puentes del año en curso
-    const feriadosVariables = {
-        2026: ["2/3", "3/3", "23/3", "2/4", "3/4", "7/12"] 
-    };
-
-    if (feriadosVariables[ano] && feriadosVariables[ano].includes(fechaClave)) {
-        return true;
-    }
-
-    return false;
-}
+// esFeriado() y resolverDiaDeServicio() viven en script/dias.js
 
 document.addEventListener("DOMContentLoaded", () => {
     const jsonLocal = localStorage.getItem('lineaSeleccionada');
@@ -54,32 +16,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const dataCompleta = JSON.parse(jsonLocal);
     datosLinea = dataCompleta.lineas[0];
     
-    // --- DETECCIÓN DINÁMICA DEL DÍA ACTUAL, FERIADOS Y ESTUDIANTES ---
-    const ahora = new Date();
-    const diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-    
-    let hoyEnNumero = ahora.getDay(); 
-    let diaActualStr = diasSemana[hoyEnNumero]; 
-    let esDiaFeriado = esFeriado(ahora);
-    let esFinDeSemana = (hoyEnNumero === 0 || hoyEnNumero === 6);
-
-    // Por defecto, la tarjeta estudiantes funciona de lunes a viernes si no es feriado
-    let tarjetaEstudiantesActiva = !esFinDeSemana && !esDiaFeriado;
-
-    // SI ES FERIADO: Forzamos horarios de Domingo
-    if (esDiaFeriado) {
-        hoyEnNumero = 0; 
-        diaActualStr = "Feriado (Horarios de Domingo)";
-    }
-    // -----------------------------------------------------
+    // --- DÍA DE SERVICIO ---
+    // La planilla correcta (semana / sábado / domingo) ya la eligió cargarHorariosDeHoy()
+    // al seleccionar la línea. Acá solo mostramos cuál quedó cargada.
+    const servicioHoy = dataCompleta.servicioHoy || resolverDiaDeServicio();
+    const tarjetaEstudiantesActiva = dataCompleta.estadoEstudianteHoy
+        ? dataCompleta.estadoEstudianteHoy.activa
+        : resolverDiaDeServicio().estudianteActiva;
 
     // Identificador único para el LocalStorage de recorridos
-    nombreLineaId = datosLinea.nombre;
+    // Incluye el tipo de día para no mezclar las vueltas de semana con las del finde
+    nombreLineaId = `${datosLinea.nombre}_${servicioHoy.tipo}`;
 
     document.getElementById("linea-titulo").textContent = datosLinea.nombre;
-    
+
     // Mostramos la info del día
-    document.getElementById("linea-empresa-dias").textContent = `${dataCompleta.empresa} • ${diaActualStr}`;
+    document.getElementById("linea-empresa-dias").textContent =
+        `${dataCompleta.empresa} • ${servicioHoy.etiqueta}`;
 
     // --- INTERFAZ: AVISO DE TARJETA ESTUDIANTIL ---
     // Si tienes un elemento en tu HTML para esto (ej: <span id="estado-estudiantes"></span>) lo puedes pintar así:
@@ -253,22 +206,10 @@ function volverAlInicio() {
 }
 
 // Variable global para almacenar el estado y usarlo en el modal
-let estadoEstudianteHoy = { activa: true, razon: "" };
-
-// Coloca este bloque al final de la lógica del DOMContentLoaded para calcular el estado del día
-// --- DENTRO DE DOCUMENT.ADDEVENTLISTENER("DOMContentLoaded", ...) AL FINAL:
-const ahoraEstudiante = new Date();
-let esFeriadoEstudiante = esFeriado(ahoraEstudiante);
-let esFindeEstudiante = (ahoraEstudiante.getDay() === 0 || ahoraEstudiante.getDay() === 6);
-
-if (esFeriadoEstudiante) {
-    estadoEstudianteHoy = { activa: false, razon: "hoy es día feriado" };
-} else if (esFindeEstudiante) {
-    estadoEstudianteHoy = { activa: false, razon: "es fin de semana" };
-} else {
-    estadoEstudianteHoy = { activa: true, razon: "es un día de semana hábil" };
-}
-// ----------------------------------------------------------------------------------
+const diaEstudiante = resolverDiaDeServicio();
+let estadoEstudianteHoy = diaEstudiante.estudianteActiva
+    ? { activa: true, razon: "es un día de semana hábil" }
+    : { activa: false, razon: diaEstudiante.feriado ? "hoy es día feriado" : "es fin de semana" };
 
 
 // --- NUEVAS FUNCIONES PARA CONTROLAR EL MODAL ---

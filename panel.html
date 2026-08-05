@@ -50,6 +50,24 @@
                 </div>
             </section>
 
+        <section id="seccion-panel-trabajo" class="hidden" style="padding: 20px;">
+            <br>
+            <h2>Selecciona la línea a administrar:</h2>
+            <select id="selector-lineas">
+                <option value="">-- Selecciona una Línea --</option>
+                <option value="lineaa">LÍNEA A</option>
+                <option value="lineae">LÍNEA E</option>
+                <option value="lineaeste">LÍNEA ZONA ESTE</option>
+                <option value="lineaoeste">LÍNEA ZONA OESTE</option>
+            </select>
+            <div style="margin-top:12px; color:#555; font-weight:600;">Modo Muestra — los cambios NO se guardarán</div>
+            <br>
+            <div id="contenedor-editor"></div>
+            <nav class="contenedor-mensaje" role="navigation" aria-label="Navegación interna">
+                <a href="#selector-lineas">Volver a Arriba</a>
+            </nav>
+        </section>
+
             <!-- Siguiente Parada -->
             <section class="tarjeta horarios">
                 <h2>Siguiente Parada</h2>
@@ -94,5 +112,9 @@
     <script src="panel/main.js"></script>
     <script src="panel/auth.js"></script>
     <script src="panel/chofer.js"></script>
+    <script src="script/dias.js"></script>
+    <script src="script/panel.demo.js"></script>
+    <script src="script/app.js"></script>
+
 </body>
 </html>
