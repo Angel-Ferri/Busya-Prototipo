@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         datosLineasCargados = await cargarDatosLineas();
     } catch (err) {
-        console.error("Error al cargar los JSON de líneas:", err);
+        console.error("Error al cargar las líneas y coordenadas:", err);
     }
 });
 
@@ -23,7 +23,7 @@ function volverAlInicio() {
 }
 
 function inicializarMapa() {
-    // Coordenadas por defecto (Villa Mercedes)
+    // Centro inicial en Villa Mercedes
     mapa = L.map('map-principal').setView([-33.675, -65.46], 14);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -48,7 +48,7 @@ function obtenerUbicacionUsuario() {
                     .openPopup();
             },
             (error) => {
-                alert("No se pudo obtener tu ubicación GPS. Revisa los permisos.");
+                alert("No se pudo obtener tu ubicación GPS. Por favor activa los permisos.");
                 console.error(error);
             }
         );
@@ -57,9 +57,9 @@ function obtenerUbicacionUsuario() {
     }
 }
 
-// Calcula la distancia en metros entre dos coordenadas GPS (Fórmula de Haversine)
+// Fórmula de Haversine para calcular distancia exacta en metros entre 2 puntos GPS
 function calcularDistanciaMetros(lat1, lon1, lat2, lon2) {
-    const R = 6371e3; // Radio de la Tierra en metros
+    const R = 6371e3; 
     const φ1 = lat1 * Math.PI / 180;
     const φ2 = lat2 * Math.PI / 180;
     const Δφ = (lat2 - lat1) * Math.PI / 180;
@@ -73,14 +73,14 @@ function calcularDistanciaMetros(lat1, lon1, lat2, lon2) {
     return R * c;
 }
 
-// Busca cuál de las paradas de la línea está más cerca de la ubicación del usuario
-function obtenerParadaMasCercana(paradasLinea, mapaCordenadas) {
-    if (!ubicacionUsuario) return paradasLinea[0];
+// Busca la parada más cercana FILTRANDO estrictamente por las paradas de la línea seleccionada
+function obtenerParadaMasCercanaDeLinea(paradasDeEstaLinea, mapaCordenadas) {
+    if (!ubicacionUsuario) return { nombre: paradasDeEstaLinea[0], distanciaMetros: 0 };
 
-    let paradaCercana = paradasLinea[0];
+    let paradaCercana = paradasDeEstaLinea[0];
     let menorDistancia = Infinity;
 
-    paradasLinea.forEach(nombreParada => {
+    paradasDeEstaLinea.forEach(nombreParada => {
         const coords = mapaCordenadas[nombreParada];
         if (coords) {
             const dist = calcularDistanciaMetros(
@@ -108,6 +108,7 @@ function alCambiarLinea(claveLinea) {
     const linea = datosLineasCargados[claveLinea].lineas[0];
     const paradas = linea.paradas;
 
+    // Carga únicamente las paradas correspondientes a esta línea
     paradas.forEach((parada, index) => {
         const option = document.createElement('option');
         option.value = index;
@@ -120,7 +121,7 @@ function alCambiarLinea(claveLinea) {
 
 function calcularRutaYTiempo() {
     if (!ubicacionUsuario) {
-        alert("Aún no detectamos tu ubicación GPS.");
+        alert("Detectando tu ubicación GPS...");
         return;
     }
 
@@ -131,52 +132,51 @@ function calcularRutaYTiempo() {
     const paradasLinea = infoLinea.paradas;
     const mapaCordenadas = datosLineasCargados.cordenadas;
 
-    // 1. Determinar la parada de subida más cercana por GPS
-    const paradaOrigen = obtenerParadaMasCercana(paradasLinea, mapaCordenadas);
+    // 1. Obtener parada de subida más cercana de la línea
+    const paradaOrigen = obtenerParadaMasCercanaDeLinea(paradasLinea, mapaCordenadas);
     const paradaDestinoNombre = paradasLinea[indexDestino];
 
     const coordsOrigen = mapaCordenadas[paradaOrigen.nombre];
     const coordsDestino = mapaCordenadas[paradaDestinoNombre];
 
     if (!coordsOrigen || !coordsDestino) {
-        alert("No se encontraron coordenadas registradas para estas paradas.");
+        alert("No se encontraron las coordenadas registradas para una de las paradas.");
         return;
     }
 
-    // 2. Limpiar marcadores anteriores
+    // 2. Limpiar marcadores antiguos en el mapa
     marcadoresParadas.forEach(m => mapa.removeLayer(m));
     marcadoresParadas = [];
 
-    // Marcar parada de origen
+    // Marcar punto de subida y de bajada
     const mOrigen = L.marker([coordsOrigen[0], coordsOrigen[1]])
         .addTo(mapa)
-        .bindPopup(`<b>Subida:</b> ${paradaOrigen.nombre}`);
+        .bindPopup(`<b>Subes en:</b> ${paradaOrigen.nombre}`);
     
-    // Marcar parada de destino
     const mDestino = L.marker([coordsDestino[0], coordsDestino[1]])
         .addTo(mapa)
-        .bindPopup(`<b>Bajada:</b> ${paradaDestinoNombre}`);
+        .bindPopup(`<b>Bajas en:</b> ${paradaDestinoNombre}`);
 
     marcadoresParadas.push(mOrigen, mDestino);
 
-    // 3. Trazar ruta a pie hasta la parada de subida
+    // 3. Trazar recorrido a pie hasta la parada de subida
     trazarRutaAPie(ubicacionUsuario, coordsOrigen);
 
-    // 4. Cálculos de tiempo
-    const tiempoCaminataMins = Math.ceil(paradaOrigen.distanciaMetros / 80); // Velocidad promedio ~80 m/min
+    // 4. Estimación de tiempos
+    const tiempoCaminataMins = Math.ceil(paradaOrigen.distanciaMetros / 80); // ~80m por minuto caminando
     const indexOrigen = paradasLinea.indexOf(paradaOrigen.nombre);
     const paradasDeDiferencia = Math.abs(indexDestino - indexOrigen);
-    const tiempoColectivoMins = paradasDeDiferencia * 3; // ~3 min por tramo de parada
+    const tiempoColectivoMins = paradasDeDiferencia * 3; // Promedio ~3 min entre paradas
 
-    // 5. Mostrar desglose en la tarjeta HTML
+    // 5. Actualizar la tarjeta de resumen
     const contenedorResumen = document.getElementById('resumen-viaje');
     contenedorResumen.innerHTML = `
         <div class="paso-itinerario">
-            <p>🚶 <strong>Camina hacia:</strong> ${paradaOrigen.nombre} (${paradaOrigen.distanciaMetros}m / ~${tiempoCaminataMins} min a pie)</p>
-            <p>🚌 <strong>Súbete al colectivo:</strong> ${infoLinea.nombre}</p>
+            <p>🚶 <strong>Camina hacia:</strong> ${paradaOrigen.nombre} (${paradaOrigen.distanciaMetros} m - ~${tiempoCaminataMins} min a pie)</p>
+            <p>🚌 <strong>Súbete a:</strong> ${infoLinea.nombre}</p>
             <p>📍 <strong>Bájate en:</strong> ${paradaDestinoNombre}</p>
-            <hr style="margin: 10px 0; border: 0; border-top: 1px solid #ccc;">
-            <p class="tiempo-destacado">⏱ <strong>Tiempo estimado en viaje:</strong> ~${tiempoColectivoMins} minutos (${paradasDeDiferencia} paradas)</p>
+            <hr style="margin: 10px 0; border: 0; border-top: 1px solid #e2e8f0;">
+            <p class="tiempo-destacado">⏱ <strong>Tiempo estimado en colectivo:</strong> ~${tiempoColectivoMins} min (${paradasDeDiferencia} paradas)</p>
         </div>
     `;
 }
@@ -197,7 +197,7 @@ function trazarRutaAPie(origenGps, coordsParada) {
         show: false,
         addWaypoints: false,
         lineOptions: {
-            styles: [{ color: '#2e7d32', opacity: 0.8, weight: 6 }]
+            styles: [{ color: '#2e7d32', opacity: 0.85, weight: 6 }]
         }
     }).addTo(mapa);
 }
