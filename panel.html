@@ -3,48 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Control - BUSYA</title>
-    <link rel="stylesheet" href="estilos/style.css">
+    <title>Busya - Login Chofer</title>
+    <link rel="stylesheet" href="estilos/style_panel.css">
 </head>
 <body>
-    <div class="app-container">
-    <header class="app-header">
-        <button class="back-btn" onclick="window.location.href='index.html'">⬅ Inicio</button>
-        <div class="logo">🚌 Busya</div>
-            <p class="subtitle">Bienvenido al Panel de Control</p>
+
+    <!-- MODAL / PANTALLA DE LOGIN -->
+    <div id="login-overlay" class="login-overlay">
+        <div class="login-card">
+            <h2>Acceso Conductor</h2>
+            <p>Ingrese su contraseña para acceder al panel</p>
+            <form id="login-form">
+                <input type="password" id="input-password" placeholder="Contraseña (5456)" autofocus required>
+                <button type="submit" class="btn btn-siguiente">Ingresar</button>
+                <p id="error-msg" class="login-error" style="display: none;">Contraseña incorrecta. Intente de nuevo.</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL DEL PANEL (Oculto por defecto hasta autenticar) -->
+    <div id="panel-chofer" style="display: none;">
+        <header>
+            <h1>Panel del Conductor</h1>
+            <div class="estado-servicio">
+                <!-- Botón para ir al Inicio / Index -->
+                <a href="index.html" class="btn-inicio" title="Ir a la página principal">Inicio</a>
+                
+                <select id="select-linea" class="selector-ruta">
+                    <option value="lineaa">Línea A</option>
+                    <option value="lineae">Línea E</option>
+                    <option value="lineaeste">Línea Este</option>
+                    <option value="lineaoeste">Línea Oeste</option>
+                </select>
+                <span class="indicador-en-ruta">En Ruta</span>
+                <button id="btn-logout" class="btn-logout" title="Cerrar Sesión">Salir</button>
+            </div>
         </header>
 
-    <main>
-        <section id="seccion-login" class="login-box">
-                <h2>Verificación de Personal</h2>
-                <p class="instruccion">Ingresa tu clave de legajo para acceder al panel de control:</p>
-                <input type="password" id="clave-legajo" placeholder="Ingresa tu PIN/Legajo">
-                <button class="action-btn" onclick="verificarIdentidad()">Ingresar al Sistema</button>
-                <nav class="contenedor-mensaje" role="navigation" aria-label="Acceso choferes">
-                <a href="chofer.html">ACCESO SOLO PARA CHOFERES</a>
-            </nav>
+        <main class="content">
+            <!-- Avisos e Inconvenientes -->
+            <section class="tarjeta avisos">
+                <h2>Avisos e Inconvenientes</h2>
+                <div id="contenedor-avisos" class="alerta alerta-advertencia">
+                    <p id="texto-aviso">Tráfico denso en la zona central.</p>
+                    <span class="hora-alerta" id="hora-aviso">Hace 5 min</span>
+                </div>
             </section>
 
-        <section id="seccion-panel-trabajo" class="hidden" style="padding: 20px;">
-            <br>
-            <h2>Selecciona la línea a administrar:</h2>
-            <select id="selector-lineas">
-                <option value="">-- Selecciona una Línea --</option>
-                <option value="lineaa">LÍNEA A</option>
-                <option value="lineae">LÍNEA E</option>
-                <option value="lineaeste">LÍNEA ZONA ESTE</option>
-                <option value="lineaoeste">LÍNEA ZONA OESTE</option>
-            </select>
-            <div style="margin-top:12px; color:#555; font-weight:600;">Modo Muestra — los cambios NO se guardarán</div>
-            <br>
-            <div id="contenedor-editor"></div>
-            <nav class="contenedor-mensaje" role="navigation" aria-label="Navegación interna">
-                <a href="#selector-lineas">Volver a Arriba</a>
-            </nav>
-        </section>
-    </main>
-</div>
-    <script src="script/panel.demo.js"></script>
-    <script src="script/app.js"></script>
+            <!-- Siguiente Parada -->
+            <section class="tarjeta horarios">
+                <h2>Siguiente Parada</h2>
+                <p class="parada-actual" id="proxima-parada">Cargando...</p>
+                <p class="meta-info">Tiempo estimado de llegada: <strong id="tiempo-parada">-- min</strong></p>
+            </section>
+
+            <!-- Monitor de Frecuencia -->
+            <section class="tarjeta frecuencia">
+                <h2>Frecuencia de la Línea</h2>
+                <div class="frecuencia-grid">
+                    <div class="unidad-frecuencia">
+                        <span class="label-unidad" id="label-unidad-adelante">Unidad Adelante</span>
+                        <span class="tiempo-unidad" id="tiempo-unidad-adelante">-- min</span>
+                    </div>
+                    <div class="unidad-frecuencia">
+                        <span class="label-unidad" id="label-unidad-atras">Unidad Atrás</span>
+                        <span class="tiempo-unidad" id="tiempo-unidad-atras">-- min</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Detalles del Recorrido -->
+            <section class="tarjeta informacion">
+                <h2>Detalles del Recorrido</h2>
+                <ul class="datos-ruta">
+                    <li><strong>Línea / Ruta:</strong> <span id="info-linea">--</span></li>
+                    <li><strong>Conductor:</strong> <span id="info-chofer">Juan Pérez</span></li>
+                    <li><strong>Pasajeros a bordo:</strong> <span id="info-pasajeros">0 / 40</span></li>
+                </ul>
+            </section>
+
+            <!-- Botones de Acción -->
+            <section class="acciones-rapidas">
+                <button type="button" class="btn btn-alerta" id="btn-alerta">Reportar Demora</button>
+                <button type="button" class="btn btn-siguiente" id="btn-siguiente">Confirmar Parada</button>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="panel/main.js"></script>
+    <script src="panel/auth.js"></script>
+    <script src="panel/chofer.js"></script>
 </body>
 </html>

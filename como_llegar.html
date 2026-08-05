@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busya - ¿Cómo Llegar?</title>
+    <link rel="stylesheet" href="estilos/style.css">
+    
+    <!-- Leaflet CSS y JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Leaflet Routing Machine (para trazar la ruta a pie) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.min.js"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-top">
+                <button class="back-btn" onclick="volverAlInicio()">⬅ Volver</button>
+            </div>
+            <h1>Planifica tu Viaje</h1>
+            
+            <!-- Formularios de selección -->
+            <div class="panel-busqueda-viaje">
+                <div class="grupo-control">
+                    <label for="select-linea">1. Selecciona la línea:</label>
+                    <select id="select-linea" onchange="alCambiarLinea(this.value)">
+                        <option value="" disabled selected>-- Elige una línea --</option>
+                        <option value="lineaa">Línea A</option>
+                        <option value="lineae">Línea E</option>
+                        <option value="lineaeste">Línea Zona Este</option>
+                        <option value="lineaoeste">Línea Zona Oeste</option>
+                    </select>
+                </div>
+
+                <div class="grupo-control">
+                    <label for="select-destino">2. ¿A dónde te quieres bajar?:</label>
+                    <select id="select-destino" disabled onchange="calcularRutaYTiempo()">
+                        <option value="" disabled selected>-- Primero selecciona línea --</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <main class="content-container">
+            <!-- Mapa interactivo -->
+            <section class="mapa-completo-section">
+                <div id="map-principal" style="height: 400px; width: 100%;"></div>
+            </section>
+
+            <!-- Tarjeta de información del trayecto -->
+            <section class="mapa-info-adicional">
+                <h3>⏱ Resumen del Trayecto</h3>
+                <div id="resumen-viaje" class="tarjeta-resumen">
+                    <p style="color: #64748b; text-align: center;">
+                        Activa tu ubicación y selecciona línea y destino para ver el itinerario.
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="panel/main.js"></script>
+    <script src="script/como_llegar.js"></script>
+</body>
+</html>

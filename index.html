@@ -14,65 +14,115 @@
         </header>
 
         <main class="selection-container">
-            <h2>Selecciona una línea:</h2>
-            <h2>Solo Horarios de Lunes a Viernes</h2>
+            <h2>Opciones de Consulta</h2>
+            
             <div class="menu-lineas">
-                <button class="linea-card" onclick="seleccionarLinea('lineaa.json')">
-                    <div class="linea-badge badge-a">A</div>
-                    <div class="linea-info"><h3>Línea A</h3><p>Facultad ↔ Ate 2</p><span class="rampa">♿ Con Rampa (Demo)</span></div>
-                    <span class="arrow">➔</span>
-                </button>
-                <button class="linea-card" onclick="seleccionarLinea('lineae.json')">
-                    <div class="linea-badge badge-e">E</div>
-                    <div class="linea-info"><h3>Línea E</h3><p>M. Ernst y Cazorla ↔ B° La Ribera</p><span class="rampa">♿ Con Rampa (Demo)</span></div>
-                    <span class="arrow">➔</span>
-                </button>
-                <button class="linea-card" onclick="seleccionarLinea('lineaeste.json')">
-                    <div class="linea-badge badge-este">Este</div>
-                    <div class="linea-info"><h3>Línea Zona Este</h3><p>Pellegrini ↔ Htal. Eva Perón</p><span class="rampa">♿ Con Rampa (Demo)</span></div>
-                    <span class="arrow">➔</span>
-                </button>
-                <button class="linea-card" onclick="seleccionarLinea('lineaoeste.json')">
-                    <div class="linea-badge badge-oeste">Oeste</div>
-                    <div class="linea-info"><h3>Línea Zona Oeste</h3><p>Terminal ↔ Policlínico</p><span class="rampa">♿ Con Rampa (Demo)</span></div>
-                    <span class="arrow">➔</span>
-                </button>
-                <a href="mapa.html" class="mapa-link-container">
-                <button class="mapa-card">
-                    <div class="mapa-badge">Módulo</div>
-                    <div class="mapa-info">
-                        <h3>🗺️ MAPA EN VIVO</h3>
-                        <p>Frecuencias y mapa de calor</p>
+                <!-- 1. Botón Unificado para Consultar Horarios -->
+                <button class="linea-card" onclick="abrirModalLineas()">
+                    <div class="linea-badge badge-a">🚌</div>
+                    <div class="linea-info">
+                        <h3>HORARIOS DE LÍNEAS</h3>
+                        <p>Selecciona una línea para ver las frecuencias</p>
                     </div>
-                    <span class="mapa-arrow">➔</span>
+                    <span class="arrow">➔</span>
                 </button>
-            </a>
+
+                <!-- 2. Botón Mapa en Vivo -->
+                <a href="mapa.html" class="mapa-link-container">
+                    <button class="mapa-card">
+                        <div class="mapa-badge">Módulo</div>
+                        <div class="mapa-info">
+                            <h3>🗺️ MAPA EN VIVO</h3>
+                            <p>Frecuencias y mapa de calor</p>
+                        </div>
+                        <span class="mapa-arrow">➔</span>
+                    </button>
+                </a>
+
+                <!-- 3. Nuevo Botón "¿Cómo llegar?" -->
+                <a href="como_llegar.html" class="mapa-link-container">
+                    <button class="mapa-card" style="border-left: 5px solid #2e7d32;">
+                        <div class="mapa-badge" style="background-color: #2e7d32; color: white;">GPS</div>
+                        <div class="mapa-info">
+                            <h3>📍 ¿CÓMO LLEGAR?</h3>
+                            <p>Ruta a pie y tiempo de viaje estimado</p>
+                        </div>
+                        <span class="mapa-arrow">➔</span>
+                    </button>
+                </a>
             </div>
         </main>
 
         <footer class="app-footer">
-            <a href="panel.html" class="driver-access-link">⚙️ Panel de Control</a>
+            <a href="chofer.html" class="driver-access-link">⚙️ Panel de Control</a>
         </footer>
     </div>
-            <!-- Botón Flotante Estudiante -->
-        <button id="btn-estudiante-flotante" class="boton-estudiante-circular" onclick="abrirModalEstudiante()">
-            🎓
-        </button>
-    <!-- Ventana Emergente (Modal) -->
-        <div id="modal-estudiante" class="modal-estudiante-overlay hidden" onclick="cerrarModalEstudiante(event)">
-            <div class="modal-estudiante-content">
-                <button class="modal-estudiante-cerrar" onclick="document.getElementById('modal-estudiante').classList.add('hidden')">×</button>
-                <div class="modal-estudiante-icono">🎓</div>
-                <h3 id="modal-estudiante-titulo">Pase Estudiantil</h3>
-                <p id="modal-estudiante-mensaje">Cargando estado...</p>
-                <div class="modal-estudiante-nota">
-                    * Sujeto a cambios o disposiciones excepcionales de la Municipalidad o la Empresa.
-                </div>
+
+    <!-- MODAL 1: Selección de Líneas para Ver Horarios -->
+    <div id="modal-lineas" class="modal-estudiante-overlay hidden" onclick="cerrarModalLineas(event)">
+        <div class="modal-estudiante-content" style="max-width: 420px;">
+            <button class="modal-estudiante-cerrar" onclick="cerrarModalLineasDirecto()">×</button>
+            <h3>¿De qué línea quieres saber el recorrido?</h3>
+            <p style="margin-bottom: 15px; font-size: 0.9rem; color: #64748b;">Selecciona una opción para continuar:</p>
+            
+            <div class="menu-lineas">
+                <button class="linea-card" onclick="seleccionarLinea('lineaa.json')">
+                    <div class="linea-badge badge-a">A</div>
+                    <div class="linea-info"><h3>Línea A</h3><p>Facultad ↔ Ate 2</p></div>
+                    <span class="arrow">➔</span>
+                </button>
+                <button class="linea-card" onclick="seleccionarLinea('lineae.json')">
+                    <div class="linea-badge badge-e">E</div>
+                    <div class="linea-info"><h3>Línea E</h3><p>M. Ernst ↔ La Ribera</p></div>
+                    <span class="arrow">➔</span>
+                </button>
+                <button class="linea-card" onclick="seleccionarLinea('lineaeste.json')">
+                    <div class="linea-badge badge-este">Este</div>
+                    <div class="linea-info"><h3>Línea Zona Este</h3><p>Pellegrini ↔ Htal. Eva Perón</p></div>
+                    <span class="arrow">➔</span>
+                </button>
+                <button class="linea-card" onclick="seleccionarLinea('lineaoeste.json')">
+                    <div class="linea-badge badge-oeste">Oeste</div>
+                    <div class="linea-info"><h3>Línea Zona Oeste</h3><p>Terminal ↔ Policlínico</p></div>
+                    <span class="arrow">➔</span>
+                </button>
             </div>
-        </div>    
-    <a href="https://forms.gle/hDyzfmBvpZBaJvy77" target="_blank" class="boton-critica-circular" title="Dejanos tu crítica">
-        📝
-    </a>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Pase Estudiantil -->
+    <div id="modal-estudiante" class="modal-estudiante-overlay hidden" onclick="cerrarModalEstudiante(event)">
+        <div class="modal-estudiante-content">
+            <button class="modal-estudiante-cerrar" onclick="document.getElementById('modal-estudiante').classList.add('hidden')">×</button>
+            <div class="modal-estudiante-icono">🎓</div>
+            <h3 id="modal-estudiante-titulo">Pase Estudiantil</h3>
+            <p id="modal-estudiante-mensaje">Cargando estado...</p>
+            <div class="modal-estudiante-nota">
+                * Sujeto a cambios o disposiciones excepcionales de la Municipalidad o la Empresa.
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón Flotante Estudiante -->
+    <button id="btn-estudiante-flotante" class="boton-estudiante-circular" onclick="abrirModalEstudiante()">🎓</button>
+    
+    <!-- Botón Crítica -->
+    <a href="https://forms.gle/hDyzfmBvpZBaJvy77" target="_blank" class="boton-critica-circular" title="Dejanos tu crítica">📝</a>
+
+    <!-- Script de Control del Modal -->
+    <script>
+        function abrirModalLineas() {
+            document.getElementById('modal-lineas').classList.remove('hidden');
+        }
+        function cerrarModalLineasDirecto() {
+            document.getElementById('modal-lineas').classList.add('hidden');
+        }
+        function cerrarModalLineas(e) {
+            if (e.target.id === 'modal-lineas') {
+                cerrarModalLineasDirecto();
+            }
+        }
+    </script>
     <script src="script/app.js"></script>
 </body>
 </html>
