@@ -1,239 +1,823 @@
 // script/como_llegar.js
 
-const COORDENADAS_PARADAS = {
-    // Línea A
-    "Salida Facultad": [-33.64390876263037, -65.44723506275027],
-    "Terminal": [-33.664654538585204, -65.46637611852886],
-    "Balcarce y Urquiza": [-33.682595914338776, -65.46645363086301],
-    "L.Guillet y G. Paz": [-33.688570628802665, -65.4648887887808],
-    "Entrada Ate 2": [-33.69622948843514, -65.43885883819112],
-    "Salida F. Sarmiento": [-33.70026332904856, -65.42947925016045],
-    "Nelson e Yrigoyen": [-33.69118574582929, -65.44855150532408],
-    "G. Paz y Maipú": [-33.67524945292475, -65.46090168452402],
-    "Llegada Facultad": [-33.643724917390365, -65.44804418378352],
-
-    // Línea E
-    "M. Ernst y Cazorla": [-33.69117261092903, -65.5042015764753],
-    "Hospital La Ribera": [-33.69494554209533, -65.50550965774369],
-    "Escuela Agraria": [-33.67838542676913, -65.50326099785121],
-    "Ayacucho y Belgrano": [-33.6894137897389, -65.46980702327271],
-    "Ayacucho y Balcarce": [-33.6894137897389, -65.46980702327271],
-    "Policlínico": [-33.67658062395754, -65.45369314983773],
-    "Llegada a Terminal": [-33.66523490763702, -65.46697847608702],
-    "Salida Terminal": [-33.66551985747486, -65.46725949133338],
-    "Hospital de la Villa": [-33.674642040709465, -65.46413540171841],
-    "Balcarce y Riobamba": [-33.68705066787971, -65.46780403924167],
-    "Entrada B° La Ribera": [-33.68385180881544, -65.50380571596942],
-
-    // Línea Este
-    "Pellegrini y Nelson": [-33.66080447604055, -65.43960973366998],
-    "Maipú y Ávila": [-33.68326589798833, -65.42540570878745],
-    "Tucumán y Tallaferro": [-33.68968132151262, -65.44702458187535],
-    "Llegada Terminal": [-33.66523490763702, -65.46697847608702],
-    "Salida de Terminal": [-33.66551985747486, -65.46725949133338],
-    "Balcarce y Chacabuco": [-33.6745895584232, -65.4640748506616],
-    "E. Agüero y L. Guillet": [-33.691821065669245, -65.44996645827501],
-    "Gauna y Maipú": [-33.68373901582535, -65.42326928790872],
-    "Htal. B° Eva Perón": [-33.65939918403483, -65.42914999838808],
-
-    // Línea Oeste
-    "Chacabuco y Güemes": [-33.6714904624286, -65.4780785644177],
-    "Llerena y Sallorenzo": [-33.6732021018651, -65.48376362026353],
-    "Balcarce y Ayacucho": [-33.6894137897389, -65.46980702327271],
-    "Potosí y Belgrano": [-33.68856497177653, -65.46937665411455],
-    "Laínez y Sallorenzo": [-33.669591943846996, -65.48269030625158],
-    "3 de Febrero y 25 de Mayo": [-33.66915553311603, -65.46709432311245]
-};
-
 let mapa = null;
 let ubicacionUsuario = null;
-let marcadoresParadas = [];
+let marcadorUsuario = null;
 let routingControl = null;
 
-document.addEventListener('DOMContentLoaded', async () => {
-    inicializarMapa();
-    obtenerUbicacionUsuario();
-    
-    // Aseguramos la carga compartida con main.js
-    if (typeof cargarDatosLineas === 'function') {
-        window.datosLineasCargados = await cargarDatosLineas();
-    }
+let datosLineasCargados = {};
+let recorridoActual = null;
+let marcadoresParadas = [];
+
+
+// ICONO USUARIO
+
+const iconoUsuario = L.icon({
+
+    iconUrl:
+    "https://cdn-icons-png.flaticon.com/512/64/64113.png",
+
+    iconSize:[40,40],
+
+    iconAnchor:[20,40],
+
+    popupAnchor:[0,-35]
+
 });
 
-function volverAlInicio() {
-    window.location.href = "index.html";
+
+
+
+// INICIO
+
+document.addEventListener(
+"DOMContentLoaded",
+async()=>{
+
+
+    inicializarMapa();
+
+    obtenerUbicacionUsuario();
+
+    await cargarRecorridos();
+
+
+});
+
+
+
+
+// VOLVER
+
+function volverAlInicio(){
+
+    window.location.href="index.html";
+
 }
 
-function inicializarMapa() {
-    mapa = L.map('map-principal').setView([-33.675, -65.46], 14);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(mapa);
+
+
+
+
+// =============================
+// MAPA
+// =============================
+
+
+function inicializarMapa(){
+
+
+    mapa =
+    L.map("map-principal")
+    .setView(
+        [-33.675,-65.460],
+        14
+    );
+
+
+    L.tileLayer(
+
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+
+        {
+            attribution:
+            "&copy; OpenStreetMap"
+        }
+
+    )
+    .addTo(mapa);
+
+
 }
 
-function obtenerUbicacionUsuario() {
-    if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(
-            (pos) => {
-                ubicacionUsuario = {
-                    lat: pos.coords.latitude,
-                    lng: pos.coords.longitude
-                };
-                mapa.setView([ubicacionUsuario.lat, ubicacionUsuario.lng], 15);
-                L.marker([ubicacionUsuario.lat, ubicacionUsuario.lng])
-                    .addTo(mapa)
-                    .bindPopup("<b>📍 Tu ubicación actual</b>")
-                    .openPopup();
-            },
-            (error) => {
-                console.warn("No se obtuvo GPS, usando ubicación predeterminada (Centro).");
-                ubicacionUsuario = { lat: -33.675, lng: -65.46 };
-            }
+
+
+
+
+
+
+// =============================
+// UBICACION SIMULADA
+// =============================
+
+
+function obtenerUbicacionUsuario(){
+
+
+    ubicacionUsuario={
+
+        lat:-33.675000,
+
+        lng:-65.460000
+
+    };
+
+
+    mostrarUsuario();
+
+
+}
+
+
+
+
+
+function mostrarUsuario(){
+
+
+    mapa.setView(
+
+        [
+            ubicacionUsuario.lat,
+            ubicacionUsuario.lng
+        ],
+
+        15
+
+    );
+
+
+
+    marcadorUsuario =
+    L.marker(
+
+        [
+            ubicacionUsuario.lat,
+            ubicacionUsuario.lng
+        ],
+
+        {
+            icon:iconoUsuario
+        }
+
+    )
+    .addTo(mapa)
+    .bindPopup(
+        "📍 Tu ubicación"
+    )
+    .openPopup();
+
+
+
+
+    L.circle(
+
+        [
+            ubicacionUsuario.lat,
+            ubicacionUsuario.lng
+        ],
+
+        {
+
+            radius:50,
+
+            color:"red",
+
+            fillOpacity:0.25
+
+        }
+
+    )
+    .addTo(mapa);
+
+
+}
+
+
+
+
+
+
+
+// =============================
+// CARGAR LINEAS
+// =============================
+
+
+async function cargarRecorridos(){
+
+
+try{
+
+
+    let lineaA =
+    await fetch(
+
+    "data/recorridos_originales/cordenadas/paradas_secundarias_Linea_A.json"
+
+    )
+    .then(r=>r.json());
+
+
+
+    let lineaE =
+    await fetch(
+
+    "data/recorridos_originales/cordenadas/paradas_secundarias_Linea_E.json"
+
+    )
+    .then(r=>r.json());
+
+
+
+
+
+
+    datosLineasCargados={
+
+
+
+        lineaa:{
+
+
+            nombre:"Línea A",
+
+            paradas:
+            lineaA.paradas,
+
+
+            recorrido:
+            lineaA.paradas.map(
+
+                p=>[
+                    p.lat,
+                    p.lng
+                ]
+
+            )
+
+
+        },
+
+
+
+
+        lineae:{
+
+
+            nombre:"Línea E",
+
+            paradas:
+            lineaE.paradas,
+
+
+            recorrido:
+            lineaE.paradas.map(
+
+                p=>[
+                    p.lat,
+                    p.lng
+                ]
+
+            )
+
+
+        }
+
+
+
+    };
+
+
+
+
+    console.log(
+        "LINEAS:",
+        datosLineasCargados
+    );
+
+
+
+}
+catch(error){
+
+
+    console.error(
+        "Error cargando líneas:",
+        error
+    );
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+// =============================
+// CAMBIAR LINEA
+// =============================
+
+
+function alCambiarLinea(linea){
+
+
+
+    let select =
+    document.getElementById(
+        "select-destino"
+    );
+
+
+
+    select.innerHTML=
+    `
+    <option disabled selected>
+    -- Selecciona parada --
+    </option>
+    `;
+
+
+
+    limpiarMarcadores();
+
+
+
+    recorridoActual =
+    datosLineasCargados[linea];
+
+
+
+    if(!recorridoActual)
+    return;
+
+
+
+
+
+    dibujarRecorrido(
+        recorridoActual.recorrido
+    );
+
+
+
+
+
+    recorridoActual.paradas.forEach(
+
+        (parada,index)=>{
+
+
+            let option =
+            document.createElement(
+                "option"
+            );
+
+
+            option.value=index;
+
+
+            option.textContent =
+            parada.nombre;
+
+
+
+            select.appendChild(option);
+
+
+        }
+
+
+    );
+
+
+
+    select.disabled=false;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =============================
+// DIBUJAR RECORRIDO
+// =============================
+
+
+function dibujarRecorrido(coords){
+
+
+
+    L.polyline(
+
+        coords,
+
+        {
+
+            color:"orange",
+
+            weight:5
+
+        }
+
+    )
+    .addTo(mapa);
+
+
+
+
+
+    coords.forEach(
+
+        (c,index)=>{
+
+
+            let marker =
+            L.marker(c)
+            .addTo(mapa);
+
+
+
+            marker.bindPopup(
+
+                recorridoActual
+                .paradas[index]
+                .nombre
+
+            );
+
+
+
+            marcadoresParadas.push(marker);
+
+
+
+        }
+
+    );
+
+
+}
+
+
+
+
+
+
+
+
+
+function limpiarMarcadores(){
+
+
+    marcadoresParadas.forEach(
+
+        m=>mapa.removeLayer(m)
+
+    );
+
+
+    marcadoresParadas=[];
+
+
+}
+
+
+
+
+
+
+
+
+
+// =============================
+// CALCULAR RUTA
+// =============================
+
+
+function calcularRutaYTiempo(){
+
+
+
+    let index =
+    Number(
+
+        document.getElementById(
+            "select-destino"
+        )
+        .value
+
+    );
+
+
+
+
+    let origen =
+    buscarParadaMasCercana(
+        recorridoActual.paradas
+    );
+
+
+
+    let destino =
+    recorridoActual.paradas[index];
+
+
+
+
+
+    let distancia =
+    calcularDistancia(
+
+        [
+            origen.lat,
+            origen.lng
+        ],
+
+        [
+            destino.lat,
+            destino.lng
+        ]
+
+    );
+
+
+
+    let tiempo =
+    Math.round(
+        (distancia / 20)*60
+    );
+
+
+
+
+
+    document.getElementById(
+        "resumen-viaje"
+    )
+    .innerHTML=
+
+
+    `
+
+    <div class="paso-itinerario">
+
+
+    🚶 Camina hacia:
+    <b>${origen.nombre}</b>
+
+
+    <br><br>
+
+
+    🚌 Línea:
+
+    <b>${recorridoActual.nombre}</b>
+
+
+    <br><br>
+
+
+    📍 Baja en:
+
+    <b>${destino.nombre}</b>
+
+
+    <hr>
+
+
+    ⏱ Tiempo aproximado:
+
+    <b>${tiempo} minutos</b>
+
+
+    </div>
+
+    `;
+
+
+
+
+    trazarRutaAPie(
+
+        ubicacionUsuario,
+
+        [
+            origen.lat,
+            origen.lng
+        ]
+
+    );
+
+
+}
+
+
+
+
+
+
+
+
+
+// =============================
+// DISTANCIA
+// =============================
+
+
+function calcularDistancia(a,b){
+
+
+    let R=6371;
+
+
+    let dLat =
+    (b[0]-a[0])
+    *
+    Math.PI/180;
+
+
+    let dLon =
+    (b[1]-a[1])
+    *
+    Math.PI/180;
+
+
+
+    let x =
+    Math.sin(dLat/2)**2+
+
+    Math.cos(
+        a[0]*Math.PI/180
+    )
+    *
+    Math.cos(
+        b[0]*Math.PI/180
+    )
+    *
+    Math.sin(dLon/2)**2;
+
+
+
+    return R *
+    2 *
+    Math.atan2(
+        Math.sqrt(x),
+        Math.sqrt(1-x)
+    );
+
+
+}
+
+
+
+
+
+
+
+
+
+// =============================
+// CAMINO A PIE
+// =============================
+
+
+function trazarRutaAPie(origen,destino){
+
+
+
+    if(routingControl){
+
+        mapa.removeControl(
+            routingControl
         );
-    } else {
-        ubicacionUsuario = { lat: -33.675, lng: -65.46 };
+
     }
+
+
+
+
+
+    routingControl =
+
+    L.Routing.control({
+
+        waypoints:[
+
+
+            L.latLng(
+                origen.lat,
+                origen.lng
+            ),
+
+
+            L.latLng(
+                destino[0],
+                destino[1]
+            )
+
+
+        ],
+
+
+        router:
+        L.Routing.osrmv1({
+
+            profile:"foot"
+
+        }),
+
+
+        show:false,
+
+        addWaypoints:false,
+
+
+        lineOptions:{
+
+            styles:[
+
+                {
+                    color:"#993131",
+                    weight:6
+                }
+
+            ]
+
+        }
+
+
+    })
+    .addTo(mapa);
+
+
 }
 
-function calcularDistanciaMetros(lat1, lon1, lat2, lon2) {
-    const R = 6371e3; 
-    const φ1 = lat1 * Math.PI / 180;
-    const φ2 = lat2 * Math.PI / 180;
-    const Δφ = (lat2 - lat1) * Math.PI / 180;
-    const Δλ = (lon2 - lon1) * Math.PI / 180;
+// =============================
+// BUSCAR PARADA MÁS CERCANA
+// =============================
 
-    const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-              Math.cos(φ1) * Math.cos(φ2) *
-              Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-              
-    return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
-}
+function buscarParadaMasCercana(paradas){
 
-function obtenerParadaMasCercana(paradasDeEstaLinea) {
-    if (!ubicacionUsuario) return { nombre: paradasDeEstaLinea[0], distanciaMetros: 0 };
 
     let paradaCercana = null;
+
     let menorDistancia = Infinity;
 
-    paradasDeEstaLinea.forEach(nombreParada => {
-        const coords = COORDENADAS_PARADAS[nombreParada.trim()];
-        if (coords) {
-            const dist = calcularDistanciaMetros(
-                ubicacionUsuario.lat, 
-                ubicacionUsuario.lng, 
-                coords[0], 
-                coords[1]
+
+
+    paradas.forEach(
+
+        parada=>{
+
+
+            let distancia =
+            calcularDistancia(
+
+                [
+                    ubicacionUsuario.lat,
+                    ubicacionUsuario.lng
+                ],
+
+                [
+                    parada.lat,
+                    parada.lng
+                ]
+
             );
-            if (dist < menorDistancia) {
-                menorDistancia = dist;
-                paradaCercana = nombreParada;
+
+
+
+            if(distancia < menorDistancia){
+
+                menorDistancia = distancia;
+
+                paradaCercana = parada;
+
             }
+
+
         }
-    });
 
-    return { 
-        nombre: paradaCercana || paradasDeEstaLinea[0], 
-        distanciaMetros: Math.round(menorDistancia === Infinity ? 0 : menorDistancia) 
-    };
-}
+    );
 
-function alCambiarLinea(claveLinea) {
-    const selectDestino = document.getElementById('select-destino');
-    selectDestino.innerHTML = '<option value="" disabled selected>-- Selecciona parada de destino --</option>';
 
-    const datos = window.datosLineasCargados || demoDatos;
-    if (!datos || !datos[claveLinea]) return;
 
-    const linea = datos[claveLinea].lineas[0];
-    const paradas = linea.paradas;
+    console.log(
+        "Parada más cercana:",
+        paradaCercana.nombre,
+        "Distancia:",
+        menorDistancia*1000,
+        "metros"
+    );
 
-    paradas.forEach((parada, index) => {
-        const option = document.createElement('option');
-        option.value = index;
-        option.textContent = parada;
-        selectDestino.appendChild(option);
-    });
 
-    selectDestino.disabled = false;
-}
 
-function calcularRutaYTiempo() {
-    const claveLinea = document.getElementById('select-linea').value;
-    const selectDestino = document.getElementById('select-destino');
-    
-    if (!claveLinea || selectDestino.value === "") {
-        alert("Por favor selecciona una línea y una parada de destino.");
-        return;
-    }
+    return paradaCercana;
 
-    const indexDestino = parseInt(selectDestino.value);
-    const datos = window.datosLineasCargados || demoDatos;
-    const infoLinea = datos[claveLinea].lineas[0];
-    const paradasLinea = infoLinea.paradas;
 
-    // Obtener parada de subida más cercana por GPS
-    const paradaOrigen = obtenerParadaMasCercana(paradasLinea);
-    const paradaDestinoNombre = paradasLinea[indexDestino];
-
-    const coordsOrigen = COORDENADAS_PARADAS[paradaOrigen.nombre.trim()];
-    const coordsDestino = COORDENADAS_PARADAS[paradaDestinoNombre.trim()];
-
-    if (!coordsOrigen || !coordsDestino) {
-        alert("No se pudieron ubicar las coordenadas exactas de las paradas seleccionadas.");
-        return;
-    }
-
-    // Limpiar marcas previas
-    marcadoresParadas.forEach(m => mapa.removeLayer(m));
-    marcadoresParadas = [];
-
-    const mOrigen = L.marker([coordsOrigen[0], coordsOrigen[1]])
-        .addTo(mapa)
-        .bindPopup(`<b>🚌 Subes en:</b> ${paradaOrigen.nombre}`);
-    
-    const mDestino = L.marker([coordsDestino[0], coordsDestino[1]])
-        .addTo(mapa)
-        .bindPopup(`<b>📍 Bajas en:</b> ${paradaDestinoNombre}`);
-
-    marcadoresParadas.push(mOrigen, mDestino);
-
-    // Trazar línea a pie
-    trazarRutaAPie(ubicacionUsuario, coordsOrigen);
-
-    // Cálculos
-    const tiempoCaminataMins = Math.ceil(paradaOrigen.distanciaMetros / 80);
-    const indexOrigen = paradasLinea.indexOf(paradaOrigen.nombre);
-    const paradasDeDiferencia = Math.abs(indexDestino - indexOrigen);
-    const tiempoColectivoMins = paradasDeDiferencia * 3;
-
-    // Mostrar itinerario
-    const contenedorResumen = document.getElementById('resumen-viaje');
-    contenedorResumen.innerHTML = `
-        <div class="paso-itinerario" style="padding: 10px; background: #f8fafc; border-radius: 8px;">
-            <p>🚶 <strong>Camina a parada cercana:</strong> ${paradaOrigen.nombre} (${paradaOrigen.distanciaMetros} m - ~${tiempoCaminataMins} min)</p>
-            <p>🚌 <strong>Toma la línea:</strong> ${infoLinea.nombre}</p>
-            <p>📍 <strong>Bájate en:</strong> ${paradaDestinoNombre}</p>
-            <hr style="margin: 8px 0;">
-            <p class="tiempo-destacado">⏱ <strong>Tiempo estimado en colectivo:</strong> ~${tiempoColectivoMins} min (${paradasDeDiferencia} paradas)</p>
-        </div>
-    `;
-}
-
-function trazarRutaAPie(origenGps, coordsParada) {
-    if (routingControl) {
-        mapa.removeControl(routingControl);
-    }
-
-    routingControl = L.Routing.control({
-        waypoints: [
-            L.latLng(origenGps.lat, origenGps.lng),
-            L.latLng(coordsParada[0], coordsParada[1])
-        ],
-        router: L.Routing.osrmv1({ profile: 'foot' }),
-        show: false,
-        addWaypoints: false,
-        lineOptions: {
-            styles: [{ color: '#16a34a', opacity: 0.8, weight: 5 }]
-        }
-    }).addTo(mapa);
 }
