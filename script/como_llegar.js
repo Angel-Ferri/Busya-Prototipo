@@ -101,19 +101,91 @@ function inicializarMapa(){
 // =============================
 
 
+// =============================
+// UBICACION REAL DEL USUARIO
+// =============================
+
 function obtenerUbicacionUsuario(){
 
 
-    ubicacionUsuario={
-
-        lat:-33.675000,
-
-        lng:-65.460000
-
-    };
+    if(!navigator.geolocation){
 
 
-    mostrarUsuario();
+        alert(
+            "Tu navegador no soporta geolocalización"
+        );
+
+
+        return;
+
+    }
+
+
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(pos){
+
+
+
+            ubicacionUsuario={
+
+
+                lat:
+                pos.coords.latitude,
+
+
+                lng:
+                pos.coords.longitude
+
+
+            };
+
+
+
+            console.log(
+                "Ubicación real:",
+                ubicacionUsuario
+            );
+
+
+
+            mostrarUsuario();
+
+
+
+        },
+
+
+        function(error){
+
+
+            console.error(
+                "Error GPS:",
+                error
+            );
+
+
+            alert(
+                "No se pudo obtener tu ubicación. Activa el GPS."
+            );
+
+
+        },
+
+
+        {
+
+            enableHighAccuracy:true,
+
+            timeout:10000,
+
+            maximumAge:0
+
+        }
+
+
+    );
 
 
 }
