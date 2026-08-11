@@ -63,6 +63,7 @@ function abrirModalEstudiante() {
 
     modal.classList.remove("hidden");
 }
+
 // Cierra el modal si se hace clic fuera del recuadro blanco
 function cerrarModalEstudiante(event) {
     if (event.target.id === "modal-estudiante") {
