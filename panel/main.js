@@ -1,40 +1,19 @@
+// panel/main.js
+
 let demoDatos = null;
 
 /**
- * Retorna un objeto con la ruta base y el sufijo según el día de la semana
+ * Carga de forma paralela todos los archivos JSON de horarios ubicados en /datos/
  */
-function getConfiguracionRuta() {
-    const diaSemana = new Date().getDay(); // 0 = Domingo, 6 = Sábado
-    
-    if (diaSemana === 6) {
-        return {
-            base: 'data/recorridos_originales/findes/sabado/',
-            sufijo: '_sabado.json'
-        };
-    } else if (diaSemana === 0) {
-        return {
-            base: 'data/recorridos_originales/findes/domingo/',
-            sufijo: '_domingo.json'
-        };
-    } else {
-        return {
-            base: 'data/recorridos_originales/',
-            sufijo: '.json'
-        };
-    }
-}
-
 async function cargarDatosLineas() {
     if (demoDatos) return demoDatos;
 
-    const { base, sufijo } = getConfiguracionRuta();
-
     try {
         const [resA, resE, resEste, resOeste] = await Promise.all([
-            fetch(`${base}lineaa${sufijo}`),
-            fetch(`${base}lineae${sufijo}`),
-            fetch(`${base}lineaeste${sufijo}`),
-            fetch(`${base}lineaoeste${sufijo}`)
+            fetch("datos/linea_a_horarios.json"),
+            fetch("datos/linea_e_horarios.json"),
+            fetch("datos/linea_este_horarios.json"),
+            fetch("datos/linea_oeste_horarios.json")
         ]);
 
         demoDatos = {
@@ -44,9 +23,15 @@ async function cargarDatosLineas() {
             lineaoeste: await resOeste.json()
         };
 
+        console.log("✅ Horarios cargados correctamente:", demoDatos);
         return demoDatos;
     } catch (error) {
-        console.error('❌ Error al cargar los JSON de líneas:', error);
+        console.error("❌ Error al cargar los JSON de líneas:", error);
         throw error;
     }
 }
+
+// Inicialización básica al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    cargarDatosLineas();
+});

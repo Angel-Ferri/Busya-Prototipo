@@ -1,0 +1,1112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 15px;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 480px; /* Tamaño máximo simulando un celular */
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+/* Encabezado */
+.app-header {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* Cuerpo de selección */
+.selection-container {
+    padding: 20px;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+/* Aviso de qué planilla de horarios rige hoy (semana / sábado / domingo) */
+.aviso-dia {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1d4ed8;
+    background-color: #eff6ff;
+    border-left: 4px solid #1d4ed8;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 15px;
+}
+
+.menu-lineas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.rampa {
+    display: inline-block;
+    margin-top: 6px;
+    background-color: #b91010;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.contenedor-mensaje {
+    text-align: center;
+    margin-top: 20px;
+}
+.contenedor-mensaje a {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #1e3c72;
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.selector-seccion-hidden {
+    display: none !important;
+}
+
+/* ==========================================================================
+   BOTÓN ESPECIAL DE ACCESO AL MAPA (INDEX.HTML)
+   ========================================================================== */
+
+.mapa-link-container {
+    text-decoration: none;
+    display: block;
+    margin-bottom: 16px; /* Para mantener la separación con las otras tarjetas */
+}
+
+.mapa-card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Fondo azul mapa distintivo */
+    border: 2px solid #4176d4;
+    border-radius: 14px;
+    padding: 14px 16px;
+    cursor: pointer;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(30, 60, 114, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mapa-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(30, 60, 114, 0.25);
+}
+
+/* Badge o etiqueta del botón de mapa */
+.mapa-badge {
+    background-color: #00aa00; /* Color verde "Acá" para vincularlo conceptualmente al mapa de calor */
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 8px;
+    letter-spacing: 0.5px;
+    margin-right: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Textos internos */
+.mapa-info {
+    flex-grow: 1;
+}
+
+.mapa-info h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    color: #ffffff; /* Texto blanco para resaltar sobre el fondo oscuro */
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.mapa-info p {
+    margin: 2px 0 0 0;
+    font-size: 0.8rem;
+    color: #e2e8f0; /* Blanco suavizado */
+    font-weight: 400;
+}
+
+/* Flecha de indicación de la tarjeta */
+.mapa-arrow {
+    font-size: 1.1rem;
+    color: #ffffff;
+    opacity: 0.8;
+    transition: transform 0.2s;
+    margin-left: 10px;
+}
+
+.mapa-card:hover .mapa-arrow {
+    transform: translateX(4px); /* Desplazamiento interactivo al pasar el mouse */
+    opacity: 1;
+}
+
+/* Botones / Tarjetas de líneas */
+.linea-card {
+    display: flex;
+    align-items: center;
+    background: #fafafa;
+    border: 2px solid #eef0f3;
+    border-radius: 15px;
+    padding: 15px;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+.linea-card:hover, .linea-card:active {
+    transform: translateY(-2px);
+    border-color: #2a5298;
+    background: #f1f5f9;
+}
+
+/* Iconos de las líneas (Badges) */
+.linea-badge {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    font-size: 1.1rem;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.badge-a { background-color: #e74c3c; }
+.badge-e { background-color: #2ecc71; }
+.badge-este { background-color: #f39c12; font-size: 0.85rem; }
+.badge-oeste { background-color: #9b59b6; font-size: 0.85rem; }
+
+.linea-info {
+    flex-grow: 1;
+}
+
+.linea-info h3 {
+    font-size: 1.1rem;
+    color: #222;
+    margin-bottom: 2px;
+}
+
+.linea-info p {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.arrow {
+    color: #bbb;
+    font-size: 1.2rem;
+}
+/* Modificaciones y extras para paradas.html */
+.content-container {
+    padding: 20px;
+}
+
+.back-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    transition: background 0.2s;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Lista de paradas en formato de píldoras/botones pequeños */
+.paradas-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.parada-btn {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    padding: 10px 14px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.parada-btn:hover {
+    background: #e2e8f0;
+}
+
+.parada-btn.active {
+    background: #2a5298;
+    color: white;
+    border-color: #1e3c72;
+}
+
+/* Sección de horarios */
+.horarios-section {
+    background: #fafafa;
+    border: 2px dashed #e2e8f0;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.horarios-section h2 {
+    font-size: 1.1rem;
+    color: #1e3c72;
+    margin-bottom: 15px;
+}
+
+/* Lista de horarios verticales */
+.horarios-cronologicos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto; /* Scroll si son muchos horarios */
+    padding-right: 5px;
+}
+
+.horario-tag {
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 8px 5px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    color: #334155;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+/* Utilidad para ocultar elementos */
+.hidden {
+    display: none !important;
+}
+
+/* Tarjeta destacada para el colectivo más cercano */
+.horario-tag.proximo {
+    background: #2ecc71;
+    color: white;
+    border-color: #27ae60;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.4);
+    position: relative;
+}
+
+/* Pequeño texto indicador arriba del horario destacado */
+.horario-tag.proximo::after {
+    content: "PRÓXIMO";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #27ae60;
+    color: white;
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+/* --- ESTILOS COMPARTIDOS / BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 15px;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 480px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+/* --- CABECERA Y BOTONES DEL PANEL --- */
+.app-header {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    padding: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.back-btn, .driver-toggle-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.back-btn:hover, .driver-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* --- ESTILO DEL PANEL DESPLEGABLE --- */
+.panel-chofer {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.panel-chofer h3 {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 4px;
+}
+
+.chofer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.counter-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.counter-control button {
+    background: white;
+    border: none;
+    color: #1e3c72;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+#contador-vueltas {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.chofer-row-info {
+    font-size: 0.85rem;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+/* --- ELEMENTOS DE CONTENIDO Y PARADAS --- */
+.content-container { padding: 20px; }
+h2 { font-size: 1.1rem; margin-bottom: 12px; color: #555; }
+
+.paradas-lista { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.parada-btn {
+    background: #f1f5f9; border: 1px solid #cbd5e1; color: #334155;
+    padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 0.85rem;
+}
+.parada-btn.active { background: #2a5298; color: white; border-color: #1e3c72; }
+
+/* --- HORARIOS Y TAGS --- */
+.horarios-section { background: #fafafa; border: 2px dashed #e2e8f0; border-radius: 15px; padding: 15px; }
+.horarios-cronologicos { display: grid; grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 8px; }
+.horario-tag { background: white; border: 1px solid #e2e8f0; padding: 8px 4px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 0.9rem; }
+
+.horario-tag.proximo {
+    background: #2ecc71; color: white; border-color: #27ae60; transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3); position: relative;
+}
+
+.hidden { display: none !important; }
+
+/* --- FOOTER INICIO Y ENLACES --- */
+.app-footer {
+    text-align: center;
+    padding: 15px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+}
+.driver-access-link {
+    color: #64748b;
+    font-size: 0.85rem;
+    text-decoration: none;
+    font-weight: 500;
+}
+.driver-access-link:hover { color: #1e3c72; text-decoration: underline; }
+
+/* --- LOGIN DE CHOFERES --- */
+.login-box {
+    text-align: center;
+    padding: 20px 10px;
+}
+.login-box h2 { color: #1e3c72; margin-bottom: 10px; }
+.instruccion { font-size: 0.9rem; color: #64748b; margin-bottom: 20px; line-height: 1.4; }
+#clave-legajo {
+    width: 100%; padding: 12px; border-radius: 8px; border: 2px solid #cbd5e1;
+    font-size: 1.1rem; text-align: center; margin-bottom: 15px;
+}
+.action-btn {
+    background: #1e3c72; color: white; border: none; width: 100%;
+    padding: 12px; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer;
+}
+.action-btn:hover { background: #2a5298; }
+
+/* --- TARJETAS DEL PANEL DE CONTROL --- */
+.selector-linea-chofer { margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
+.selector-linea-chofer select { padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 1rem; }
+
+.chofer-card {
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;
+    padding: 15px; margin-bottom: 15px;
+}
+.chofer-card h3 { font-size: 1.05rem; color: #1e3c72; margin-bottom: 4px; }
+.info-desc { font-size: 0.8rem; color: #64748b; margin-bottom: 15px; }
+
+/* CONTADOR GRANDE */
+.counter-control-large { display: flex; justify-content: center; align-items: center; gap: 30px; margin: 10px 0; }
+.counter-control-large button {
+    background: #1e3c72; color: white; border: none; width: 44px; height: 44px;
+    border-radius: 50%; font-size: 1.5rem; font-weight: bold; cursor: pointer;
+}
+#contador-vueltas-chofer { font-size: 2.2rem; font-weight: bold; color: #334155; }
+
+/* REPORTE DE FRECUENCIAS */
+.tabla-frecuencias { display: flex; flex-direction: column; gap: 8px; max-height: 250px; overflow-y: auto; padding-right: 4px; }
+.frecuencia-item-row {
+    display: flex; justify-content: space-between; align-items: center;
+    background: white; padding: 10px 12px; border-radius: 8px; border: 1px solid #f1f5f9; font-size: 0.85rem;
+}
+.parada-nombre-lbl { color: #334155; font-weight: 500; }
+.frecuencia-valor-lbl { color: #10b981; }
+
+/* --- DISPLAY DE FRECUENCIA INDEPENDIENTE --- */
+.frecuencia-display-grande {
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+#frecuencia-calculada-valor {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #10b981; /* Color Verde de éxito */
+    display: block;
+    margin-bottom: 5px;
+}
+
+#frecuencia-calculada-detalle {
+    font-size: 0.8rem;
+    color: #64748b;
+    line-height: 1.3;
+}
+
+/* ==========================================================================
+   NUEVO: CARTEL DE RECOMENDACIÓN INTELIGENTE (Añadir al final del archivo)
+   ========================================================================== */
+
+/* Contenedor flotante fijado en la parte inferior de la pantalla simulada */
+.cartel-sugerencia {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1e3c72; /* Azul que combina con tu app-header */
+    color: white;
+    padding: 16px 20px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    width: 90%;
+    max-width: 400px; /* Se adapta perfectamente al ancho de tu app-container */
+    animation: slideUp 0.3s ease-out; /* Animación suave al aparecer */
+}
+
+.cartel-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.cartel-icono {
+    font-size: 1.8rem;
+}
+
+#mensaje-recomendacion {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+#mensaje-recomendacion strong {
+    color: #2ecc71; /* Resalta los minutos en verde brillante */
+}
+
+.cerrar-cartel-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 6px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.cerrar-cartel-btn:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Animación de entrada */
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, 20px);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+
+/* ==========================================================================
+   NUEVO: SECCIÓN EXCLUSIVA PARA MAPA.HTML
+   ========================================================================== */
+
+#map-principal {
+    width: 100%;
+    height: 320px; /* Un poco más alto para darle prioridad visual en esta sección */
+    border-radius: 15px;
+    border: 2px solid #cbd5e1;
+    z-index: 1;
+}
+
+.mapa-completo-section {
+    margin-bottom: 20px;
+}
+
+.mapa-info-adicional {
+    background: #fafafa;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.mapa-info-adicional h3 {
+    font-size: 1rem;
+    color: #1e3c72;
+    margin-bottom: 10px;
+}
+
+.lista-estados-paradas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.estado-parada-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #f1f5f9;
+    font-size: 0.85rem;
+}
+
+.parada-lbl-nombre {
+    font-weight: 600;
+    color: #334155;
+}
+
+.parada-lbl-tiempo {
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+/* ==========================================================================
+   NUEVO: SECCIÓN EXCLUSIVA PARA MAPA DE CALOR (MAPA.HTML)
+   ========================================================================== */
+
+#map-principal {
+    width: 100%;
+    height: 320px;
+    border-radius: 15px;
+    border: 2px solid #cbd5e1;
+    z-index: 1;
+}
+
+.mapa-completo-section {
+    margin-bottom: 20px;
+}
+
+.mapa-info-adicional {
+    background: #fafafa;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.mapa-info-adicional h3 {
+    font-size: 1rem;
+    color: #1e3c72;
+    margin-bottom: 12px;
+}
+
+.lista-estados-paradas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.estado-parada-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #f1f5f9;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.estado-parada-item:hover {
+    background: #f8fafc;
+}
+
+.parada-lbl-nombre {
+    font-weight: 600;
+    color: #334155;
+}
+
+.parada-lbl-tiempo {
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+}
+
+/* Selector de líneas dentro del mapa */
+.selector-linea-mapa {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+}
+
+.selector-linea-mapa label {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.selector-linea-mapa select {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: white;
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   ESTILOS DE LA LEYENDA DEL MAPA DE CALOR
+   ========================================================================== */
+
+.mapa-leyenda {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #ffffff;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.leyenda-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #475569;
+}
+
+/* El círculo o punto de color */
+.leyenda-item .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 4px rgba(0,0,0,0.15);
+}
+
+/* Colores de la escala térmica */
+.leyenda-item .dot.v-int {
+    background-color: #00aa00; /* Acá */
+}
+
+.leyenda-item .dot.v-cl {
+    background-color: #7cfc00; /* Por llegar */
+}
+
+.leyenda-item .dot.am {
+    background-color: #ffcc00; /* Cerca */
+}
+
+.leyenda-item .dot.na {
+    background-color: #ff6600; /* Falta */
+}
+
+.leyenda-item .dot.ro {
+    background-color: #ff0000; /* Lejos */
+}
+
+/* ==========================================================================
+   BOTÓN CIRCULAR NARANJA DE CRÍTICAS (FEEDBACK)
+   ========================================================================== */
+
+.boton-critica-circular {
+    position: fixed;
+    bottom: 20px;       /* Distancia desde abajo de la pantalla */
+    right: 20px;        /* Distancia desde la derecha de la pantalla */
+    width: 56px;        /* Tamaño del círculo */
+    height: 56px;
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); /* Naranja vibrante */
+    border: 2px solid #ffffff; /* Borde blanco para que resalte sobre cualquier fondo */
+    border-radius: 50%; /* Lo hace un círculo perfecto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;  /* Tamaño del emoji 📝 */
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(234, 88, 12, 0.35);
+    z-index: 999;       /* Se asegura de quedar siempre por encima del mapa o las listas */
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+/* Efecto al pasar el mouse o tocar en el celular */
+.boton-critica-circular:hover {
+    transform: scale(1.1); /* Se agranda un poquito de forma interactiva */
+    box-shadow: 0 6px 14px rgba(234, 88, 12, 0.45);
+}
+
+/* Efecto al hacer clic */
+.boton-critica-circular:active {
+    transform: scale(0.95);
+}
+
+/* ==========================================================================
+   BOTÓN CIRCULAR DE ESTUDIANTES Y MODAL INFORMATIVO
+   ========================================================================== */
+
+.boton-estudiante-circular {
+    position: fixed;
+    bottom: 20px;       /* Misma distancia que tu botón de críticas */
+    right: 90px;        /* Desplazado a la izquierda para que no se superpongan (si usas ambos) */
+    width: 56px;        
+    height: 56px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); /* Azul Estudiantil / Solbus */
+    border: 2px solid #ffffff; 
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;  /* Tamaño del emoji 🎓 */
+    box-shadow: 0 4px 10px rgba(29, 78, 216, 0.35);
+    z-index: 999;       
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.boton-estudiante-circular:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 6px 14px rgba(29, 78, 216, 0.45);
+}
+
+.boton-estudiante-circular:active {
+    transform: scale(0.95);
+}
+
+/* Fondo oscuro semitransparente del cartel */
+.modal-estudiante-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Por encima del botón flotante */
+    padding: 20px;
+}
+
+/* Contenedor del cartel informativo */
+.modal-estudiante-content {
+    background: #ffffff;
+    padding: 30px 20px 20px 20px;
+    border-radius: 16px;
+    max-width: 340px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    animation: aparecerModal 0.25s ease-out;
+}
+
+@keyframes aparecerModal {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Botón de cerrar (X) */
+.modal-estudiante-cerrar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: #94a3b8;
+    cursor: pointer;
+}
+
+.modal-estudiante-cerrar:hover {
+    color: #475569;
+}
+
+.modal-estudiante-icono {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.modal-estudiante-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: #1e293b;
+}
+
+.modal-estudiante-content p {
+    font-size: 1rem;
+    color: #475569;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+/* Texto destacado dentro del mensaje */
+.modal-estudiante-content strong.activo {
+    color: #16a34a; /* Verde */
+}
+
+.modal-estudiante-content strong.inactivo {
+    color: #dc2626; /* Rojo */
+}
+
+.modal-estudiante-nota {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.panel-busqueda-viaje {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.grupo-control {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.grupo-control label {
+    font-size: 0.85rem;
+    color: #ffffff;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.grupo-control select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+}
+
+.tarjeta-resumen {
+    background-color: #f8fafc;
+    border-left: 5px solid rgb(49, 94, 153);
+    padding: 15px;
+    border-radius: 6px;
+    color: #334155;
+}
+
+.paso-itinerario p {
+    margin: 6px 0;
+    font-size: 0.95rem;
+}
+
+.tiempo-destacado {
+    font-size: 1.1rem;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+/* Paradas oficiales */
+#paradas-select option.parada-oficial {
+    color: black;
+}
+
+
+/* Paradas oficiales en el select */
+#paradas-select option.parada-oficial {
+    color: #334155; /* gris oscuro consistente con tu paleta */
+    font-weight: 500;
+}
+
+/* Paradas secundarias (sin horario oficial, estimadas) */
+#paradas-select option.parada-secundaria {
+    color: #1d4ed8; /* azul consistente con tu app-header */
+    font-style: italic;
+    font-weight: 600;
+    background-color: #eff6ff; /* azul claro de fondo, similar a aviso-dia */
+}
+
+/* Horarios estimados */
+.horario-tag.estimado {
+    background: #eff6ff; /* azul claro */
+    border-color: #93c5fd;
+    color: #1d4ed8;
+    font-style: italic;
+}
+
+/* Cartel de recomendación (ya tenías base, lo reutilizamos) */
+.cartel-sugerencia {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1e3c72;
+    color: white;
+    padding: 16px 20px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    width: 90%;
+    max-width: 400px;
+    animation: slideUp 0.3s ease-out;
+}
+
+.horario-tag.estimado {
+    background: #eff6ff; /* azul claro */
+    border-color: #93c5fd;
+    color: #1d4ed8;
+    font-style: italic;
+}

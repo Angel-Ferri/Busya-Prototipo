@@ -1,126 +1,109 @@
 // --- MÓDULO COMÚN DE DÍAS DE SERVICIO ---
-// Decide qué planilla de horarios corresponde a hoy (semana / sábado / domingo)
-// y la carga. Lo usan index, paradas, mapa y chofer.
-// Debe incluirse ANTES que el resto de los scripts.
+const RUTA_DATOS = 'datos';
 
-const RUTA_DATA = 'data/recorridos_originales';
+// script/dias.js
 
-// --- FUNCIÓN PARA DETECTAR FERIADOS (Nacionales, San Luis y Villa Mercedes) ---
+async function cargarDatosLineaCompleta(idLinea, fecha = new Date()) {
+    const dia = resolverDiaDeServicio(fecha);
+    
+    // Carga de archivo unificado de la línea
+    const resLinea = await fetch(`datos/${idLinea}_horarios.json`);
+    if (!resLinea.ok) throw new Error(`No se pudo cargar datos/${idLinea}_horarios.json`);
+    const dataLinea = await resLinea.json();
+
+    // Carga opcional de paradas secundarias
+    let paradasSecundarias = [];
+    try {
+        const resSec = await fetch(`datos/coordenadas/paradas_secundarias_${idLinea}.json`);
+        if (resSec.ok) {
+            const dataSec = await resSec.json();
+            paradasSecundarias = dataSec.paradas || dataSec;
+        }
+    } catch (e) {
+        console.warn(`Sin paradas secundarias adicionales para ${idLinea}`);
+    }
+
+    dataLinea.servicioHoy = {
+        tipo: dia.tipo,
+        etiqueta: dia.etiqueta,
+        feriado: dia.feriado
+    };
+
+    dataLinea.paradasSecundarias = paradasSecundarias;
+
+    return dataLinea;
+}
+
 function esFeriado(fecha) {
     const ano = fecha.getFullYear();
-    const mes = fecha.getMonth() + 1; // Enero es 0
-    const dia = fecha.getDate();
+    const mes = fecha.getMonth() + 1;
+    const dia = fecha.getDate(); // <-- Esta es la línea que faltaba
+    
     const fechaClave = `${dia}/${mes}`;
 
-    // Listado de feriados fijos (Nacionales, Provinciales y Locales)
     const feriadosFijos = [
-        "1/1",   // Año Nuevo
-        "24/3",  // Día de la Memoria
-        "2/4",   // Malvinas
-        "1/5",   // Día del Trabajador
-        "25/5",  // Revolución de Mayo
-        "20/6",  // Paso a la Inmortalidad del Belgrano
-        "9/7",   // Día de la Independencia
-        "17/8",  // San Luis - Paso a la Inmortalidad de San Martín
-        "25/8",  // San Luis - Día de San Luis Rey (Provincial)
-        "24/9",  // Villa Mercedes - Día de la Virgen de la Merced (Patronal Local)
-        "12/10", // Día de la Diversidad Cultural
-        "20/11", // Día de la Soberanía Nacional
-        "1/12",  // Villa Mercedes - Aniversario de la Ciudad (Feriado Local)
-        "8/12",  // Inmaculada Concepción
-        "25/12"  // Navidad
+        "1/1", "24/3", "2/4", "1/5", "25/5", "20/6", "9/7",
+        "17/8", "25/8", "24/9", "12/10", "20/11", "1/12", "8/12", "25/12"
     ];
 
     if (feriadosFijos.includes(fechaClave)) return true;
 
-    // Feriados Variables / Trasladables y puentes del año en curso
     const feriadosVariables = {
         2026: ["2/3", "3/3", "23/3", "2/4", "3/4", "7/12"]
     };
 
-    if (feriadosVariables[ano] && feriadosVariables[ano].includes(fechaClave)) {
-        return true;
-    }
-
-    return false;
+    return !!(feriadosVariables[ano] && feriadosVariables[ano].includes(fechaClave));
 }
 
-// Determina qué planilla rige hoy.
-// Devuelve { tipo: "semana"|"sabado"|"domingo", etiqueta, feriado, estudianteActiva }
 function resolverDiaDeServicio(fecha = new Date()) {
     const diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
     const numeroDia = fecha.getDay();
     const feriado = esFeriado(fecha);
 
-    // Los feriados se manejan con la planilla de domingo
     if (feriado) {
-        return {
-            tipo: "domingo",
-            etiqueta: "Feriado (horarios de domingo)",
-            feriado: true,
-            estudianteActiva: false
-        };
+        return { tipo: "Domingos", etiqueta: "Feriado (horarios de domingo)", feriado: true, estudianteActiva: false };
     }
-
     if (numeroDia === 0) {
-        return { tipo: "domingo", etiqueta: "Domingo", feriado: false, estudianteActiva: false };
+        return { tipo: "Domingos", etiqueta: "Domingo", feriado: false, estudianteActiva: false };
     }
-
     if (numeroDia === 6) {
-        return { tipo: "sabado", etiqueta: "Sábado", feriado: false, estudianteActiva: false };
+        return { tipo: "Sábados", etiqueta: "Sábado", feriado: false, estudianteActiva: false };
     }
-
-    return {
-        tipo: "semana",
-        etiqueta: diasSemana[numeroDia],
-        feriado: false,
-        estudianteActiva: true
-    };
+    return { tipo: "Lunes a Viernes", etiqueta: diasSemana[numeroDia], feriado: false, estudianteActiva: true };
 }
 
-// Arma la ruta al JSON según el tipo de día.
-// "lineaa.json" + "sabado" -> "data/recorridos_originales/findes/sabado/lineaa_sabado.json"
-function rutaHorarios(archivoBase, tipo) {
-    const base = archivoBase.replace(/\.json$/, "");
-
-    if (tipo === "sabado")  return `${RUTA_DATA}/findes/sabado/${base}_sabado.json`;
-    if (tipo === "domingo") return `${RUTA_DATA}/findes/domingo/${base}_domingo.json`;
-
-    return `${RUTA_DATA}/${base}.json`;
-}
-
-// Carga la planilla que corresponde a hoy para una línea.
-// Si el archivo del fin de semana no existe, cae a la planilla de semana
-// y lo deja marcado en servicioHoy.fallback para poder avisarlo en pantalla.
-async function cargarHorariosDeHoy(archivoBase, fecha = new Date()) {
+// Carga el JSON unificado de horarios/coordenadas de la línea y el de sus paradas secundarias
+async function cargarDatosLineaCompleta(idLinea, fecha = new Date()) {
     const dia = resolverDiaDeServicio(fecha);
+    
+    // Carga de archivo de horarios y trazado base
+    const resLinea = await fetch(`${RUTA_DATOS}/${idLinea}_horarios.json`);
+    if (!resLinea.ok) throw new Error(`Error al cargar datos de línea: ${idLinea}`);
+    const dataLinea = await resLinea.json();
 
-    let respuesta = await fetch(rutaHorarios(archivoBase, dia.tipo));
-    let fallback = false;
-
-    if (!respuesta.ok && dia.tipo !== "semana") {
-        console.warn(`Sin planilla de ${dia.tipo} para ${archivoBase}. Usando la de lunes a viernes.`);
-        respuesta = await fetch(rutaHorarios(archivoBase, "semana"));
-        fallback = true;
+    // Carga de paradas secundarias
+    let paradasSecundarias = [];
+    try {
+        const resSecundarias = await fetch(`${RUTA_DATOS}/coordenadas/paradas_secundarias_${idLinea}.json`);
+        if (resSecundarias.ok) {
+            const dataSec = await resSecundarias.json();
+            paradasSecundarias = dataSec.paradas || dataSec;
+        }
+    } catch (e) {
+        console.warn(`No se encontraron paradas secundarias para ${idLinea}`);
     }
 
-    if (!respuesta.ok) {
-        throw new Error(`No se pudo cargar el archivo: ${archivoBase}`);
-    }
-
-    const data = await respuesta.json();
-
-    data.servicioHoy = {
+    dataLinea.servicioHoy = {
         tipo: dia.tipo,
-        etiqueta: fallback ? `${dia.etiqueta} (mostrando horarios de lunes a viernes)` : dia.etiqueta,
-        feriado: dia.feriado,
-        fallback: fallback
+        etiqueta: dia.etiqueta,
+        feriado: dia.feriado
     };
 
-    // El pase estudiantil no corre los fines de semana ni los feriados
-    data.estadoEstudianteHoy = dia.estudianteActiva
+    dataLinea.estadoEstudianteHoy = dia.estudianteActiva
         ? { activa: true, razon: "es un día de semana hábil" }
         : { activa: false, razon: dia.feriado ? "hoy es día feriado" : "es fin de semana" };
 
-    return data;
+    dataLinea.paradasSecundarias = paradasSecundarias;
+
+    return dataLinea;
 }

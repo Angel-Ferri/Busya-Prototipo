@@ -1,0 +1,1108 @@
+{
+    "linea":  "Línea ESTE",
+    "recorrido":  [
+                      [
+                          -33.659143,
+                          -65.429578
+                      ],
+                      [
+                          -33.658792,
+                          -65.431174
+                      ],
+                      [
+                          -33.658478,
+                          -65.432791
+                      ],
+                      [
+                          -33.659145,
+                          -65.433032
+                      ],
+                      [
+                          -33.660277,
+                          -65.433381
+                      ],
+                      [
+                          -33.659785,
+                          -65.435511
+                      ],
+                      [
+                          -33.660669,
+                          -65.435763
+                      ],
+                      [
+                          -33.661107,
+                          -65.435927
+                      ],
+                      [
+                          -33.661544,
+                          -65.436058
+                      ],
+                      [
+                          -33.661156,
+                          -65.437909
+                      ],
+                      [
+                          -33.660812,
+                          -65.439556
+                      ],
+                      [
+                          -33.662707,
+                          -65.440171
+                      ],
+                      [
+                          -33.666237,
+                          -65.441264
+                      ],
+                      [
+                          -33.667072,
+                          -65.441498
+                      ],
+                      [
+                          -33.667755,
+                          -65.438236
+                      ],
+                      [
+                          -33.668723,
+                          -65.438515
+                      ],
+                      [
+                          -33.668,
+                          -65.441787
+                      ],
+                      [
+                          -33.670656,
+                          -65.442597
+                      ],
+                      [
+                          -33.671166,
+                          -65.440387
+                      ],
+                      [
+                          -33.672139,
+                          -65.440673
+                      ],
+                      [
+                          -33.672614,
+                          -65.438744
+                      ],
+                      [
+                          -33.672873,
+                          -65.437597
+                      ],
+                      [
+                          -33.67469,
+                          -65.43813
+                      ],
+                      [
+                          -33.674834,
+                          -65.438116
+                      ],
+                      [
+                          -33.6755,
+                          -65.438347
+                      ],
+                      [
+                          -33.675558,
+                          -65.438217
+                      ],
+                      [
+                          -33.679978,
+                          -65.439646
+                      ],
+                      [
+                          -33.681808,
+                          -65.431171
+                      ],
+                      [
+                          -33.682326,
+                          -65.428875
+                      ],
+                      [
+                          -33.68242,
+                          -65.428606
+                      ],
+                      [
+                          -33.682781,
+                          -65.42815
+                      ],
+                      [
+                          -33.683044,
+                          -65.426995
+                      ],
+                      [
+                          -33.683314,
+                          -65.425758
+                      ],
+                      [
+                          -33.683406,
+                          -65.425302
+                      ],
+                      [
+                          -33.686383,
+                          -65.42622
+                      ],
+                      [
+                          -33.689048,
+                          -65.427073
+                      ],
+                      [
+                          -33.689187,
+                          -65.426405
+                      ],
+                      [
+                          -33.689368,
+                          -65.426462
+                      ],
+                      [
+                          -33.688504,
+                          -65.43064
+                      ],
+                      [
+                          -33.687879,
+                          -65.433638
+                      ],
+                      [
+                          -33.691602,
+                          -65.434786
+                      ],
+                      [
+                          -33.690766,
+                          -65.438386
+                      ],
+                      [
+                          -33.691561,
+                          -65.438659
+                      ],
+                      [
+                          -33.689691,
+                          -65.447049
+                      ],
+                      [
+                          -33.691419,
+                          -65.44757
+                      ],
+                      [
+                          -33.690307,
+                          -65.4528
+                      ],
+                      [
+                          -33.690057,
+                          -65.454012
+                      ],
+                      [
+                          -33.689754,
+                          -65.455032
+                      ],
+                      [
+                          -33.689495,
+                          -65.456416
+                      ],
+                      [
+                          -33.68887,
+                          -65.45927
+                      ],
+                      [
+                          -33.687747,
+                          -65.464575
+                      ],
+                      [
+                          -33.676078,
+                          -65.461077
+                      ],
+                      [
+                          -33.677021,
+                          -65.456869
+                      ],
+                      [
+                          -33.677514,
+                          -65.454757
+                      ],
+                      [
+                          -33.677652,
+                          -65.453715
+                      ],
+                      [
+                          -33.677923,
+                          -65.452704
+                      ],
+                      [
+                          -33.677135,
+                          -65.452482
+                      ],
+                      [
+                          -33.676659,
+                          -65.454525
+                      ],
+                      [
+                          -33.676318,
+                          -65.456098
+                      ],
+                      [
+                          -33.675989,
+                          -65.457657
+                      ],
+                      [
+                          -33.675649,
+                          -65.459166
+                      ],
+                      [
+                          -33.675304,
+                          -65.460675
+                      ],
+                      [
+                          -33.675025,
+                          -65.461806
+                      ],
+                      [
+                          -33.674459,
+                          -65.464531
+                      ],
+                      [
+                          -33.673871,
+                          -65.467252
+                      ],
+                      [
+                          -33.668873,
+                          -65.465776
+                      ],
+                      [
+                          -33.667709,
+                          -65.465402
+                      ],
+                      [
+                          -33.666526,
+                          -65.465084
+                      ],
+                      [
+                          -33.665853,
+                          -65.46487
+                      ],
+                      [
+                          -33.665197,
+                          -65.464645
+                      ],
+                      [
+                          -33.664336,
+                          -65.464378
+                      ],
+                      [
+                          -33.664553,
+                          -65.464942
+                      ],
+                      [
+                          -33.664772,
+                          -65.46552
+                      ],
+                      [
+                          -33.664707,
+                          -65.465527
+                      ],
+                      [
+                          -33.664642,
+                          -65.46555
+                      ],
+                      [
+                          -33.664581,
+                          -65.465613
+                      ],
+                      [
+                          -33.664559,
+                          -65.465658
+                      ],
+                      [
+                          -33.664545,
+                          -65.465713
+                      ],
+                      [
+                          -33.664534,
+                          -65.465775
+                      ],
+                      [
+                          -33.664545,
+                          -65.465837
+                      ],
+                      [
+                          -33.664445,
+                          -65.465863
+                      ],
+                      [
+                          -33.664386,
+                          -65.465915
+                      ],
+                      [
+                          -33.664334,
+                          -65.466085
+                      ],
+                      [
+                          -33.664299,
+                          -65.466233
+                      ],
+                      [
+                          -33.66431,
+                          -65.466321
+                      ],
+                      [
+                          -33.664334,
+                          -65.466421
+                      ],
+                      [
+                          -33.664397,
+                          -65.466614
+                      ],
+                      [
+                          -33.664501,
+                          -65.466537
+                      ],
+                      [
+                          -33.66462,
+                          -65.466455
+                      ],
+                      [
+                          -33.664726,
+                          -65.466125
+                      ],
+                      [
+                          -33.664837,
+                          -65.466083
+                      ],
+                      [
+                          -33.664917,
+                          -65.466013
+                      ],
+                      [
+                          -33.664967,
+                          -65.46592
+                      ],
+                      [
+                          -33.664991,
+                          -65.465815
+                      ],
+                      [
+                          -33.664993,
+                          -65.465708
+                      ],
+                      [
+                          -33.66497,
+                          -65.465598
+                      ],
+                      [
+                          -33.664916,
+                          -65.465525
+                      ],
+                      [
+                          -33.664803,
+                          -65.465472
+                      ],
+                      [
+                          -33.664451,
+                          -65.46454
+                      ],
+                      [
+                          -33.664144,
+                          -65.463812
+                      ],
+                      [
+                          -33.664305,
+                          -65.463238
+                      ],
+                      [
+                          -33.664734,
+                          -65.461121
+                      ],
+                      [
+                          -33.666464,
+                          -65.461603
+                      ],
+                      [
+                          -33.667183,
+                          -65.461828
+                      ],
+                      [
+                          -33.675469,
+                          -65.464312
+                      ],
+                      [
+                          -33.676371,
+                          -65.460106
+                      ],
+                      [
+                          -33.678998,
+                          -65.460889
+                      ],
+                      [
+                          -33.681634,
+                          -65.46163
+                      ],
+                      [
+                          -33.684451,
+                          -65.462537
+                      ],
+                      [
+                          -33.687098,
+                          -65.463261
+                      ],
+                      [
+                          -33.687783,
+                          -65.460093
+                      ],
+                      [
+                          -33.688406,
+                          -65.45692
+                      ],
+                      [
+                          -33.6887,
+                          -65.455804
+                      ],
+                      [
+                          -33.688879,
+                          -65.454785
+                      ],
+                      [
+                          -33.689443,
+                          -65.452432
+                      ],
+                      [
+                          -33.689917,
+                          -65.450036
+                      ],
+                      [
+                          -33.690209,
+                          -65.449667
+                      ],
+                      [
+                          -33.690462,
+                          -65.449537
+                      ],
+                      [
+                          -33.69113,
+                          -65.449758
+                      ],
+                      [
+                          -33.69186,
+                          -65.449968
+                      ],
+                      [
+                          -33.692543,
+                          -65.446725
+                      ],
+                      [
+                          -33.693208,
+                          -65.443756
+                      ],
+                      [
+                          -33.693704,
+                          -65.44132
+                      ],
+                      [
+                          -33.694146,
+                          -65.4394
+                      ],
+                      [
+                          -33.690712,
+                          -65.438261
+                      ],
+                      [
+                          -33.687305,
+                          -65.437143
+                      ],
+                      [
+                          -33.688381,
+                          -65.431822
+                      ],
+                      [
+                          -33.689474,
+                          -65.426403
+                      ],
+                      [
+                          -33.686757,
+                          -65.425536
+                      ],
+                      [
+                          -33.684067,
+                          -65.424701
+                      ],
+                      [
+                          -33.684335,
+                          -65.423457
+                      ],
+                      [
+                          -33.683719,
+                          -65.423253
+                      ],
+                      [
+                          -33.68338,
+                          -65.424594
+                      ],
+                      [
+                          -33.683272,
+                          -65.425388
+                      ],
+                      [
+                          -33.683058,
+                          -65.426268
+                      ],
+                      [
+                          -33.682817,
+                          -65.42748
+                      ],
+                      [
+                          -33.682645,
+                          -65.42812
+                      ],
+                      [
+                          -33.682382,
+                          -65.428426
+                      ],
+                      [
+                          -33.682212,
+                          -65.428726
+                      ],
+                      [
+                          -33.681836,
+                          -65.430528
+                      ],
+                      [
+                          -33.681433,
+                          -65.432265
+                      ],
+                      [
+                          -33.680606,
+                          -65.435981
+                      ],
+                      [
+                          -33.679851,
+                          -65.439423
+                      ],
+                      [
+                          -33.678202,
+                          -65.438906
+                      ],
+                      [
+                          -33.676388,
+                          -65.438315
+                      ],
+                      [
+                          -33.674737,
+                          -65.437803
+                      ],
+                      [
+                          -33.674688,
+                          -65.438045
+                      ],
+                      [
+                          -33.672777,
+                          -65.437506
+                      ],
+                      [
+                          -33.67208,
+                          -65.440532
+                      ],
+                      [
+                          -33.671594,
+                          -65.442699
+                      ],
+                      [
+                          -33.670728,
+                          -65.442439
+                      ],
+                      [
+                          -33.670632,
+                          -65.442501
+                      ],
+                      [
+                          -33.670496,
+                          -65.442457
+                      ],
+                      [
+                          -33.66905,
+                          -65.442012
+                      ],
+                      [
+                          -33.667612,
+                          -65.441567
+                      ],
+                      [
+                          -33.667165,
+                          -65.4414
+                      ],
+                      [
+                          -33.668058,
+                          -65.437179
+                      ],
+                      [
+                          -33.667121,
+                          -65.436878
+                      ],
+                      [
+                          -33.666643,
+                          -65.439013
+                      ],
+                      [
+                          -33.66619,
+                          -65.441159
+                      ],
+                      [
+                          -33.665319,
+                          -65.440877
+                      ],
+                      [
+                          -33.664287,
+                          -65.440573
+                      ],
+                      [
+                          -33.663585,
+                          -65.440344
+                      ],
+                      [
+                          -33.660897,
+                          -65.439518
+                      ],
+                      [
+                          -33.661827,
+                          -65.434968
+                      ],
+                      [
+                          -33.66026,
+                          -65.434494
+                      ],
+                      [
+                          -33.659481,
+                          -65.434224
+                      ],
+                      [
+                          -33.65869340506057,   
+                          -65.43399354592543
+                      ],
+                      [
+                          -33.659157,
+                          -65.431743
+                      ],
+                      [
+                          -33.659374,
+                          -65.430701
+                      ],
+                      [
+                          -33.659599,
+                          -65.429744
+                      ],
+                      [
+                          -33.659218,
+                          -65.429615
+                      ]
+                  ],
+    "paradas":  [
+                    {
+                        "nombre":  "Ecuador y Balcarce",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.461232,
+                        "lat":  -33.664785
+                    },
+                    {
+                        "nombre":  "Balcarce y Estado de Israel",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.462117,
+                        "lat":  -33.667472
+                    },
+                    {
+                        "nombre":  "Balcarce y 3 de Febrero",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.462896,
+                        "lat":  -33.670178
+                    },
+                    {
+                        "nombre":  "Balcarce y Entre Ríos",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.463676,
+                        "lat":  -33.672882
+                    },
+                    {
+                        "nombre":  "Balcarce y Chacabuco",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.46411864111919,
+                        "lat":  -33.67471887096249
+                    },
+                    {
+                        "nombre":  "Remedios de Escalada y Av. Mitre",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.462129,
+                        "lat":  -33.675975
+                    },
+                    {
+                        "nombre":  "San Martín y Sarmiento",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.460483,
+                        "lat":  -33.677325
+                    },
+                    {
+                        "nombre":  "San Martín y Necochea",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.46104,
+                        "lat":  -33.679101
+                    },
+                    {
+                        "nombre":  "San Martín y Córdoba",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.461598,
+                        "lat":  -33.680903
+                    },
+                    {
+                        "nombre":  "San Martín y Rafael Cortez",
+                        "descripcion":  "",
+                        "imagen":  "https://lh3.googleusercontent.com/umsh/AN6v0v6Jmr7T0uwZH2RQXiU4OWqlgArfZD4XVWcsB9IWYWabwMMIrC8o4fV2jaZxq-b-6Nn63xiESZV9FYuAcSeSNUUwCs6Mqn8_yNm39Kjcxptp6vbSPKEOSVQD2n1C57bJQPACo-k4hKFWjtEiov3Gv-TOMHSoqeFHaa_HDR-4luRMtCrpaayXZ3y19PuqMTPu9Www_oFLqs413v9JwJyGIDq02QD6RiObQv_pGoNTIFYyCiIc8OE7_BeH-dtYGyVG335DOsesE7osG9HGV7e4wFn2-CmQ7adbYDlMVAcpgunbNPX6-cFxWvmidjBjfSbIh9eGACGMkGxq7pmPnIAa0B5JUhMNiNzFufoms8FM_9adVNsBodaqalUH1IMmgj3-k7-zwlsswflS60hcv0PLnXVjRiH52cyDmXWcW099zMzfrgCHswE-xlnpq7sxENOQ6WHrQTRrxMy8NzUTAGhbJWRHPaNyCvMwmsxB9RyFklmlpxaMbcVGnMpAXMwhrsIxYXgl_2-KyCXKHnQCPeCGozzjAXcCDWi3PjUaSQ4ul7IwEVcnYqMh31HQfAHHlpYWy5IZyJQZGEBj0PkKd6_4N_xPSHJYuOsIeM7ZT7JYtS05ZniBvMpUB_vCt_oNQdxY2lQWqaYrP2S6B6X7XvENqypVmVwO_poZMfUBoahl9oMP5UAWTCTazbnQsl9ZJjM-uvSeUQPidnCQYQF3ze5-Jos1Pi8J4l3B5ORjpBneFXnbQOpm2qGL86T8jI2bZvVx3VMEFVVtpDg_oIsirf_Eqsg9kyUsB4NhWPyH4KtfkVNkg5aLXwFv3X-lRMbq3gIG4XAwlrvVUqR89m7dD1S4znB23LclCD26vf1pzjfLJ84FDi6UJqgqOwzbHXzc6EbaReqIQ-GGO4MskIjUqS9_lmbYjOFpiqb96iq1MrAuMl5b7SiFczhHK2M2GmXnWn9l-Vuwwk4SDFwMOOd79ICdo6aF6D3BPYQy-1BxQTP4Q1ETUMOouzUZBLfs5ntQkPkRkizFEDTT_tqw0ov7bnpwd1o-pQj7J--iDo1sk2DurL3_OAlN-djT0tIsWX-TlvJhHNtbuKI55PEL91QiZsLzel9XfXMjoRSUTwz4dmqC9C5bRWaC3zvB7gAxTHx4p9RO7UIOuoWRBnAahwG8dh8itsCymlTDq02uaqzvq9TCZAdPR030JqE",
+                        "lng":  -65.462047,
+                        "lat":  -33.682689
+                    },
+                    {
+                        "nombre":  "San Martín y Édison",
+                        "descripcion":  "",
+                        "imagen":  "https://lh3.googleusercontent.com/umsh/AN6v0v76tbKq-ozwIEEnN8-bJxbUKe8UWVQZHQAB6MC4wMmpTI9QwZHgU7NcWmgrfoN6Ei8vrY1dGjpJtQu5t9zkCVgEL2bajXueNDeKhjFKPhp5FqD_0XggY1dtrGwrZjxr7wFNO4amX7DDf20ZGvO4m0NOJfx8czRiguGdofoUtEjCJanyTonW3OM7VPjr37ISIWCXzlvHUnaSChtLYsN-a6jRsSTPiDk6REiqi5A8-YYKfmvnfV5s7jm4NPhnwAB9I4GqdTzUGuYQV_kSSdGsNl6juI2nsZqRysnWQCxpLso7USB5ZQOkp30Y_l8g2VBZRKnggD3v1czv78_4MWxvKeAxakwOgmJhLCbZZishdCT7bZ04eH_aktD2Yr8FFe7oay1mACegL33lv6MxgpWyPU_Uqoh82ToJ3zXDPBnO0BUXwQJbfWKq_O9M79OJkVZ4hJrnYOTeG-RS18ZJD7KP3meT_SK3CVKNz9wZeHkldPQyiQCSWv0iSyTO3uMRaejOqJiTkJIJDAz3V2XGsVyRu8HOc9sVoRCYzy8m0MFQFf23dQkcIG8ybgIkw3bZTXCLzn5yxgZnB0M9PSKm3YSxGthCgnN1uVIW4UhnSDYBHoUtkQLYAp7VWbiCXwzPpiXcl-jHaX16kdm-tKpYSSPZf7-AtFslyczzuDoWiuLDIm_bd8VQYPO8bL4iyIfapNqfGOfbbgSzPaRdiTD8dEcdRUZ26G99gKfxHiW_na9875VNj2soLPzsl2xo0CR59Us5K__YmSG09ehezdQRRFjDozTL6AqbKHJbONSENl0e1TIrRhzgiwTCiao6Zcw3NHGuCHMjj-RsGsbgCvGvVhBVETiZPGk_MlhIc0yc37s3i4H5k-25Yf8IPoe3nw3Eo_3vmT1exxwRddGjBtwWge7gttEHHyHyZvwXxZvKBW_L4KrUhHWRdrHgqg0i2-EM1i0pYRO-2sMhefhqGDu6YpT_vsL96w3_CTzxx53pLCTyHrzOkMPF_W34byYFZsRqjQ8zp1zVn7j5cW7WgI5gUE5vFwIQJOsGQmIpkvUfSZDZoHhj1XXZm711y1aYU18fZW6MJHEq3Qyqdoq6C3QhN4VDbW3GgaZ1QoI2xzr0nyYQNhXP1Vn2fiRxR5ewvBjPZLjipODpbd1P7tJwWhCHKLnhPWQ90YcSVcPhKAMFXDMY2J0Kk_DH_iI",
+                        "lng":  -65.462593,
+                        "lat":  -33.684471
+                    },
+                    {
+                        "nombre":  "San Martín y Tucumán",
+                        "descripcion":  "",
+                        "imagen":  "https://lh3.googleusercontent.com/umsh/AN6v0v6ETGv-UlqVP9an62jHsqzdn4lqNQGpEJHdixfgziFsRYitKdWn9reucWMg3HKc7uqiZwpdgABAlBpKAdVkc2sJAW4sqI0jcj3khVVKv9sGSH_hUpG7uxRMI8U3vcJqVxDbHVOu8IawOI11pVLFV1ZYM0HaF89LzLA7viaR38qYE2-VhTafP04eexpyUcfRPU1fFWj7ZTjeVhJOUOc27EzdAf32XNqGQuKdVvEtXMvn2PXJSRCZ7UdI7rSlKuQyF_lDKkzQhspNOliDFAqjDUT0YdYRzk8opHcKJEoHYRgC5UR-BHFBIpw8N2HZn58WLUUMo1mBVdOrddnJjPeI4YLikY_YHJIm3T5GL8wdt9DythRp5ChkxNQs1s_DHZ6AR5YE6T5-lNJNkdBe43NLfkQzzpKa3CGlKoPfXOs5gtXt0tUXa0ra_fWS-ToRDFYJu_4ssZJxdGDGRntdozh_j4Zh2b57ktPeQ6iDkFXclV1yLzI--hpKyhdEUAK7UT7PODLpewqgF0P1NNtrt0Pa_iWy8lANsXZZZqrDcRO3UJWdxWJBSxP84WvnEowfrm9ctwCFXgAT9Z5UYBOgQaGrVFpbTiZ-KkUeRoSFQ3_JBBVsXGe49e1NteMuxjrresFYY1gL0ydT0aZi_MuVrgD3BuXKM3GfuhtfVhWU9NFSuzVbycD_jOPy9_0Ak0lmz0_OiCrkSUpuB11Yk-zcht46VNPJl8gC3F8xoo5nij1Rv09dYM7Aldql_kiNM46Te09PWyv2DjjdvNpqZRXRKQ1HHkanucWnAWkqKZns85Xp8OlFvQAp24TxzcSMOV3wOuooDTsp1B5KiMFEB0ezm9_FiSSR09i2pUOxO8EntupbzOz7oXpJkHcClvbjM_DpQBXO28P5jh_e3ZEt6hA14cv27tuDMwH5_GVLfo-EUmzbuGNS8HyCc0Yj0gUCpKLkJ2lufYvVokF0IElun_ZdxbcQU5OV0_9fNlAVldSA95s7-1c274kwhCHP89YKn05EsYl_11R1A8nDoNNBY31qcFYVMQ0NmKpmpZlWXRpQAM4SJj7MtBnkULCBia7ci2xWytZs-BDtHHb9ipP0uorvzMm2X-qZORCpLhOxNPj7ENEooPbkKVpsF84YoyST4TqfiVpvVnOG4ccSz8KmuwKusf5hNQnlxvSfH3O3LemhxSjDjq7wu2sdmg",
+                        "lng":  -65.463121,
+                        "lat":  -33.686241
+                    },
+                    {
+                        "nombre":  "Buenos Aires y Bélgica",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.459248,
+                        "lat":  -33.688062
+                    },
+                    {
+                        "nombre":  "Buenos Aires y Europa",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.456029,
+                        "lat":  -33.688777
+                    },
+                    {
+                        "nombre":  "Buenos Aires y Guayaquil",
+                        "descripcion":  "Parada Diego Maradona",
+                        "imagen":  "",
+                        "lng":  -65.452397,
+                        "lat":  -33.68956
+                    },
+                    {
+                        "nombre":  "Buenos Aires y Olloqui",
+                        "descripcion":  "Frente a Centro Comercial",
+                        "imagen":  "",
+                        "lng":  -65.450479,
+                        "lat":  -33.690013
+                    },
+                    {
+                        "nombre":  "Esteban Agüero y León Guillet",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.449989,
+                        "lat":  -33.691555
+                    },
+                    {
+                        "nombre":  "León Guillet y Besso",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.445842,
+                        "lat":  -33.692847
+                    },
+                    {
+                        "nombre":  "León Guillet y Rufino Barreiro",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.443756,
+                        "lat":  -33.693311
+                    },
+                    {
+                        "nombre":  "Amaro Galán y Tucumán",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.438424,
+                        "lat":  -33.691802
+                    },
+                    {
+                        "nombre":  "Amaro Galán y Salta",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.438102,
+                        "lat":  -33.690669
+                    },
+                    {
+                        "nombre":  "Amaro Galán y Homero Manzi",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.437231,
+                        "lat":  -33.687839
+                    },
+                    {
+                        "nombre":  "Ardiles y Camilo S. Quiroga",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.426094,
+                        "lat":  -33.689133
+                    },
+                    {
+                        "nombre":  "Camilo S. Quiroga y Remedios de Escalada",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.424667,
+                        "lat":  -33.684253
+                    },
+                    {
+                        "nombre":  "Maipú y Sgto. Tránsito Gauna",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.423368,
+                        "lat":  -33.683594
+                    },
+                    {
+                        "nombre":  "Maipú y Julio Mediavilla",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.427317,
+                        "lat":  -33.682708
+                    },
+                    {
+                        "nombre":  "Maipú y Ma. Echevarría de Vidal",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.430653,
+                        "lat":  -33.681688
+                    },
+                    {
+                        "nombre":  "Maipú y Amaro Galán",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.435081,
+                        "lat":  -33.680724
+                    },
+                    {
+                        "nombre":  "Maipú y F. Vinuesa",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.437409,
+                        "lat":  -33.680238
+                    },
+                    {
+                        "nombre":  "Rufino Barreiro y San Luis",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.438031,
+                        "lat":  -33.675653
+                    },
+                    {
+                        "nombre":  "Rufino Barreiro y Paraguay",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.437398,
+                        "lat":  -33.672751
+                    },
+                    {
+                        "nombre":  "Nelson y Arenales",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.442355,
+                        "lat":  -33.670852
+                    },
+                    {
+                        "nombre":  "Nelson y Colombia",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.441915,
+                        "lat":  -33.668972
+                    },
+                    {
+                        "nombre":  "Zavala Ortiz y Gdor. Besso",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.438176,
+                        "lat":  -33.667914
+                    },
+                    {
+                        "nombre":  "Landaburu y J J Paso",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.437007,
+                        "lat":  -33.667651
+                    },
+                    {
+                        "nombre":  "Juan B Justo y Besso",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.438042,
+                        "lat":  -33.666798
+                    },
+                    {
+                        "nombre":  "Nelson y Centenario",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.44029,
+                        "lat":  -33.663622
+                    },
+                    {
+                        "nombre":  "Nelson y Carlos Pellegrini",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.439499,
+                        "lat":  -33.660967
+                    },
+                    {
+                        "nombre":  "Carlos Pellegrini y Tallaferro",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.43849,
+                        "lat":  -33.661164
+                    },
+                    {
+                        "nombre":  "Rufino Barreiro y Tte. Pereyra",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.432936,
+                        "lat":  -33.659064
+                    },
+                    {
+                        "nombre":  "Frente Hospital de referencia Eva Perón",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.429589,
+                        "lat":  -33.659363
+                    },
+                    {
+                        "nombre":  "Carlos Pellegrini y Nelson",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.43946,
+                        "lat":  -33.660763
+                    },
+                    {
+                        "nombre":  "Zavala Ortiz y Gral Guido",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.438485,
+                        "lat":  -33.667677
+                    },
+                    {
+                        "nombre":  "Maipu y Angel Pez",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.428021,
+                        "lat":  -33.682901
+                    },
+                    {
+                        "nombre":  "Pasaje montero y Homero Manzi",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.433872,
+                        "lat":  -33.688324
+                    },
+                    {
+                        "nombre":  "Tucuman y Felipe Vinuesa",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.440439,
+                        "lat":  -33.691091
+                    },
+                    {
+                        "nombre":  "Tucuman y Rufino Barreiro",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.442703,
+                        "lat":  -33.690555
+                    },
+                    {
+                        "nombre":  "Tucuman y Tallaferro",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.44693,
+                        "lat":  -33.689636
+                    },
+                    {
+                        "nombre":  "Tallaferro e Hipolito Yrigoyen",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.44767,
+                        "lat":  -33.691225
+                    },
+                    {
+                        "nombre":  "Hipólito Yrigoyen y A. Agüero",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.449526,
+                        "lat":  -33.690872
+                    },
+                    {
+                        "nombre":  "Hipólito Yrigoyen y Guayaquil",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.452756,
+                        "lat":  -33.690207
+                    },
+                    {
+                        "nombre":  "Hipólito Yrigoyen y Perón",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.454928,
+                        "lat":  -33.689703
+                    },
+                    {
+                        "nombre":  "Hipólito Yrigoyen y Brasil",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.458084,
+                        "lat":  -33.689082
+                    },
+                    {
+                        "nombre":  "Hipólito Yrigoyen e Italia",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.460251,
+                        "lat":  -33.688596
+                    },
+                    {
+                        "nombre":  "Hipólito Yrigoyen y San Martín",
+                        "descripcion":  "",
+                        "imagen":  "https://lh3.googleusercontent.com/umsh/AN6v0v6kiw_ZmMlzuNxuvdl0Juh1a4Ftqdyv1X-KIk3S3jpJa52pdiy8NLUPjDLZPRuY_lWs0gIao5MySJX1dc8682Or81vlzp51sHlBRqfGrDnnFISne4u6aAEgnk5nLMcD6xUVTbsXc7li8mVtTynBZP5z3tXioScOhZ5cCXGerJWrTZHYGiQezCuIoeUbjifabFJWQFE_9SJ-_L4HYTBBQ3N91uyXv1scPHqMFGpRlCnNJUR5f91oTrGrElTZdW--acHNXyHrw85TQbILnTbf5fZjy-Shi2WBfZP4Q02-Jb7tYrn9DhSyEp2tau9D-4oPQtdecTZjPW3Uaj4PbOkcVdq7wCopGnm0ybdmdnZGBir41KtTDLrb3O-qCleNZ_0w75I6j6GQj-mzc9IYd6xsNLC_exzLNoiWjHPy1uAYPZx5dtLTxOic2hatW4rSAOdsUBA5SLmcCYRFnqbkA1Co29LBpGgqnXZF3ieKNJkvDIa-SjcftjEluOPCij3C4RCDyNEpCF_77k0ttD7USJrJ5CWPy2l5132PzeEMyj_LzJTaFlIaAUEQitaWRt4iHDZeOiaYhD8DxrymkDQUcNppjYR7rFPj7M9UBOzPbfl-BngD5hvfG9OyPfeppliYMDBK2fxMQdg4AzD04UAGIvJdGihyFDWDsFXNbGsAxQ16wt2m2NIZMJyqwmX9LuDvzZuKOGxWdQpiuhsgd83wYXb8RDMGiZwltR9sErBDN-JH11shRDHG3gRjUhx8mCZ3eB90KjE03PVxrMMgEcRHGqk776jTn8cQfpu_zG0V2QW4EqYaOYgv1tQFOL9_6IZWW14S8KVmTlZ_OLr0uHf3kALa1kEqanyqN5CXqJ9Yewov7UVyVseQOMpK7x6-Abbf07vzyd1ioaB0f0ha2dKEg6eOaqd349DU91VMjSGWbMOMwqwE99TzJO9KDLntlAnGenECv141fdgvntZVPtvwlV0pJGdhd2uX74QDdHqQtZmYZYw6jNplE4lREU46lX2RoZvSqzt5e_l1pGfdkftlRx940CKQuGxvt7-gKx5Mvc9zLJSNLdpOU7tdAvQxhIcMU9WTF-EOMGTSnSiDvTMTSug_qstyCzTEcKw_eeGYnISCUsK6ooCDeUEWtET_Aoub3rxNGCPcFnJCaWIT1kc2K_cWv4_ZYSG4STcWB7dSZrg2mP8_izXoLw",
+                        "lng":  -65.463689,
+                        "lat":  -33.687894
+                    },
+                    {
+                        "nombre":  "Gral. Paz y Tucumán",
+                        "descripcion":  "",
+                        "imagen":  "https://lh3.googleusercontent.com/umsh/AN6v0v42IgMBKxGF4-0erDxUahmmxGbE_KDRAnaTRi0PbfWFitjWL_RL_tdlU6gTzeKbSFHD9gXh0IhWB8EWZ2cLlozDQYX1haYfdehAD03RSVqQPKFKIt6YMLdj8A_47OgUqc41GSZuYGUiC3ABslbWjJWXOfNr9qruI1NA-aSg0XL_HD7CkPdYr5iiUBPvD-3y-Z86BiGcUfXROSG8hS_6j_nNRQKD1lkpt1TnirvtAke1qqMUZnzyDUasVI1WX0aof65O1dEqSkAo7hpXqCVSzWiplFrzS8GdTyUxQEApfHfQ28EeltWeQblWA-QddlyGD_LcTIgO1Q7lmg3MkNK2UJXK-xBlDYBw3SwFfw4Yeu67oLqDGroEYaE6sRvnZTw7fYTAULehsauW_bY9yh9VuEytRy_nJnkm3kaAhb-6sl5zJgqUMozKpQy9akpJ_p_JnvJXQ2UlgTzczllZBKa1xxdTgkbYTPPm0OnQXPxAf-B6XFXT9ELjrj8iPxr3nx_9n47GFdEbwfIiJymH1ivMXHLZgTUr4yyXH6a9xoTdHlYMyk0XP0IpgczOlOcndpU4c8XeoLuvBsb1vSI2l02GX2aH8dcgqM_EHliidoxA32cHwZ-BbvZDeVsshlqDd_1eb2HVMqA6Rce6DfO0gMFvUOam3BpmA2_UgS7WsM23LXLo3YmvDAyb4IU7vQB7L8YdC0SbQJrYefUMtjuSXYUEE6v0SJFNIGZvUvuQWaMrTLBFhNZ-ZXUJce71spQC5rClb17Y1kZT5sa03fuSTFlr-5CASSBWMQB6WjGHOoIB44r2n1xSifm9ZQoAhMzeUCxboV_hIdrvrvca4J1V1mBXMo0HI6YgBqfUA2Fm2c2U8dIMKsT_uwb0c7yNjjMr-PTogKKrtJ27ojgJ184o2Ph2SIHFlU6qTtZcgvFvXG2WkThNc6uCVXD-tNSIOnLoluRa4u_1h-V8Al9xbGq7NpFZiphJz_aKNaNrEjz7zUdvOoLVYOUvY4WS3tnnloywwShkx_BWEGsoFnHfnuc_XFZmqQgyZQeJFU1PW9zcKbYhcH4Tnv1uQbdCngq9q0g7mcTr_nn-_8f4I-yMXBK-nIxFhXz4QVRJTnJc_zaRnj6xssIU0Fr5HZeewD3ZG2jiDbvV7qbrKwchs2oOpvuGUrrc4lGLro-YjhnqQ32ab3a0q0eI4VID",
+                        "lng":  -65.464028,
+                        "lat":  -33.686043
+                    },
+                    {
+                        "nombre":  "Gral. Paz y Édison",
+                        "descripcion":  "",
+                        "imagen":  "https://lh3.googleusercontent.com/umsh/AN6v0v7vO8HKWS0urMR8eCv_2wqraBvx55my-qP-dLt3K5bqc8FtDvvoxL0Chn1i0AHBYuSkyAOtio1nwOUIWwjwAhBuInYCCdBHvL1u6LyFJxhjEJtkR2Au-aSowX9c3oJxPuwiXgT6T-eTUostOAsjXVXIqSs4OrJS0acNU11-SwZCRCXb6k-VUADkhcc_o7JQOWgezyqO_1u2Ek15g0DqJnZ8fZMgMlD4dexinoUmtThydBtSeGWlmQInPQXcic3LGNm5KIQ4JAUd3yozBNQwcUwKzuWFYy7sYXtcpvR25tGxl23wYY4jDCwOR9bsyRh1byoQgi6ZFOG71_1TvpqPE3MUh6sED_YUAJdLA4VYQDaBkohRHOwaBTl1vkDuz5MK610rAaYYBy4tW_bcfQeyOhq-Oc62RzOGDKMY55brhFbsncjdzGvYrIZPnMfcR4-NlRb4FelCSdAvZBv4zcjLF0jKOlPHu6bw70ClNMakVcJjhgT7GC51uYQachdMtDHW8JAvlBbPMJJ8vHAyRiwbv7LecXa5dmj6ZHPW_DvzQhby19opEKlEAGedeABEnZQxY3NCtj8cLI1Yo4N7lpHLyRHp0vnEOxd7HVtgQeOOvhPoS4lP20-kY96tl19I_J2olg7VTSLgy56i_2bVzAQN45JbHB6NRogoFQYjuPFhh8l3WU2kPKlks8ctQ_0eXMuBQGjmLNRlW9lmAgjox2CctcBX061KTaewtahRizKkQB6Ctmk_5eFHOIt-JK9J7fYGWh5JJ0_xpue1KVr01vGPU0tZY2J6MuBpAKMmlfgs_nCGr_I9NoZZE2RrK7N6awB2rUUFbk7V16umgdCRSJELcmoQbBZwIIYMWXalOgt0R0pyQ3iv82IlP-ziGEB77hpxm-q-uXmAGVIpfihvzw3c9_x2vfY6b9s--qNc_eMg-4EKoStAvfCFn6IyvfzWOUzzyAU9MNAUmb9886stxiF9C9Z3vAk2XonaXjfx5iL0xu1Jpz_oZvst8jB3Tmtr090OjFmKRaoDGCubeQeeufNSeTS6vQDTKOwtOUwryltH0ujwRODxBdQToKPyBjB42q37hJYtfg5MkwoasKTZkQl6Tu95F8XkX56ZqFt4gpKu-L_BrthjfXSVUvMRlMPit_MjY5eukZQHsWgHVJTq7ZG04dbDlLjRWeww9OVw7f9y4xHrEPb9gWM",
+                        "lng":  -65.463408,
+                        "lat":  -33.68411
+                    },
+                    {
+                        "nombre":  "Remedios Escalada y Bélgica",
+                        "descripcion":  "",
+                        "imagen":  "",
+                        "lng":  -65.455911,
+                        "lat":  -33.677364
+                    },
+                    {
+                        "nombre":  "Maipú y Mitre",
+                        "descripcion":  "",
+                        "imagen":  "https://lh3.googleusercontent.com/umsh/AN6v0v6juK2lBsbijg5JCgSkrrNHjV8x7YRQiIiENiYgk6hxnNQugUE00ykx_PU20Kxv2NmH_1EiMVQ-_wSEV8Bifzv5MhzH6dRmQvcKYWOQD4yg7ewutk8Qo3tCkXnewhibQuHAPGg9YU2rcK_JaEHTGR9DNWTskRQzIF8_4WSae3aPU_-kJg9JHpJb638QZRieT9Xt-Wxr9FNvD2zThq2cUQ0MrvG5yZNUd8VEDUMyPHy_DmcIv44uZaxAJQhRAq6IdqLZ1C-XXSw295Y_zWWVw7Hb37TwoIT4X408s-yNujR8TQcCmH1jbX3-W8J0lRJBRtzqZZoChqpxj5dt-NjmYVBl06HdmHEd22N8_nbk5QXLoDhdJFcbPFaf5iIg1yi_ucrG-zDmoROhBuyuKQRAI9d1nt2-aJLnKjjOKdOOXYtY-7AQb0A860RqplsXSmJ7TVWuURIKAfbwPH07h7B5JZ7nb91S8-fqT4tt-d9eRoaPPx_F5v3cpSV7MAnqlwe4-Kttda3vRtsOVvgOC62wGyjtRNUGEYzhVwuSPH1YT2HVqtuxthCcmtCEq29UBAQP63FLtRaV_YvhN2hWtgJRnrYpfkHcF4CBsDc4-iLBEuHeArsS2YAgeghif4Ol2uPVerUAzkS8Lvaiu_ZkMCme8gY_QSBQzuOO4AXUfJEdVA5T5Ovwmxg0Kd4uGhZNkOUYEWBhlRUuVdC717qAGnsO9DynfXw9I64USNxsMAiyOC28aZ5W81BoSLLJ7XCMaQuvJiundsyMYDYWZFkt0-53fJc-YXp3Kwxghty4AcToDYXRvd2CB5XVUiWGhM0I2zlrwCfDJTZ1yziEiIEKWgi48C_Rst-jsMX9wESFNI7-4-rCWmg6jvSxWPmKj1uHvQXH0ttouB05Aw7uE-0Dcli-5sP_se64TdG-cu4ZzwSDaO4MpGVhEyReBovQTuAxyJQg_rPCJIrFzxSmVdx4kOPMGrDCiiGY63CJbkaam3g5yVkaYZ90rV-4AhJs64-73eE3Ti-yMvfnRRAoJqbE9wXJ1cITnPCgrx2qJLL4du6014HVqW-C8Vy9JvLU6rbr20LoD0HUzm4Djc3XQsdVYD2An1NEeAS9sQvKyVYvIQ6P90Riu2IN_Gu60xB05B4pfYyeyZdp91BdIVDxqYbb00r1vPtLj5pXSv7hj1Jext-cs9cYZGqjwA",
+                        "lng":  -65.46176154439253,
+                        "lat":  -33.67503351206893
+                    }
+                ]
+}

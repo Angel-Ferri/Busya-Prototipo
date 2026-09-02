@@ -1,0 +1,52 @@
+{
+  "empresa": "Solbus",
+  "lineas": [
+    {
+      "nombre": "Línea A",
+      "días": "Domingos",
+      "paradas": [
+        "Salida del Cruce",
+        "Terminal",
+        "Balcarce y Urquiza",
+        "L.Guillet y G. Paz",
+        "Entrada Ate II",
+        "Salida B° F.Sarmiento",
+        "Nelson e Irigoyen",
+        "Gral. Paz y Maipú",
+        "Llega Cruce descanso"
+      ],
+      "horarios": [
+        { "Salida del Cruce": null, "Terminal": null, "Balcarce y Urquiza": null, "L.Guillet y G. Paz": null, "Entrada Ate II": "05:20", "Salida B° F.Sarmiento": "05:33", "Nelson e Irigoyen": "05:45", "Gral. Paz y Maipú": "05:57", "Llega Cruce descanso": "06:07" },
+        { "Salida del Cruce": "06:22", "Terminal": "06:31", "Balcarce y Urquiza": "06:41", "L.Guillet y G. Paz": "06:47", "Entrada Ate II": "06:59", "Salida B° F.Sarmiento": "07:12", "Nelson e Irigoyen": "07:24", "Gral. Paz y Maipú": "07:36", "Llega Cruce descanso": "07:46" },
+        { "Salida del Cruce": null, "Terminal": null, "Balcarce y Urquiza": null, "L.Guillet y G. Paz": null, "Entrada Ate II": "08:05", "Salida B° F.Sarmiento": "08:18", "Nelson e Irigoyen": "08:30", "Gral. Paz y Maipú": "08:42", "Llega Cruce descanso": "08:52" },
+        { "Salida del Cruce": "08:01", "Terminal": "08:10", "Balcarce y Urquiza": "08:20", "L.Guillet y G. Paz": "08:26", "Entrada Ate II": "08:38", "Salida B° F.Sarmiento": "08:51", "Nelson e Irigoyen": "09:03", "Gral. Paz y Maipú": "09:15", "Llega Cruce descanso": "09:25" },
+        { "Salida del Cruce": "08:34", "Terminal": "08:43", "Balcarce y Urquiza": "08:53", "L.Guillet y G. Paz": "08:59", "Entrada Ate II": "09:11", "Salida B° F.Sarmiento": "09:24", "Nelson e Irigoyen": "09:36", "Gral. Paz y Maipú": "09:48", "Llega Cruce descanso": "09:58" },
+        { "Salida del Cruce": "09:07", "Terminal": "09:16", "Balcarce y Urquiza": "09:26", "L.Guillet y G. Paz": "09:32", "Entrada Ate II": "09:44", "Salida B° F.Sarmiento": "09:57", "Nelson e Irigoyen": "10:09", "Gral. Paz y Maipú": "10:21", "Llega Cruce descanso": "10:31" },
+        { "Salida del Cruce": "09:40", "Terminal": "09:49", "Balcarce y Urquiza": "09:59", "L.Guillet y G. Paz": "10:05", "Entrada Ate II": "10:17", "Salida B° F.Sarmiento": "10:30", "Nelson e Irigoyen": "10:42", "Gral. Paz y Maipú": "10:54", "Llega Cruce descanso": "11:04" },
+        { "Salida del Cruce": "10:13", "Terminal": "10:22", "Balcarce y Urquiza": "10:32", "L.Guillet y G. Paz": "10:38", "Entrada Ate II": "10:50", "Salida B° F.Sarmiento": "11:03", "Nelson e Irigoyen": "11:15", "Gral. Paz y Maipú": "11:27", "Llega Cruce descanso": "11:37" },
+        { "Salida del Cruce": "10:46", "Terminal": "10:55", "Balcarce y Urquiza": "11:05", "L.Guillet y G. Paz": "11:11", "Entrada Ate II": "11:23", "Salida B° F.Sarmiento": "11:36", "Nelson e Irigoyen": "11:48", "Gral. Paz y Maipú": "12:00", "Llega Cruce descanso": "12:10" },
+        { "Salida del Cruce": "11:19", "Terminal": "11:28", "Balcarce y Urquiza": "11:38", "L.Guillet y G. Paz": "11:44", "Entrada Ate II": "11:56", "Salida B° F.Sarmiento": "12:09", "Nelson e Irigoyen": "12:21", "Gral. Paz y Maipú": "12:33", "Llega Cruce descanso": "12:43" },
+        { "Salida del Cruce": "11:52", "Terminal": "12:01", "Balcarce y Urquiza": "12:11", "L.Guillet y G. Paz": "12:17", "Entrada Ate II": "12:29", "Salida B° F.Sarmiento": "12:42", "Nelson e Irigoyen": "12:54", "Gral. Paz y Maipú": "13:06", "Llega Cruce descanso": "13:16" },
+        { "Salida del Cruce": "12:25", "Terminal": "12:34", "Balcarce y Urquiza": "12:44", "L.Guillet y G. Paz": "12:50", "Entrada Ate II": "13:02", "Salida B° F.Sarmiento": "13:15", "Nelson e Irigoyen": "13:27", "Gral. Paz y Maipú": "13:39", "Llega Cruce descanso": "13:49" },
+        { "Salida del Cruce": "12:58", "Terminal": "13:07", "Balcarce y Urquiza": "13:17", "L.Guillet y G. Paz": "13:23", "Entrada Ate II": "13:35", "Salida B° F.Sarmiento": "13:48", "Nelson e Irigoyen": "14:00", "Gral. Paz y Maipú": "14:12", "Llega Cruce descanso": "14:22" },
+        { "Salida del Cruce": "13:31", "Terminal": "13:40", "Balcarce y Urquiza": "13:50", "L.Guillet y G. Paz": "13:56", "Entrada Ate II": "14:08", "Salida B° F.Sarmiento": "14:21", "Nelson e Irigoyen": "14:33", "Gral. Paz y Maipú": "14:45", "Llega Cruce descanso": "14:55" },
+        { "Salida del Cruce": "14:04", "Terminal": "14:13", "Balcarce y Urquiza": "14:23", "L.Guillet y G. Paz": "14:29", "Entrada Ate II": "14:41", "Salida B° F.Sarmiento": "14:54", "Nelson e Irigoyen": "15:06", "Gral. Paz y Maipú": "15:18", "Llega Cruce descanso": "15:28" },
+        { "Salida del Cruce": "14:37", "Terminal": "14:46", "Balcarce y Urquiza": "14:56", "L.Guillet y G. Paz": "15:02", "Entrada Ate II": "15:14", "Salida B° F.Sarmiento": "15:27", "Nelson e Irigoyen": "15:39", "Gral. Paz y Maipú": "15:51", "Llega Cruce descanso": "16:01" },
+        { "Salida del Cruce": "15:10", "Terminal": "15:19", "Balcarce y Urquiza": "15:29", "L.Guillet y G. Paz": "15:35", "Entrada Ate II": "15:47", "Salida B° F.Sarmiento": "16:00", "Nelson e Irigoyen": "16:12", "Gral. Paz y Maipú": "16:24", "Llega Cruce descanso": "16:34" },
+        { "Salida del Cruce": "15:43", "Terminal": "15:52", "Balcarce y Urquiza": "16:02", "L.Guillet y G. Paz": "16:08", "Entrada Ate II": "16:20", "Salida B° F.Sarmiento": "16:33", "Nelson e Irigoyen": "16:45", "Gral. Paz y Maipú": "16:57", "Llega Cruce descanso": "17:07" },
+        { "Salida del Cruce": "16:16", "Terminal": "16:25", "Balcarce y Urquiza": "16:35", "L.Guillet y G. Paz": "16:41", "Entrada Ate II": "16:53", "Salida B° F.Sarmiento": "17:06", "Nelson e Irigoyen": "17:18", "Gral. Paz y Maipú": "17:30", "Llega Cruce descanso": "17:40" },
+        { "Salida del Cruce": "16:49", "Terminal": "16:58", "Balcarce y Urquiza": "17:08", "L.Guillet y G. Paz": "17:14", "Entrada Ate II": "17:26", "Salida B° F.Sarmiento": "17:39", "Nelson e Irigoyen": "17:51", "Gral. Paz y Maipú": "18:03", "Llega Cruce descanso": "18:13" },
+        { "Salida del Cruce": "17:22", "Terminal": "17:31", "Balcarce y Urquiza": "17:41", "L.Guillet y G. Paz": "17:47", "Entrada Ate II": "17:59", "Salida B° F.Sarmiento": "18:12", "Nelson e Irigoyen": "18:24", "Gral. Paz y Maipú": "18:36", "Llega Cruce descanso": "18:46" },
+        { "Salida del Cruce": "17:55", "Terminal": "18:04", "Balcarce y Urquiza": "18:14", "L.Guillet y G. Paz": "18:20", "Entrada Ate II": "18:32", "Salida B° F.Sarmiento": "18:45", "Nelson e Irigoyen": "18:57", "Gral. Paz y Maipú": "19:09", "Llega Cruce descanso": "19:19" },
+        { "Salida del Cruce": "18:28", "Terminal": "18:37", "Balcarce y Urquiza": "18:47", "L.Guillet y G. Paz": "18:53", "Entrada Ate II": "19:05", "Salida B° F.Sarmiento": "19:18", "Nelson e Irigoyen": "19:30", "Gral. Paz y Maipú": "19:42", "Llega Cruce descanso": "19:52" },
+        { "Salida del Cruce": "19:01", "Terminal": "19:10", "Balcarce y Urquiza": "19:20", "L.Guillet y G. Paz": "19:26", "Entrada Ate II": "19:38", "Salida B° F.Sarmiento": "19:51", "Nelson e Irigoyen": "20:03", "Gral. Paz y Maipú": "20:15", "Llega Cruce descanso": "20:25" },
+        { "Salida del Cruce": "19:34", "Terminal": "19:43", "Balcarce y Urquiza": "19:53", "L.Guillet y G. Paz": "19:59", "Entrada Ate II": "20:11", "Salida B° F.Sarmiento": "20:24", "Nelson e Irigoyen": null, "Gral. Paz y Maipú": null, "Llega Cruce descanso": null },
+        { "Salida del Cruce": "20:07", "Terminal": "20:16", "Balcarce y Urquiza": "20:26", "L.Guillet y G. Paz": "20:32", "Entrada Ate II": "20:44", "Salida B° F.Sarmiento": "20:57", "Nelson e Irigoyen": "21:09", "Gral. Paz y Maipú": "21:21", "Llega Cruce descanso": "21:31" },
+        { "Salida del Cruce": "20:40", "Terminal": "20:49", "Balcarce y Urquiza": "20:59", "L.Guillet y G. Paz": "21:05", "Entrada Ate II": "21:17", "Salida B° F.Sarmiento": "21:30", "Nelson e Irigoyen": "21:42", "Gral. Paz y Maipú": "21:54", "Llega Cruce descanso": "22:04" },
+        { "Salida del Cruce": "21:46", "Terminal": "21:55", "Balcarce y Urquiza": "22:05", "L.Guillet y G. Paz": "22:11", "Entrada Ate II": "22:23", "Salida B° F.Sarmiento": "22:36", "Nelson e Irigoyen": "22:48", "Gral. Paz y Maipú": "23:00", "Llega Cruce descanso": "23:10" },
+        { "Salida del Cruce": "22:19", "Terminal": "22:28", "Balcarce y Urquiza": "22:38", "L.Guillet y G. Paz": "22:44", "Entrada Ate II": "22:56", "Salida B° F.Sarmiento": "23:09", "Nelson e Irigoyen": "23:21", "Gral. Paz y Maipú": "23:33", "Llega Cruce descanso": "23:43" },
+        { "Salida del Cruce": "23:25", "Terminal": "23:34", "Balcarce y Urquiza": "23:42", "L.Guillet y G. Paz": "23:46", "Entrada Ate II": null, "Salida B° F.Sarmiento": "00:11", "Nelson e Irigoyen": null, "Gral. Paz y Maipú": null, "Llega Cruce descanso": null }
+      ]
+    }
+  ]
+}

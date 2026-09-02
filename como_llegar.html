@@ -25,6 +25,7 @@
             
             <!-- Formularios de selección -->
             <div class="panel-busqueda-viaje">
+                <!-- 1. Selección de Línea -->
                 <div class="grupo-control">
                     <label for="select-linea">1. Selecciona la línea:</label>
                     <select id="select-linea" onchange="alCambiarLinea(this.value)">
@@ -36,10 +37,19 @@
                     </select>
                 </div>
 
+                <!-- 2. Selección de Destino -->
                 <div class="grupo-control">
-                    <label for="select-destino">2. ¿A dónde te quieres bajar?:</label>
-                    <select id="select-destino" disabled onchange="calcularRutaYTiempo()">
+                    <label for="select-destino">2. ¿A dónde querés ir?:</label>
+                    <select id="select-destino" disabled onchange="alSeleccionarDestino()">
                         <option value="" disabled selected>-- Primero selecciona línea --</option>
+                    </select>
+                </div>
+
+                <!-- 3. Selección de Origen (Partida) -->
+                <div class="grupo-control">
+                    <label for="select-origen">3. Parada de subida (Origen):</label>
+                    <select id="select-origen" disabled onchange="alSeleccionarOrigen()">
+                        <option value="" disabled selected>-- Primero selecciona destino --</option>
                     </select>
                 </div>
             </div>
@@ -56,7 +66,7 @@
                 <h3>⏱ Resumen del Trayecto</h3>
                 <div id="resumen-viaje" class="tarjeta-resumen">
                     <p style="color: #64748b; text-align: center;">
-                        Activa tu ubicación y selecciona línea y destino para ver el itinerario.
+                        Selecciona una línea para comenzar a planificar tu recorrido.
                     </p>
                 </div>
             </section>
