@@ -27,7 +27,7 @@
                     <span class="arrow">➔</span>
                 </button>
 
-                <!-- 2. Botón Mapa en Vivo -->
+                <!-- 2. Botón Mapa en Vivo
                 <a href="mapa.html" class="mapa-link-container">
                     <button class="mapa-card">
                         <div class="mapa-badge">Módulo</div>
@@ -37,7 +37,7 @@
                         </div>
                         <span class="mapa-arrow">➔</span>
                     </button>
-                </a>
+                </a> -->
 
                 <!-- 3. Nuevo Botón "¿Cómo llegar?" -->
                 <a href="como_llegar.html" class="mapa-link-container">
@@ -65,30 +65,44 @@
             <h3>¿De qué línea quieres saber el recorrido?</h3>
             <p style="margin-bottom: 15px; font-size: 0.9rem; color: #64748b;">Selecciona una opción para continuar:</p>
             
-            <div class="menu-lineas">
-                <button class="linea-card" onclick="seleccionarLinea('lineaa.json')">
-                    <div class="linea-badge badge-a">A</div>
-                    <div class="linea-info"><h3>Línea A</h3><p>Facultad ↔ Ate 2</p></div>
-                    <span class="arrow">➔</span>
-                </button>
-                <button class="linea-card" onclick="seleccionarLinea('lineae.json')">
-                    <div class="linea-badge badge-e">E</div>
-                    <div class="linea-info"><h3>Línea E</h3><p>M. Ernst ↔ La Ribera</p></div>
-                    <span class="arrow">➔</span>
-                </button>
-                <button class="linea-card" onclick="seleccionarLinea('lineaeste.json')">
-                    <div class="linea-badge badge-este">Este</div>
-                    <div class="linea-info"><h3>Línea Zona Este</h3><p>Pellegrini ↔ Htal. Eva Perón</p></div>
-                    <span class="arrow">➔</span>
-                </button>
-                <button class="linea-card" onclick="seleccionarLinea('lineaoeste.json')">
-                    <div class="linea-badge badge-oeste">Oeste</div>
-                    <div class="linea-info"><h3>Línea Zona Oeste</h3><p>Terminal ↔ Policlínico</p></div>
-                    <span class="arrow">➔</span>
-                </button>
-            </div>
+          <!-- Dentro del MODAL 1 en index.html -->
+<div class="menu-lineas">
+    <button class="linea-card" onclick="seleccionarLinea('linea_a')">
+        <div class="linea-badge badge-a">A</div>
+        <div class="linea-info">
+            <h3>Línea A</h3>
+            <p>Facultad ↔ Ate 2</p>
         </div>
-    </div>
+        <span class="arrow">➔</span>
+    </button>
+
+    <button class="linea-card" onclick="seleccionarLinea('linea_e')">
+        <div class="linea-badge badge-e">E</div>
+        <div class="linea-info">
+            <h3>Línea E</h3>
+            <p>M. Ernst ↔ La Ribera</p>
+        </div>
+        <span class="arrow">➔</span>
+    </button>
+
+    <button class="linea-card" onclick="seleccionarLinea('linea_este')">
+        <div class="linea-badge badge-este">Este</div>
+        <div class="linea-info">
+            <h3>Línea Zona Este</h3>
+            <p>Pellegrini ↔ Htal. Eva Perón</p>
+        </div>
+        <span class="arrow">➔</span>
+    </button>
+
+    <button class="linea-card" onclick="seleccionarLinea('linea_oeste')">
+        <div class="linea-badge badge-oeste">Oeste</div>
+        <div class="linea-info">
+            <h3>Línea Zona Oeste</h3>
+            <p>Terminal ↔ Policlínico</p>
+        </div>
+        <span class="arrow">➔</span>
+    </button>
+</div>
 
     <!-- MODAL 2: Pase Estudiantil -->
     <div id="modal-estudiante" class="modal-estudiante-overlay hidden" onclick="cerrarModalEstudiante(event)">

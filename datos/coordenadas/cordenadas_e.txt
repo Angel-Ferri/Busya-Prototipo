@@ -1,0 +1,148 @@
+{
+  "coordenadas": [
+    [-33.664948, -65.466054], // Inicio: Av. Mitre y Origone
+    [-33.665042, -65.465931], // Av. Mitre intersección Balcarce
+    [-33.665323, -65.465947], // Av. Mitre hacia Pedernera
+    [-33.666796, -65.466441], // Av. Mitre y España (Zona céntrica)
+    [-33.668270, -65.466870], // Av. Mitre y Marconi / Curupaytí
+    [-33.668038, -65.467969], // Giro hacia Salta / Av. 25 de Mayo
+    [-33.669422, -65.468356], // Av. 25 de Mayo y General Paz
+    [-33.670707, -65.468716], // Av. 25 de Mayo y Potosí
+    [-33.671913, -65.463308], // Av. 25 de Mayo cruzando por Plaza Pedernera / Zona Estación
+    [-33.680189, -65.465775], // Av. 25 de Mayo ingresando a Barrio San Martín / Zona Sur
+    [-33.687898, -65.468039], // Av. 25 de Mayo y Rotonda Ruta 8
+    [-33.688867, -65.468340], // Colectora Ruta Nacional 8
+    [-33.688490, -65.469895], // Cruce por A. Mercerat / A. Del Viso
+    [-33.688153, -65.471473], // Intersección con Calle Jorge Newbery
+    [-33.686376, -65.470947], // Jorge Newbery y H. Yrigoyen
+    [-33.685876, -65.473216], // H. Yrigoyen y Europa
+    [-33.684961, -65.477459], // Europa y Amaro Galán (Barrio Estación)
+    [-33.683212, -65.476947], // Amaro Galán hacia Av. Aviador Origone
+    [-33.681484, -65.476386], // Amaro Galán y Puerredón
+    [-33.678761, -65.475619], // Amaro Galán y Av. Los Álamos / Suipacha
+    [-33.677824, -65.475410], // Amaro Galán y San Martín
+    [-33.676877, -65.479670], // Giro en San Martín / B. Las Miras
+    [-33.675808, -65.484983], // Av. Jorge Newbery y Av. Presidente Perón
+    [-33.676659, -65.485227], // Av. Pres. Perón y Betbeder
+    [-33.676253, -65.487114], // Av. Pres. Perón hacia B° La Rivera
+    [-33.675967, -65.488174], // Av. Pres. Perón intersección Leonismo
+    [-33.675726, -65.489180], // Av. Pres. Perón y Taboada
+    [-33.674982, -65.492522], // Acceso Principal a B° La Ribera (Av. Aviador Origone Oeste)
+    [-33.673964, -65.497379], // Av. La Ribera y Av. Los Álamos (Entrada al barrio)
+    [-33.673447, -65.499897], // Av. La Ribera - Rotonda Entrada Norte
+    [-33.673269, -65.500287], // B° La Ribera: Av. La Ribera y Calle 1
+    [-33.673116, -65.500366], // B° La Ribera: Calle 1 y Calle 2
+    [-33.673025, -65.500446], // B° La Ribera: Tramo comercial Calle 1
+    [-33.672994, -65.500626], // B° La Ribera: Tramo residencial
+    [-33.673007, -65.500794], // B° La Ribera: Giro interno manzana
+    [-33.673085, -65.500923], // B° La Ribera: Calle 3
+    [-33.673199, -65.500987], // B° La Ribera: Calle 3 y Calle 4
+    [-33.673344, -65.500987], // B° La Ribera: Tramo interno
+    [-33.673561, -65.500859], // B° La Ribera: Giro a manzana secundaria
+    [-33.673964, -65.500875], // B° La Ribera: Conexión con Av. Principal La Ribera
+    [-33.674938, -65.501232], // Av. La Ribera entre Manzana 1000 y 1100
+    [-33.676118, -65.502007], // Av. La Ribera - Tramo Central Barrio La Ribera
+    [-33.677100, -65.502788], // Av. La Ribera frente a Complejo Educativo
+    [-33.677324, -65.503021], // Av. La Ribera e Intersección Paseo de las Esculturas
+    [-33.677522, -65.503041], // Rotonda Sector Comercial La Ribera
+    [-33.678011, -65.503018], // Av. La Ribera hacia Sector Sur del Barrio
+    [-33.678270, -65.503144], // Av. La Ribera y Calle 108
+    [-33.679092, -65.503412], // Av. La Ribera y Calle 114
+    [-33.683609, -65.504721], // Av. La Ribera tramo final B° La Ribera Sur
+    [-33.683716, -65.504356], // B° La Ribera: Retorno por Calle 120
+    [-33.682618, -65.503672], // B° La Ribera: Tramo Calle 118
+    [-33.682064, -65.502793], // B° La Ribera: Calle 112
+    [-33.683386, -65.501741], // B° La Ribera: Conexión hacia Av. del Parque
+    [-33.684156, -65.502252], // Av. del Parque B° La Ribera
+    [-33.684564, -65.500218], // Av. del Parque y Rotonda Parque Costanera Río Quinto
+    [-33.686528, -65.500776], // Entrada a Predio Parque Costanera / Balneario
+    [-33.687028, -65.500583], // Acceso Sur Parque Costanera Río Quinto
+    [-33.698508, -65.503780], // Prolongación Ruta Prov. 2B hacia B° Ciudad Jardín / UPRO
+    [-33.698865, -65.501892], // Entrada Sector Industrial / Acceso Sur a Planta Urbano
+    [-33.698222, -65.501377], // Rotonda Sector Sur Industrial
+    [-33.700239, -65.497922], // Acceso por Calle Pringles Sur
+    [-33.703214, -65.498765], // B° Las Miras Sur / Parque Industrial
+    [-33.702206, -65.500449], // Tramo de Retorno por Calle Madre Cabrini
+    [-33.702203, -65.500754], // Intersección M. Cabrini y Av. 25 de Mayo Sur
+    [-33.700025, -65.504467], // Av. 25 de Mayo Sur y Rotonda Sur
+    [-33.700349, -65.504784], // Tramo Colectora Av. 25 de Mayo
+    [-33.699704, -65.505904], // Cruce hacia B° San José
+    [-33.699418, -65.505647], // B° San José: Calle Pedernera Sur
+    [-33.698793, -65.506140], // B° San José: Calle Curupaytí
+    [-33.698222, -65.506140], // B° San José: Calle Marconi Sur
+    [-33.697686, -65.505797], // B° San José: Calle España Sur
+    [-33.697561, -65.505820], // B° San José: Salida hacia Av. Jorge Newbery Sur
+    [-33.696115, -65.506698], // Av. Jorge Newbery Sur hacia B° Viva San Luis
+    [-33.695294, -65.505067], // B° Viva San Luis: Calle Principal
+    [-33.694241, -65.504788], // B° Viva San Luis: Plaza Central del barrio
+    [-33.692848, -65.505840], // Retorno por Av. Jorge Newbery
+    [-33.692045, -65.504016], // Av. Jorge Newbery y Potosí Sur
+    [-33.691420, -65.504316], // Potosí Sur y General Paz
+    [-33.690938, -65.504145], // General Paz hacia B° ACOP
+    [-33.690242, -65.503158], // B° ACOP: Calle Salta
+    [-33.689367, -65.501334], // B° ACOP: Salida a Av. 25 de Mayo Sur
+    [-33.686903, -65.500668], // Av. 25 de Mayo Sur (frente a predios deportivos)
+    [-33.686510, -65.500905], // Av. 25 de Mayo y Rotonda del Lago
+    [-33.684475, -65.500325], // Entrada al Lago Cúpula / Parque Lago de la Zona Sur
+    [-33.683540, -65.504612], // Av. La Ribera - Retorno Norte
+    [-33.679488, -65.503418], // Av. La Ribera (Zona Comercial Central)
+    [-33.678256, -65.503046], // Av. La Ribera y Escuela B° La Ribera
+    [-33.677786, -65.502870], // Av. La Ribera - Parada Escuela
+    [-33.677606, -65.502761], // Av. La Ribera - Tramo Central Norte
+    [-33.677471, -65.502620], // Av. La Ribera y Calle 102
+    [-33.677372, -65.502570], // B° La Ribera: Rotonda Salida Norte
+    [-33.677273, -65.502563], // B° La Ribera: Curva de salida hacia Av. Origone
+    [-33.676415, -65.502033], // Av. Aviador Origone Oeste y Acceso Ribera
+    [-33.675144, -65.501210], // Av. Aviador Origone Oeste
+    [-33.674301, -65.500864], // Av. Aviador Origone Oeste y Leonismo
+    [-33.673493, -65.500475], // Av. Aviador Origone Oeste y Taboada
+    [-33.673457, -65.500227], // Av. Aviador Origone Oeste y Betbeder
+    [-33.673492, -65.499978], // Av. Aviador Origone Oeste y Av. Pres. Perón
+    [-33.674528, -65.494847], // Av. Pres. Perón entre Belgrano y San Martín
+    [-33.675157, -65.492033], // Av. Pres. Perón y Suipacha
+    [-33.675794, -65.489208], // Av. Pres. Perón y Pueyrredón
+    [-33.676320, -65.487201], // Av. Pres. Perón y Amaro Galán
+    [-33.677522, -65.481463], // Av. Pres. Perón y Europa
+    [-33.678786, -65.475693], // Av. Pres. Perón y H. Yrigoyen
+    [-33.681464, -65.476480], // H. Yrigoyen y Jorge Newbery
+    [-33.684070, -65.477272], // Jorge Newbery y A. Mercerat
+    [-33.684397, -65.475729], // A. Mercerat hacia Colectora Ruta 8
+    [-33.684796, -65.474040], // Colectora Ruta 8 Sur
+    [-33.685689, -65.469662], // Rotonda de Ruta 8 y Av. 25 de Mayo
+    [-33.689269, -65.470744], // Av. 25 de Mayo rumbo al Centro
+    [-33.690423, -65.465398], // Av. 25 de Mayo e Potosí
+    [-33.676216, -65.461067], // Av. 25 de Mayo y General Paz (Plaza San Martín / Centro)
+    [-33.676853, -65.457900], // Av. 25 de Mayo e Curupaytí
+    [-33.677588, -65.454772], // Av. 25 de Mayo y España
+    [-33.677738, -65.453770], // Av. 25 de Mayo y Pedernera
+    [-33.678048, -65.452629], // Av. 25 de Mayo y Balcarce
+    [-33.677066, -65.452345], // Giro en Balcarce hacia Av. Mitre
+    [-33.675692, -65.458793], // Av. Mitre e Pedernera
+    [-33.671225, -65.457453], // Av. Mitre y España (Zona de Comercios)
+    [-33.672100, -65.453247], // Av. Mitre y Curupaytí
+    [-33.676890, -65.451874], // Av. Mitre y Marconi
+    [-33.666511, -65.457195], // Av. Mitre frente a Plaza Pedernera
+    [-33.666207, -65.458322], // Av. Mitre e Inmaculada Concepción
+    [-33.663155, -65.457319], // Av. Mitre y Av. Aviador Origone
+    [-33.661791, -65.456889], // Av. Aviador Origone e Ilustres Sanluiseños
+    [-33.662157, -65.458190], // Av. Aviador Origone y Pescadores
+    [-33.662628, -65.459722], // Av. Aviador Origone y Leonismo
+    [-33.663010, -65.461234], // Av. Aviador Origone y Taboada
+    [-33.663877, -65.463237], // Av. Aviador Origone y Betbeder
+    [-33.664378, -65.464392], // Av. Aviador Origone y Av. Pres. Perón
+    [-33.664709, -65.465450], // Av. Aviador Origone y Belgrano
+    [-33.664611, -65.465484], // Giro hacia Av. Mitre (Entrada Dársena Centro)
+    [-33.664530, -65.465541], // Dársena de Colectivos Centro
+    [-33.664446, -65.465750], // Dársena Central - Parada 1
+    [-33.664323, -65.465862], // Dársena Central - Parada 2
+    [-33.664233, -65.466120], // Dársena Central - Parada 3
+    [-33.664229, -65.466281], // Dársena Central - Salida hacia Av. Mitre
+    [-33.664269, -65.466410], // Av. Mitre y San Martín (Punto de Control)
+    [-33.664324, -65.466596], // Av. Mitre y Suipacha
+    [-33.664388, -65.466690], // Av. Mitre y Pueyrredón
+    [-33.664652, -65.466519], // Retorno por Origone hacia Av. Mitre
+    [-33.664762, -65.466178], // Av. Mitre y Amaro Galán
+    [-33.664842, -65.466157], // Av. Mitre y Europa
+    [-33.664922, -65.466104]  // Fin de Recorrido: Av. Mitre y Origone (Cabecera Central)
+  ]
+}

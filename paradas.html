@@ -11,11 +11,13 @@
     <div class="app-container">
         <header class="app-header">
             <div class="header-top">
-                <button class="back-btn" onclick="volverAlInicio()">⬅ Volver</button>
+
+                <button class="back-btn" onclick="window.location.href='index.html'">⬅ Volver</button>
             </div>
             
             <h1 id="linea-titulo">Cargando línea...</h1>
             <p id="linea-empresa-dias">Solbus</p>
+            <p style="margin-top: 5px;"><span id="estado-estudiantes"></span></p>
 
             <div id="panel-chofer" class="panel-chofer hidden">
                 <h3>🛠️ Panel de Control (Línea Activa)</h3>
@@ -34,46 +36,64 @@
                 </div>
             </div>
         </header>
+
         <main class="content-container">
             <section class="paradas-section">
                 <h2>Selecciona tu parada:</h2>
-                <div id="paradas-lista" class="paradas-lista">
-                    </div>
+                <input 
+                    type="text" 
+                    id="buscador-paradas" 
+                    placeholder="🔍 Buscar parada..." 
+                    onkeyup="filtrarParadas()" 
+                    style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ccc;"
+                >
+                
+                <!-- Barra desplegable con todas las paradas -->
+                <select id="paradas-select" size="8" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;" onchange="seleccionarParada()">
+                    <!-- Opciones generadas dinámicamente desde paradas.js -->
+                </select>
             </section>
+            
             <section id="horarios-section" class="horarios-section hidden">
                 <h2 id="parada-seleccionada-titulo">Horarios para:</h2>
-                <div id="horarios-lista" class="horarios-cronologicos">
-                    </div>
+                
+                <div id="aclaracion-estimados" class="aclaracion-box hidden">
+                    💡 <b>Aviso de estimación:</b> Los horarios mostrados para esta parada intermedia son 
+                    <i>calculados mediante estimación de trayecto</i> con respecto a las paradas fijas de la grilla.
+                </div>
+
+                <div id="horarios-lista" class="horarios-cronologicos"></div>
             </section>
         </main>
     </div>
-        <!-- Botón Flotante Estudiante -->
-        <button id="btn-estudiante-flotante" class="boton-estudiante-circular" onclick="abrirModalEstudiante()">
-            🎓
-        </button>
 
-        <!-- Ventana Emergente (Modal) -->
-        <div id="modal-estudiante" class="modal-estudiante-overlay hidden" onclick="cerrarModalEstudiante(event)">
-            <div class="modal-estudiante-content">
-                <button class="modal-estudiante-cerrar" onclick="document.getElementById('modal-estudiante').classList.add('hidden')">×</button>
-                <div class="modal-estudiante-icono">🎓</div>
-                <h3 id="modal-estudiante-titulo">Pase Estudiantil</h3>
-                <p id="modal-estudiante-mensaje">Cargando estado...</p>
-                <div class="modal-estudiante-nota">
-                    * Sujeto a cambios o disposiciones excepcionales de la Municipalidad o la Empresa.
-                </div>
+    <!-- Botón Flotante Estudiante -->
+    <button id="btn-estudiante-flotante" class="boton-estudiante-circular" onclick="abrirModalEstudiante()">🎓</button>
+
+    <!-- Modal Pase Estudiantil -->
+    <div id="modal-estudiante" class="modal-estudiante-overlay hidden" onclick="cerrarModalEstudiante(event)">
+        <div class="modal-estudiante-content">
+            <button class="modal-estudiante-cerrar" onclick="cerrarModalDirecto()">×</button>
+            <div class="modal-estudiante-icono">🎓</div>
+            <h3 id="modal-estudiante-titulo">Pase Estudiantil</h3>
+            <p id="modal-estudiante-mensaje">Cargando estado...</p>
+            <div class="modal-estudiante-nota">
+                * Sujeto a cambios o disposiciones excepcionales de la Municipalidad o la Empresa.
             </div>
-        </div>    
-        <div id="cartel-recomendacion" class="cartel-sugerencia hidden">
+        </div>
+    </div>    
+
+    <!-- Cartel Sugerencia / Recomendación -->
+    <div id="cartel-recomendacion" class="cartel-sugerencia hidden">
         <div class="cartel-contenido">
             <span class="cartel-icono">💡</span>
             <p id="mensaje-recomendacion"></p>
             <button onclick="cerrarCartel()" class="cerrar-cartel-btn">Entendido</button>
         </div>
     </div>
-    <a href="https://forms.gle/hDyzfmBvpZBaJvy77" target="_blank" class="boton-critica-circular" title="Dejanos tu crítica">
-        📝
-    </a>
+
+    <!-- Feedback -->
+    <a href="https://forms.gle/hDyzfmBvpZBaJvy77" target="_blank" class="boton-critica-circular" title="Dejanos tu crítica">📝</a>
 
     <script src="script/dias.js"></script>
     <script src="script/paradas.js"></script>

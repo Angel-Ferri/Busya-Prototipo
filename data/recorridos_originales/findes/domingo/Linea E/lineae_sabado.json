@@ -1,0 +1,60 @@
+{
+  "empresa": "Solbus",
+  "lineas": [
+    {
+      "nombre": "Línea E",
+      "días": "Sábados",
+      "paradas": [
+        "M. Ernst y Cazorla",
+        "Hospital La Ribera",
+        "Escuela Agraria",
+        "Ayacucho y Balcarce",
+        "Policlínico",
+        "Llegada a Terminal",
+        "Salida Terminal",
+        "Hospital de la Villa",
+        "Balcarce y Riobamba",
+        "Entrada B° La Ribera"
+      ],
+      "horarios": [
+        { "M. Ernst y Cazorla": "05:10", "Hospital La Ribera": null, "Escuela Agraria": null, "Ayacucho y Balcarce": null, "Policlínico": null, "Llegada a Terminal": null, "Salida Terminal": "06:18", "Hospital de la Villa": "06:25", "Balcarce y Riobamba": "06:31", "Entrada B° La Ribera": "06:47" },
+        { "M. Ernst y Cazorla": "05:58", "Hospital La Ribera": "06:08", "Escuela Agraria": "06:18", "Ayacucho y Balcarce": "06:33", "Policlínico": "06:46", "Llegada a Terminal": "06:55", "Salida Terminal": "07:10", "Hospital de la Villa": "07:17", "Balcarce y Riobamba": "07:23", "Entrada B° La Ribera": "07:39" },
+        { "M. Ernst y Cazorla": "06:24", "Hospital La Ribera": "06:34", "Escuela Agraria": "06:44", "Ayacucho y Balcarce": "06:59", "Policlínico": "07:10", "Llegada a Terminal": "07:23", "Salida Terminal": "07:38", "Hospital de la Villa": "07:45", "Balcarce y Riobamba": "07:51", "Entrada B° La Ribera": "08:07" },
+        { "M. Ernst y Cazorla": "06:50", "Hospital La Ribera": "07:00", "Escuela Agraria": "07:10", "Ayacucho y Balcarce": "07:25", "Policlínico": "07:38", "Llegada a Terminal": "07:51", "Salida Terminal": "08:06", "Hospital de la Villa": "08:13", "Balcarce y Riobamba": "08:19", "Entrada B° La Ribera": "08:35" },
+        { "M. Ernst y Cazorla": "07:46", "Hospital La Ribera": "07:56", "Escuela Agraria": "08:06", "Ayacucho y Balcarce": "08:21", "Policlínico": "08:34", "Llegada a Terminal": "08:47", "Salida Terminal": "09:02", "Hospital de la Villa": "09:09", "Balcarce y Riobamba": "09:15", "Entrada B° La Ribera": "09:31" },
+        { "M. Ernst y Cazorla": "08:14", "Hospital La Ribera": "08:24", "Escuela Agraria": "08:34", "Ayacucho y Balcarce": "08:49", "Policlínico": "09:02", "Llegada a Terminal": "09:15", "Salida Terminal": "09:30", "Hospital de la Villa": "09:37", "Balcarce y Riobamba": "09:43", "Entrada B° La Ribera": "09:59" },
+        { "M. Ernst y Cazorla": "08:42", "Hospital La Ribera": "08:52", "Escuela Agraria": "09:02", "Ayacucho y Balcarce": "09:17", "Policlínico": "09:30", "Llegada a Terminal": "09:43", "Salida Terminal": "09:58", "Hospital de la Villa": "10:05", "Balcarce y Riobamba": "10:11", "Entrada B° La Ribera": "10:27" },
+        { "M. Ernst y Cazorla": "09:10", "Hospital La Ribera": "09:20", "Escuela Agraria": "09:30", "Ayacucho y Balcarce": "09:45", "Policlínico": "09:58", "Llegada a Terminal": "10:11", "Salida Terminal": "10:26", "Hospital de la Villa": "10:33", "Balcarce y Riobamba": "10:39", "Entrada B° La Ribera": "10:55" },
+        { "M. Ernst y Cazorla": "09:38", "Hospital La Ribera": "09:48", "Escuela Agraria": "09:58", "Ayacucho y Balcarce": "10:13", "Policlínico": "10:26", "Llegada a Terminal": "10:39", "Salida Terminal": "10:54", "Hospital de la Villa": "11:01", "Balcarce y Riobamba": "11:07", "Entrada B° La Ribera": "11:23" },
+        { "M. Ernst y Cazorla": "10:06", "Hospital La Ribera": "10:16", "Escuela Agraria": "10:26", "Ayacucho y Balcarce": "10:41", "Policlínico": "10:54", "Llegada a Terminal": "11:07", "Salida Terminal": "11:22", "Hospital de la Villa": "11:29", "Balcarce y Riobamba": "11:35", "Entrada B° La Ribera": "11:51" },
+        { "M. Ernst y Cazorla": "10:34", "Hospital La Ribera": "10:44", "Escuela Agraria": "10:54", "Ayacucho y Balcarce": "11:09", "Policlínico": "11:22", "Llegada a Terminal": "11:35", "Salida Terminal": "11:50", "Hospital de la Villa": "11:57", "Balcarce y Riobamba": "12:03", "Entrada B° La Ribera": "12:19" },
+        { "M. Ernst y Cazorla": "11:02", "Hospital La Ribera": "11:12", "Escuela Agraria": "11:22", "Ayacucho y Balcarce": "11:37", "Policlínico": "11:50", "Llegada a Terminal": "12:03", "Salida Terminal": "12:18", "Hospital de la Villa": "12:25", "Balcarce y Riobamba": "12:31", "Entrada B° La Ribera": "12:47" },
+        { "M. Ernst y Cazorla": "11:30", "Hospital La Ribera": "11:40", "Escuela Agraria": "11:50", "Ayacucho y Balcarce": "12:05", "Policlínico": "12:18", "Llegada a Terminal": "12:31", "Salida Terminal": "12:46", "Hospital de la Villa": "12:53", "Balcarce y Riobamba": "12:59", "Entrada B° La Ribera": "13:15" },
+        { "M. Ernst y Cazorla": "11:58", "Hospital La Ribera": "12:08", "Escuela Agraria": "12:18", "Ayacucho y Balcarce": "12:33", "Policlínico": "12:46", "Llegada a Terminal": "12:59", "Salida Terminal": "13:14", "Hospital de la Villa": "13:21", "Balcarce y Riobamba": "13:27", "Entrada B° La Ribera": "13:43" },
+        { "M. Ernst y Cazorla": "12:26", "Hospital La Ribera": "12:36", "Escuela Agraria": "12:46", "Ayacucho y Balcarce": "13:01", "Policlínico": "13:14", "Llegada a Terminal": "13:27", "Salida Terminal": "13:42", "Hospital de la Villa": "13:49", "Balcarce y Riobamba": "13:55", "Entrada B° La Ribera": "14:11" },
+        { "M. Ernst y Cazorla": "12:54", "Hospital La Ribera": "13:04", "Escuela Agraria": "13:14", "Ayacucho y Balcarce": "13:29", "Policlínico": "13:42", "Llegada a Terminal": "13:55", "Salida Terminal": "14:10", "Hospital de la Villa": "14:17", "Balcarce y Riobamba": "14:23", "Entrada B° La Ribera": "14:39" },
+        { "M. Ernst y Cazorla": "13:22", "Hospital La Ribera": "13:32", "Escuela Agraria": "13:42", "Ayacucho y Balcarce": "13:57", "Policlínico": "14:10", "Llegada a Terminal": "14:23", "Salida Terminal": "14:38", "Hospital de la Villa": "14:45", "Balcarce y Riobamba": "14:51", "Entrada B° La Ribera": "15:07" },
+        { "M. Ernst y Cazorla": "13:50", "Hospital La Ribera": "14:00", "Escuela Agraria": null, "Ayacucho y Balcarce": null, "Policlínico": null, "Llegada a Terminal": null, "Salida Terminal": null, "Hospital de la Villa": null, "Balcarce y Riobamba": null, "Entrada B° La Ribera": null },
+        { "M. Ernst y Cazorla": "14:18", "Hospital La Ribera": "14:28", "Escuela Agraria": "14:38", "Ayacucho y Balcarce": "14:53", "Policlínico": "15:06", "Llegada a Terminal": "15:19", "Salida Terminal": "15:34", "Hospital de la Villa": "15:41", "Balcarce y Riobamba": "15:47", "Entrada B° La Ribera": "16:03" },
+        { "M. Ernst y Cazorla": "14:46", "Hospital La Ribera": "14:56", "Escuela Agraria": "15:06", "Ayacucho y Balcarce": "15:21", "Policlínico": "15:34", "Llegada a Terminal": "15:47", "Salida Terminal": "16:02", "Hospital de la Villa": "16:09", "Balcarce y Riobamba": "16:15", "Entrada B° La Ribera": "16:31" },
+        { "M. Ernst y Cazorla": "15:14", "Hospital La Ribera": "15:24", "Escuela Agraria": "15:34", "Ayacucho y Balcarce": "15:49", "Policlínico": "16:02", "Llegada a Terminal": "16:15", "Salida Terminal": "16:30", "Hospital de la Villa": "16:37", "Balcarce y Riobamba": "16:43", "Entrada B° La Ribera": "16:59" },
+        { "M. Ernst y Cazorla": "16:10", "Hospital La Ribera": "16:20", "Escuela Agraria": "16:30", "Ayacucho y Balcarce": "16:45", "Policlínico": "16:58", "Llegada a Terminal": "17:11", "Salida Terminal": "17:26", "Hospital de la Villa": "17:33", "Balcarce y Riobamba": "17:39", "Entrada B° La Ribera": "17:55" },
+        { "M. Ernst y Cazorla": "16:38", "Hospital La Ribera": "16:48", "Escuela Agraria": "16:58", "Ayacucho y Balcarce": "17:13", "Policlínico": "17:26", "Llegada a Terminal": "17:39", "Salida Terminal": "17:54", "Hospital de la Villa": "18:01", "Balcarce y Riobamba": "18:07", "Entrada B° La Ribera": "18:23" },
+        { "M. Ernst y Cazorla": "17:06", "Hospital La Ribera": "17:16", "Escuela Agraria": "17:26", "Ayacucho y Balcarce": "17:41", "Policlínico": "17:54", "Llegada a Terminal": "18:07", "Salida Terminal": "18:22", "Hospital de la Villa": "18:29", "Balcarce y Riobamba": "18:35", "Entrada B° La Ribera": "18:51" },
+        { "M. Ernst y Cazorla": "17:34", "Hospital La Ribera": "17:44", "Escuela Agraria": "17:54", "Ayacucho y Balcarce": "18:09", "Policlínico": "18:22", "Llegada a Terminal": "18:35", "Salida Terminal": "18:50", "Hospital de la Villa": "18:57", "Balcarce y Riobamba": "19:03", "Entrada B° La Ribera": "19:19" },
+        { "M. Ernst y Cazorla": "18:02", "Hospital La Ribera": "18:12", "Escuela Agraria": "18:22", "Ayacucho y Balcarce": "18:37", "Policlínico": "18:50", "Llegada a Terminal": "19:03", "Salida Terminal": "19:18", "Hospital de la Villa": "19:25", "Balcarce y Riobamba": "19:31", "Entrada B° La Ribera": "19:47" },
+        { "M. Ernst y Cazorla": "18:30", "Hospital La Ribera": "18:40", "Escuela Agraria": "18:50", "Ayacucho y Balcarce": "19:05", "Policlínico": "19:18", "Llegada a Terminal": "19:31", "Salida Terminal": "19:46", "Hospital de la Villa": "19:53", "Balcarce y Riobamba": "19:59", "Entrada B° La Ribera": "20:15" },
+        { "M. Ernst y Cazorla": "18:58", "Hospital La Ribera": "19:08", "Escuela Agraria": "19:18", "Ayacucho y Balcarce": "19:33", "Policlínico": "19:46", "Llegada a Terminal": "19:59", "Salida Terminal": "20:14", "Hospital de la Villa": "20:21", "Balcarce y Riobamba": "20:27", "Entrada B° La Ribera": "20:43" },
+        { "M. Ernst y Cazorla": "19:26", "Hospital La Ribera": "19:36", "Escuela Agraria": "19:46", "Ayacucho y Balcarce": "20:01", "Policlínico": "20:14", "Llegada a Terminal": "20:27", "Salida Terminal": "20:42", "Hospital de la Villa": "20:49", "Balcarce y Riobamba": "20:55", "Entrada B° La Ribera": "21:11" },
+        { "M. Ernst y Cazorla": "19:54", "Hospital La Ribera": "20:04", "Escuela Agraria": null, "Ayacucho y Balcarce": null, "Policlínico": null, "Llegada a Terminal": null, "Salida Terminal": null, "Hospital de la Villa": null, "Balcarce y Riobamba": null, "Entrada B° La Ribera": null },
+        { "M. Ernst y Cazorla": "20:22", "Hospital La Ribera": "20:32", "Escuela Agraria": "20:42", "Ayacucho y Balcarce": "20:57", "Policlínico": "21:10", "Llegada a Terminal": "21:23", "Salida Terminal": "21:38", "Hospital de la Villa": "21:44", "Balcarce y Riobamba": "21:49", "Entrada B° La Ribera": "22:04" },
+        { "M. Ernst y Cazorla": "20:50", "Hospital La Ribera": "21:00", "Escuela Agraria": null, "Ayacucho y Balcarce": null, "Policlínico": null, "Llegada a Terminal": null, "Salida Terminal": null, "Hospital de la Villa": null, "Balcarce y Riobamba": null, "Entrada B° La Ribera": null },
+        { "M. Ernst y Cazorla": "21:18", "Hospital La Ribera": "21:28", "Escuela Agraria": "21:38", "Ayacucho y Balcarce": "21:53", "Policlínico": "22:06", "Llegada a Terminal": "22:19", "Salida Terminal": "22:34", "Hospital de la Villa": "22:41", "Balcarce y Riobamba": "22:47", "Entrada B° La Ribera": "23:03" },
+        { "M. Ernst y Cazorla": "22:11", "Hospital La Ribera": "22:21", "Escuela Agraria": "22:31", "Ayacucho y Balcarce": "22:46", "Policlínico": "22:59", "Llegada a Terminal": "23:12", "Salida Terminal": "23:27", "Hospital de la Villa": "23:34", "Balcarce y Riobamba": "23:40", "Entrada B° La Ribera": "23:56" },
+        { "M. Ernst y Cazorla": "23:10", "Hospital La Ribera": "23:20", "Escuela Agraria": "23:30", "Ayacucho y Balcarce": "23:45", "Policlínico": "23:58", "Llegada a Terminal": "00:11", "Salida Terminal": "00:26", "Hospital de la Villa": "00:32", "Balcarce y Riobamba": "00:37", "Entrada B° La Ribera": "00:52" },
+        { "M. Ernst y Cazorla": "00:02", "Hospital La Ribera": null, "Escuela Agraria": null, "Ayacucho y Balcarce": null, "Policlínico": null, "Llegada a Terminal": "00:50", "Salida Terminal": null, "Hospital de la Villa": null, "Balcarce y Riobamba": null, "Entrada B° La Ribera": null },
+        { "M. Ernst y Cazorla": "00:57", "Hospital La Ribera": "01:05", "Escuela Agraria": null, "Ayacucho y Balcarce": null, "Policlínico": null, "Llegada a Terminal": null, "Salida Terminal": null, "Hospital de la Villa": null, "Balcarce y Riobamba": null, "Entrada B° La Ribera": null }
+      ]
+    }
+  ]
+}
