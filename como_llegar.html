@@ -57,6 +57,25 @@
             </div>
         </header>
 
+    <div id="modal-sugerencia-parada" class="modal-estudiante-overlay hidden" onclick="cerrarModalSugerencia(event)">
+        <div class="modal-estudiante-content" style="max-width: 400px; text-align: center;">
+            <div class="modal-estudiante-icono">📍</div>
+            <h3>¿Usar parada más cercana?</h3>
+            <p id="modal-sugerencia-texto" style="font-size: 0.95rem; color: #475569; margin: 15px 0;">
+                ¿Querés que te sugiramos la parada de origen más cercana a tu posición actual?
+            </p>
+            
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+                <button class="linea-card" onclick="procesarRespuestaSugerencia(false)" style="background-color: #64748b; color: white; border: none; justify-content: center; flex: 1;">
+                    Manual
+                </button>
+                <button class="linea-card" onclick="procesarRespuestaSugerencia(true)" style="background-color: #2e7d32; color: white; border: none; justify-content: center; flex: 1;">
+                    Usar GPS ➔
+                </button>
+            </div>
+        </div>
+    </div>
+
         <main class="content-container">
             <!-- Mapa interactivo -->
             <section class="mapa-completo-section">

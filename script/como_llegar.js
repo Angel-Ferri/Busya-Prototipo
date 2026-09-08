@@ -334,13 +334,34 @@ function alCambiarLinea(valorLinea) {
 }
 
 // --- Seleccionar destino ---
+// Variable global para guardar temporalmente la parada encontrada mientras el usuario decide
+let sugerenciaTemporal = null;
+
 function alSeleccionarDestino() {
     let idxDestino = Number(document.getElementById('select-destino').value);
-    let selOrigen = document.getElementById('select-origen');
     if (isNaN(idxDestino)) return;
 
-    const confirmar = confirm('¿Querés que te sugiramos la parada de origen más cercana a tu posición actual?');
+    // Buscar la parada más cercana
     const cercana = buscarParadaMasCercana(recorridoActual.paradas);
+
+    // Guardar los datos temporalmente para usarlos cuando el usuario responda en el modal
+    sugerenciaTemporal = {
+        idxDestino: idxDestino,
+        cercana: cercana
+    };
+
+    // Mostrar el modal personalizado
+    document.getElementById('modal-sugerencia-parada').classList.remove('hidden');
+}
+
+function procesarRespuestaSugerencia(confirmar) {
+    // Cerrar el modal
+    document.getElementById('modal-sugerencia-parada').classList.add('hidden');
+
+    if (!sugerenciaTemporal) return;
+
+    const { idxDestino, cercana } = sugerenciaTemporal;
+    let selOrigen = document.getElementById('select-origen');
 
     if (selOrigen) {
         selOrigen.innerHTML = '<option value="" disabled>-- Seleccioná la parada de partida --</option>';
@@ -366,7 +387,17 @@ function alSeleccionarDestino() {
         document.getElementById('resumen-viaje').innerHTML =
             '<div class="paso-itinerario"><p>Paso 3: Seleccioná manualmente la parada de partida donde vas a subir al colectivo.</p></div>';
     }
+
+    // Limpiar variable temporal
+    sugerenciaTemporal = null;
 }
+
+function cerrarModalSugerencia(e) {
+    if (e.target.id === 'modal-sugerencia-parada') {
+        procesarRespuestaSugerencia(false); // Si hace clic fuera del modal, se asume opción manual
+    }
+}
+
 
 // --- Seleccionar origen ---
 function alSeleccionarOrigen() {

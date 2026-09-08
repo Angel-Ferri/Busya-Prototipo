@@ -192,7 +192,7 @@ h2 {
 
 .mapa-info h3 {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     color: #ffffff; /* Texto blanco para resaltar sobre el fondo oscuro */
     font-weight: 700;
     letter-spacing: 0.3px;
@@ -264,13 +264,13 @@ h2 {
 }
 
 .linea-info h3 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     color: #222;
     margin-bottom: 2px;
 }
 
 .linea-info p {
-    font-size: 1.30rem;
+    font-size: 1rem;
     color: #777;
 }
 
@@ -1116,3 +1116,44 @@ h2 { font-size: 1.1rem; margin-bottom: 12px; color: #555; }
     background-color: #eff6ff; /* azul claro de fondo, similar a aviso-dia */
 }
 
+/* Botón flotante de Instagram */
+.boton-instagram-circular {
+    position: fixed;
+    bottom: 80px; /* Posicionado por encima del botón de críticas */
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ff7c7c;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 0;
+}
+
+.boton-instagram-circular:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.boton-instagram-circular img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Ajustes para el botón dentro del Modal de Instagram */
+#modal-instagram .linea-card {
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#modal-instagram .linea-card:hover {
+    background-color: #c13584 !important; /* Tono Instagram un poco más oscuro al hacer hover */
+    transform: translateY(-2px);
+}
