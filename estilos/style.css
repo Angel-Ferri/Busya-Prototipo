@@ -73,13 +73,13 @@ body {
 }
 
 .logo {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
 .subtitle {
-    font-size: 0.95rem;
+    font-size: 1.25rem;
     opacity: 0.9;
 }
 
@@ -192,7 +192,7 @@ h2 {
 
 .mapa-info h3 {
     margin: 0;
-    font-size: 1.05rem;
+    font-size: 1.25rem;
     color: #ffffff; /* Texto blanco para resaltar sobre el fondo oscuro */
     font-weight: 700;
     letter-spacing: 0.3px;
@@ -200,7 +200,7 @@ h2 {
 
 .mapa-info p {
     margin: 2px 0 0 0;
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: #e2e8f0; /* Blanco suavizado */
     font-weight: 400;
 }
@@ -264,13 +264,13 @@ h2 {
 }
 
 .linea-info h3 {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     color: #222;
     margin-bottom: 2px;
 }
 
 .linea-info p {
-    font-size: 0.85rem;
+    font-size: 1.30rem;
     color: #777;
 }
 
