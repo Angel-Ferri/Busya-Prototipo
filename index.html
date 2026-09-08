@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Busya - Inicio</title>
     <link rel="stylesheet" href="estilos/style.css">
-        <link rel="icon" href="autobus-escolar.ico" type="image/x-icon">
-
+    <link rel="icon" href="autobus-escolar.ico" type="image/x-icon">
 </head>
 <body>
     <div class="app-container">
@@ -19,29 +18,44 @@
             <h2>Opciones de Consulta</h2>
             
             <div class="menu-lineas">
-                <!-- 1. Botón Unificado para Consultar Horarios -->
-                <button class="linea-card" onclick="abrirModalLineas()">
-                    <div class="linea-badge badge-a">🚌</div>
+                <!-- Botones directos de las Líneas -->
+                <button class="linea-card" onclick="seleccionarLinea('linea_a')">
+                    <div class="linea-badge badge-a">A</div>
                     <div class="linea-info">
-                        <h3>HORARIOS DE LÍNEAS</h3>
-                        <p>Selecciona una línea para ver las frecuencias</p>
+                        <h3>Línea A</h3>
+                        <p>Facultad ↔ Ate 2</p>
                     </div>
                     <span class="arrow">➔</span>
                 </button>
 
-                <!-- 2. Botón Mapa en Vivo
-                <a href="mapa.html" class="mapa-link-container">
-                    <button class="mapa-card">
-                        <div class="mapa-badge">Módulo</div>
-                        <div class="mapa-info">
-                            <h3>🗺️ MAPA EN VIVO</h3>
-                            <p>Frecuencias y mapa de calor</p>
-                        </div>
-                        <span class="mapa-arrow">➔</span>
-                    </button>
-                </a> -->
+                <button class="linea-card" onclick="seleccionarLinea('linea_e')">
+                    <div class="linea-badge badge-e">E</div>
+                    <div class="linea-info">
+                        <h3>Línea E</h3>
+                        <p>M. Ernst ↔ La Ribera</p>
+                    </div>
+                    <span class="arrow">➔</span>
+                </button>
 
-                <!-- 3. Nuevo Botón "¿Cómo llegar?" -->
+                <button class="linea-card" onclick="seleccionarLinea('linea_este')">
+                    <div class="linea-badge badge-este">Este</div>
+                    <div class="linea-info">
+                        <h3>Línea Zona Este</h3>
+                        <p>Pellegrini ↔ Htal. Eva Perón</p>
+                    </div>
+                    <span class="arrow">➔</span>
+                </button>
+
+                <button class="linea-card" onclick="seleccionarLinea('linea_oeste')">
+                    <div class="linea-badge badge-oeste">Oeste</div>
+                    <div class="linea-info">
+                        <h3>Línea Zona Oeste</h3>
+                        <p>Terminal ↔ Policlínico</p>
+                    </div>
+                    <span class="arrow">➔</span>
+                </button>
+
+                <!-- Botón "¿Cómo llegar?" -->
                 <a href="como_llegar.html" class="mapa-link-container">
                     <button class="mapa-card" style="border-left: 5px solid #2e7d32;">
                         <div class="mapa-badge" style="background-color: #2e7d32; color: white;">GPS</div>
@@ -60,53 +74,7 @@
         </footer>
     </div>
 
-    <!-- MODAL 1: Selección de Líneas para Ver Horarios -->
-    <div id="modal-lineas" class="modal-estudiante-overlay hidden" onclick="cerrarModalLineas(event)">
-        <div class="modal-estudiante-content" style="max-width: 420px;">
-            <button class="modal-estudiante-cerrar" onclick="cerrarModalLineasDirecto()">×</button>
-            <h3>¿De qué línea quieres saber el recorrido?</h3>
-            <p style="margin-bottom: 15px; font-size: 0.9rem; color: #64748b;">Selecciona una opción para continuar:</p>
-            
-          <!-- Dentro del MODAL 1 en index.html -->
-<div class="menu-lineas">
-    <button class="linea-card" onclick="seleccionarLinea('linea_a')">
-        <div class="linea-badge badge-a">A</div>
-        <div class="linea-info">
-            <h3>Línea A</h3>
-            <p>Facultad ↔ Ate 2</p>
-        </div>
-        <span class="arrow">➔</span>
-    </button>
-
-    <button class="linea-card" onclick="seleccionarLinea('linea_e')">
-        <div class="linea-badge badge-e">E</div>
-        <div class="linea-info">
-            <h3>Línea E</h3>
-            <p>M. Ernst ↔ La Ribera</p>
-        </div>
-        <span class="arrow">➔</span>
-    </button>
-
-    <button class="linea-card" onclick="seleccionarLinea('linea_este')">
-        <div class="linea-badge badge-este">Este</div>
-        <div class="linea-info">
-            <h3>Línea Zona Este</h3>
-            <p>Pellegrini ↔ Htal. Eva Perón</p>
-        </div>
-        <span class="arrow">➔</span>
-    </button>
-
-    <button class="linea-card" onclick="seleccionarLinea('linea_oeste')">
-        <div class="linea-badge badge-oeste">Oeste</div>
-        <div class="linea-info">
-            <h3>Línea Zona Oeste</h3>
-            <p>Terminal ↔ Policlínico</p>
-        </div>
-        <span class="arrow">➔</span>
-    </button>
-</div>
-
-    <!-- MODAL 2: Pase Estudiantil -->
+    <!-- MODAL: Pase Estudiantil -->
     <div id="modal-estudiante" class="modal-estudiante-overlay hidden" onclick="cerrarModalEstudiante(event)">
         <div class="modal-estudiante-content">
             <button class="modal-estudiante-cerrar" onclick="document.getElementById('modal-estudiante').classList.add('hidden')">×</button>
@@ -125,25 +93,8 @@
     <!-- Botón Crítica -->
     <a href="https://forms.gle/hDyzfmBvpZBaJvy77" target="_blank" class="boton-critica-circular" title="Dejanos tu crítica">📝</a>
 
-<!-- Script de Control del Modal -->
-    <script>
-        function abrirModalLineas() {
-            document.getElementById('modal-lineas').classList.remove('hidden');
-        }
-        function cerrarModalLineasDirecto() {
-            document.getElementById('modal-lineas').classList.add('hidden');
-        }
-        function cerrarModalLineas(e) {
-            if (e.target.id === 'modal-lineas') {
-                cerrarModalLineasDirecto();
-            }
-        }
-    </script>
-    
-    <!-- 1. Añade dias.js primero para que las funciones de fechas estén disponibles -->
+    <!-- Scripts de la aplicación -->
     <script src="script/dias.js"></script>
-    
-    <!-- 2. Luego carga app.js -->
     <script src="script/app.js"></script>
 </body>
 </html>
