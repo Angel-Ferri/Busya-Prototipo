@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Busya - ¿Cómo Llegar?</title>
     <link rel="stylesheet" href="estilos/style.css">
-        <link rel="icon" href="autobus-escolar.ico" type="image/x-icon">
+    <link rel="icon" href="autobus-escolar.ico" type="image/x-icon">
 
-    
-    <!-- Leaflet CSS y JS -->
+    <!-- 1. Leaflet CSS y JS Core -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    
-    <!-- Leaflet Routing Machine (para trazar la ruta a pie) -->
+
+    <!-- 2. Leaflet Routing Machine CSS y JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.min.js"></script>
+
+    <!-- 3. CDN PolylineDecorator (Importado con fallback/compatibilidad) -->
+    <script src="https://unpkg.com/leaflet-polylinedecorator@1.6.0/dist/leaflet.polylineDecorator.js"></script>
 </head>
 <body>
 
@@ -57,24 +59,24 @@
             </div>
         </header>
 
-    <div id="modal-sugerencia-parada" class="modal-estudiante-overlay hidden" onclick="cerrarModalSugerencia(event)">
-        <div class="modal-estudiante-content" style="max-width: 400px; text-align: center;">
-            <div class="modal-estudiante-icono">📍</div>
-            <h3>¿Usar parada más cercana?</h3>
-            <p id="modal-sugerencia-texto" style="font-size: 0.95rem; color: #475569; margin: 15px 0;">
-                ¿Querés que te sugiramos la parada de origen más cercana a tu posición actual?
-            </p>
-            
-            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
-                <button class="linea-card" onclick="procesarRespuestaSugerencia(false)" style="background-color: #64748b; color: white; border: none; justify-content: center; flex: 1;">
-                    Manual
-                </button>
-                <button class="linea-card" onclick="procesarRespuestaSugerencia(true)" style="background-color: #2e7d32; color: white; border: none; justify-content: center; flex: 1;">
-                    Usar GPS ➔
-                </button>
+        <div id="modal-sugerencia-parada" class="modal-estudiante-overlay hidden" onclick="cerrarModalSugerencia(event)">
+            <div class="modal-estudiante-content" style="max-width: 400px; text-align: center;">
+                <div class="modal-estudiante-icono">📍</div>
+                <h3>¿Usar parada más cercana?</h3>
+                <p id="modal-sugerencia-texto" style="font-size: 0.95rem; color: #475569; margin: 15px 0;">
+                    ¿Querés que te sugiramos la parada de origen más cercana a tu posición actual?
+                </p>
+                
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+                    <button class="linea-card" onclick="procesarRespuestaSugerencia(false)" style="background-color: #64748b; color: white; border: none; justify-content: center; flex: 1;">
+                        Manual
+                    </button>
+                    <button class="linea-card" onclick="procesarRespuestaSugerencia(true)" style="background-color: #2e7d32; color: white; border: none; justify-content: center; flex: 1;">
+                        Usar GPS ➔
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
 
         <main class="content-container">
             <!-- Mapa interactivo -->
@@ -94,7 +96,8 @@
         </main>
     </div>
 
-    <script src="panel/main.js"></script>
+    <!-- Scripts de la aplicación (Cargar script principal primero) -->
     <script src="script/como_llegar.js"></script>
+    <script src="panel/main.js" defer></script>
 </body>
 </html>

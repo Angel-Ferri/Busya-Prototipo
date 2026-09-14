@@ -16,6 +16,7 @@ let recorridoActual = null;
 let marcadoresParadas = [];
 let marcadorOrigenSugerido = null;
 let marcadorDestinoSeleccionado = null;
+let decoradorFlechas = null;
 
 // --- Iconos ---
 const iconoUsuarioGPS = L.icon({
@@ -192,7 +193,8 @@ function obtenerMinutosDesdeCadena(cadena) {
 }
 
 function convertirMinutosAHora(minutos) {
-    const total = (minutos + 720) % 720;
+    // Normaliza cualquier valor de minutos dentro del rango de 0 a 1439 (24 horas)
+    const total = ((minutos % 1440) + 1440) % 1440;
     const h = Math.floor(total / 60).toString().padStart(2, '0');
     const m = Math.floor(total % 60).toString().padStart(2, '0');
     return h + ':' + m;
@@ -418,7 +420,7 @@ function alSeleccionarOrigen() {
 
 // --- Dibujar recorrido del colectivo ---
 function dibujarRecorridoColectivo(recorrido) {
-    const coords = recorrido.slice(0, -1);
+    const coords = recorrido; // Mantiene todos los puntos del JSON sin omitir el punto final
     lineaPolyline = L.polyline(coords, { color: '#2563eb', weight: 5, opacity: 0.7 }).addTo(mapa);
 
     if (coords.length > 0) mapa.fitBounds(lineaPolyline.getBounds());
@@ -460,6 +462,105 @@ function dibujarRecorridoColectivo(recorrido) {
     });
 }
 
+function agregarFlechasSentido(polyline) {
+    if (decoradorFlechas) {
+        mapa.removeLayer(decoradorFlechas);
+        decoradorFlechas = null;
+    }
+    if (!polyline) return;
+
+    // Control de seguridad para verificar la carga de los métodos de Symbol
+    const symbolArrow = (L.Symbol && L.Symbol.arrowHead) ? L.Symbol.arrowHead : (L.Symbol && L.Symbol.ArrowHead);
+
+    if (!symbolArrow || typeof L.polylineDecorator !== 'function') {
+        console.warn('PolylineDecorator o L.Symbol.arrowHead no se encuentran disponibles.');
+        return;
+    }
+
+    decoradorFlechas = L.polylineDecorator(polyline, {
+        patterns: [
+            {
+                offset: '5%',
+                repeat: 100,
+                symbol: symbolArrow({
+                    pixelSize: 12,
+                    headAngle: 60,
+                    pathOptions: {
+                        fillOpacity: 1,
+                        weight: 0,
+                        color: '#00ff00'
+                    }
+                })
+            }
+        ]
+    }).addTo(mapa);
+}
+
+function proyectarPuntoEnSegmento(p, a, b) {
+    const l2 = (a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2;
+    if (l2 === 0) return a;
+    let t = ((p[0] - a[0]) * (b[0] - a[0]) + (p[1] - a[1]) * (b[1] - a[1])) / l2;
+    t = Math.max(0, Math.min(1, t));
+    return [a[0] + t * (b[0] - a[0]), a[1] + t * (b[1] - a[1])];
+}
+
+function obtenerProyeccionEnRecorrido(recorridoCoords, puntoParada) {
+    let menorDistancia = Infinity;
+    let mejorPuntoProyectado = puntoParada;
+    let indiceSegmento = 0;
+
+    for (let i = 0; i < recorridoCoords.length - 1; i++) {
+        const pA = recorridoCoords[i];
+        const pB = recorridoCoords[i + 1];
+        const proyectado = proyectarPuntoEnSegmento(puntoParada, pA, pB);
+        const dist = calcularDistancia(puntoParada, proyectado);
+
+        if (dist < menorDistancia) {
+            menorDistancia = dist;
+            mejorPuntoProyectado = proyectado;
+            indiceSegmento = i;
+        }
+    }
+
+    return {
+        puntoProyectado: mejorPuntoProyectado,
+        indiceSegmento: indiceSegmento
+    };
+}
+// --- Proyección ortogonal de un punto sobre un segmento [A, B] ---
+function proyectarPuntoEnSegmento(p, a, b) {
+    const l2 = (a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2;
+    if (l2 === 0) return a;
+    let t = ((p[0] - a[0]) * (b[0] - a[0]) + (p[1] - a[1]) * (b[1] - a[1])) / l2;
+    t = Math.max(0, Math.min(1, t)); // Limita la proyección dentro del segmento
+    return [a[0] + t * (b[0] - a[0]), a[1] + t * (b[1] - a[1])];
+}
+
+// --- Obtiene el índice del segmento y el punto proyectado exacto en el recorrido ---
+function obtenerProyeccionEnRecorrido(recorridoCoords, puntoParada) {
+    let menorDistancia = Infinity;
+    let mejorPuntoProyectado = puntoParada;
+    let indiceSegmento = 0;
+
+    for (let i = 0; i < recorridoCoords.length - 1; i++) {
+        const pA = recorridoCoords[i];
+        const pB = recorridoCoords[i + 1];
+        const proyectado = proyectarPuntoEnSegmento(puntoParada, pA, pB);
+        const dist = calcularDistancia(puntoParada, proyectado);
+
+        if (dist < menorDistancia) {
+            menorDistancia = dist;
+            mejorPuntoProyectado = proyectado;
+            indiceSegmento = i;
+        }
+    }
+
+    return {
+        puntoProyectado: mejorPuntoProyectado,
+        indiceSegmento: indiceSegmento
+    };
+}
+
 // --- Calcular ruta y tiempo ---
 function calcularRutaYTiempo() {
     if (!ubicacionUsuario || !recorridoActual) return;
@@ -469,41 +570,73 @@ function calcularRutaYTiempo() {
     let destinoParada = recorridoActual.paradas[idxDestino];
     if (!origenParada || !destinoParada) return;
 
+    // Limpiar marcadores y líneas anteriores
     if (marcadorOrigenSugerido) mapa.removeLayer(marcadorOrigenSugerido);
     if (marcadorDestinoSeleccionado) mapa.removeLayer(marcadorDestinoSeleccionado);
     if (lineaTramoPolyline) { mapa.removeLayer(lineaTramoPolyline); lineaTramoPolyline = null; }
+    if (decoradorFlechas) { mapa.removeLayer(decoradorFlechas); decoradorFlechas = null; }
 
+    // Colocar marcadores visuales en las paradas
     marcadorOrigenSugerido = L.marker([origenParada.lat, origenParada.lng], { icon: iconoParadaSubida })
         .addTo(mapa).bindPopup('Subida: ' + origenParada.nombre);
     marcadorDestinoSeleccionado = L.marker([destinoParada.lat, destinoParada.lng], { icon: iconoParadaBajada })
         .addTo(mapa).bindPopup('Bajada: ' + destinoParada.nombre);
 
-    let idxRecOrigen = obtenerIndiceCoordenadaMasCercana(recorridoActual.recorrido, [origenParada.lat, origenParada.lng]);
-    let idxRecDestino = obtenerIndiceCoordenadaMasCercana(recorridoActual.recorrido, [destinoParada.lat, destinoParada.lng]);
+    // 1. Obtener la proyección exacta de la parada de Origen y Destino sobre las calles del recorrido
+    const proyOrigen = obtenerProyeccionEnRecorrido(recorridoActual.recorrido, [origenParada.lat, origenParada.lng]);
+    const proyDestino = obtenerProyeccionEnRecorrido(recorridoActual.recorrido, [destinoParada.lat, destinoParada.lng]);
 
-    if (idxRecOrigen > idxRecDestino) {
-        let temp = idxRecOrigen;
-        idxRecOrigen = idxRecDestino;
-        idxRecDestino = temp;
+    let tramoCoords = [];
+
+    // 2. Construir el trazado exacto sin cortar esquinas
+    if (proyOrigen.indiceSegmento <= proyDestino.indiceSegmento) {
+        tramoCoords.push(proyOrigen.puntoProyectado);
+
+        for (let i = proyOrigen.indiceSegmento + 1; i <= proyDestino.indiceSegmento; i++) {
+            tramoCoords.push(recorridoActual.recorrido[i]);
+        }
+
+        tramoCoords.push(proyDestino.puntoProyectado);
+    } else {
+        tramoCoords.push(proyOrigen.puntoProyectado);
+
+        for (let i = proyOrigen.indiceSegmento + 1; i < recorridoActual.recorrido.length; i++) {
+            tramoCoords.push(recorridoActual.recorrido[i]);
+        }
+        for (let i = 0; i <= proyDestino.indiceSegmento; i++) {
+            tramoCoords.push(recorridoActual.recorrido[i]);
+        }
+
+        tramoCoords.push(proyDestino.puntoProyectado);
     }
 
-    let tramoCoords = recorridoActual.recorrido.slice(idxRecOrigen, idxRecDestino + 1);
-    lineaTramoPolyline = L.polyline(tramoCoords, { color: '#f97316', weight: 7, opacity: 0.95 }).addTo(mapa);
-    mapa.fitBounds(lineaTramoPolyline.getBounds(), { padding: [40, 40] });
+    // 3. Dibujar la línea sobre el mapa
+    lineaTramoPolyline = L.polyline(tramoCoords, {
+        color: '#f97316',
+        weight: 6,
+        opacity: 0.9,
+        lineCap: 'round',
+        lineJoin: 'round'
+    }).addTo(mapa);
 
-    // Distancia del tramo en colectivo
+    if (typeof agregarFlechasSentido === 'function') {
+        agregarFlechasSentido(lineaTramoPolyline);
+    }
+
+    mapa.fitBounds(lineaTramoPolyline.getBounds(), { padding: [50, 50] });
+
+    // 4. Calcular distancia real del tramo respetando giros y manzanas
     let distanciaTramo = 0;
     for (let i = 0; i < tramoCoords.length - 1; i++) {
         distanciaTramo += calcularDistancia(tramoCoords[i], tramoCoords[i + 1]);
     }
 
     let minCamina = Math.max(1, Math.round(recorridoActual.distanciaAPieKm / 5 * 60));
-    let minColectivo = Math.max(2, Math.round(distanciaTramo / 20 * 60));
+    let minColectivo = Math.max(2, Math.round(distanciaTramo / 18 * 60));
     let cantParadas = Math.abs(idxDestino - recorridoActual.origenIndex);
 
     const ahora = new Date();
-    const minutosAhora = ahora.getHours() * 60 + ahora.getMinutes();
-    const horarioOrigen = calcularHorarioEstimadoParada(recorridoActual.key, recorridoActual.origenIndex, minutosAhora);
+    const minutosAhora = ahora.getHours() * 60 + ahora.getMinutes();    const horarioOrigen = calcularHorarioEstimadoParada(recorridoActual.key, recorridoActual.origenIndex, minutosAhora);
 
     let minEspera = 0;
     let infoHorario = '';
@@ -514,7 +647,7 @@ function calcularRutaYTiempo() {
             ? '<small style="color: #f97316; display: block;">Interpolado entre: <i>' + horarioOrigen.referenciaAnterior + '</i> y <i>' + horarioOrigen.referenciaSiguiente + '</i></small>'
             : '<small style="color: #10b981; display: block;">Horario fijo de tabla</small>';
         infoHorario =
-            '<div style="background: #fff7ed; border-left: 4px solid #f97316; padding: 8px; margin: 10px 0; border-radius: 4px;">' +
+            '<div style="background: #edffed; border-left: 4px solid #f97316; padding: 8px; margin: 10px 0; border-radius: 4px;">' +
             'Próximo colectivo en subida: ' + horarioOrigen.horaEstimadaStr + ' hs ' +
             '(<b>Faltan ' + minEspera + ' min</b>)' + fuente + '</div>';
     }
@@ -603,6 +736,7 @@ function limpiarMapa() {
     marcadoresParadas = [];
     if (lineaPolyline) { mapa.removeLayer(lineaPolyline); lineaPolyline = null; }
     if (lineaTramoPolyline) { mapa.removeLayer(lineaTramoPolyline); lineaTramoPolyline = null; }
+    if (decoradorFlechas) { mapa.removeLayer(decoradorFlechas); decoradorFlechas = null; } // <-- Limpieza agregada
     if (routingControlPie) { mapa.removeControl(routingControlPie); routingControlPie = null; }
     if (marcadorOrigenSugerido) { mapa.removeLayer(marcadorOrigenSugerido); marcadorOrigenSugerido = null; }
     if (marcadorDestinoSeleccionado) { mapa.removeLayer(marcadorDestinoSeleccionado); marcadorDestinoSeleccionado = null; }
