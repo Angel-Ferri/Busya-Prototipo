@@ -1,1 +1,82 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Nos Mudamos!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+
+        .card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .btn-mudanza {
+            background-color: #0070f3; /* Color estilo Vercel */
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        .btn-mudanza:hover {
+            background-color: #0051a2;
+        }
+
+        .btn-mudanza:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>🚀 ¡Nos hemos mudado!</h2>
+        <p>Hemos actualizado nuestra plataforma para ofrecerte una mejor experiencia.</p>
+        
+        <!-- Botón de redirección -->
+        <button class="btn-mudanza" onclick="redirigir()">Ir al nuevo sitio web</button>
+    </div>
+
+    <script>
+        function redirigir() {
+            const nuevoEnlace = "https://busya-prototipo.vercel.app/";
+            
+            // Muestra un mensaje al usuario
+            alert("¡Nos mudamos! Te estamos redirigiendo a nuestro nuevo sitio web: " + nuevoEnlace);
+            
+            // Redirige en la misma pestaña (si prefieres abrir en una nueva pestaña, usa: window.open(nuevoEnlace, '_blank');)
+            window.location.href = nuevoEnlace;
+        }
+    </script>
+
+</body>
+</html>
